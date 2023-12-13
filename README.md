@@ -10,10 +10,10 @@ Web panel for SharpTimer - CounterStrikeSharp plugin.
 - Throw files into your webhosting,
 - Configure config.php file with database credentials,
 ```
-$host = "localhost";
-$user = "root";
+$host = "";
+$user = "";
 $pass = "";
-$db = "db_test";
+$db = "";
 ```
 - Configure config.php to your liking,
 

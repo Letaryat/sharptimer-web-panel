@@ -1,9 +1,9 @@
 <?php
 // Database connection:
-$host = "localhost";
-$user = "root";
+$host = "";
+$user = "";
 $pass = "";
-$db = "db_test";
+$db = "";
 $conn = new mysqli($host, $user, $pass, $db);
 if(!$conn){
     die("connection failed" . mysqli_connect_error());
