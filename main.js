@@ -44,14 +44,9 @@
             if(!document.body.classList.contains("active")){
                 //if it's not checks if body has class open
                 if(document.body.classList.contains('open')){
-                    //if it has remove class open so maplist won't show up and change styles
                     document.body.classList.remove('open');
-                    maplist.style.display = "none";
                     leaderboard.style.marginTop = "0px";
-                }else{
-                    maplist.style.display = "flex";
-                }
-                maplist.style.display = "none";
+                }else{}
             }
             else{
                 return;
