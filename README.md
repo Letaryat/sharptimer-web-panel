@@ -7,7 +7,7 @@ Web panel for SharpTimer - CounterStrikeSharp plugin. [LIVE DEMO](https://moveme
 - [SharpTimer by deafps](https://github.com/DEAFPS/SharpTimer) with mysql enabled,
 
 ## Instalation
-- Throw files into your webhosting,
+- Throw files into your hosting,
 - Configure config.php file with database credentials,
 ```
 $host = "";
@@ -32,7 +32,7 @@ $db = "";
 }
 ```
 - You can turn on / off server list.
-- You can add / remove servers from list in $serverq variable:
+- You can add / remove servers in $serverq variable:
 ```
 $serverq = array(
     0 => array(
@@ -55,3 +55,4 @@ $serverq = array(
     )
 );
 ```
+
