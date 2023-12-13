@@ -18,7 +18,7 @@ $db = "";
 - Configure config.php to your liking,
 
 ## Additional informations:
-- You can change color palette in style.css file.
+- You can change color palette in style.css file,
 ```
 :root{
     --background: #0C0D13;
@@ -31,7 +31,7 @@ $db = "";
     --borderradius: 10px;
 }
 ```
-- You can turn on / off server list.
+- You can turn on / off server list,
 - You can add / remove servers in $serverq variable:
 ```
 $serverq = array(
