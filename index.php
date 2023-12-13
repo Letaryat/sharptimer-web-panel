@@ -1,6 +1,7 @@
 <?php
 require_once("config.php");
 require_once('assets/GameQ/Autoloader.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

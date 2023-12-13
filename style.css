@@ -469,7 +469,7 @@ footer a{
         padding: 5px;
     }
     .mappeno{
-        display: none;
+        display: block;
         /*height: 500px;*/
         height: 100%;
         margin-bottom: 15px;
