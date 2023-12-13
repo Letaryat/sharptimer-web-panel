@@ -1,5 +1,5 @@
 # sharptimer-web-panel
-Web panel for SharpTimer - CounterStrikeSharp plugin.
+Web panel for SharpTimer - CounterStrikeSharp plugin. [LIVE DEMO](https://movement.pierdolnik.eu/)
 ![preview](https://i.imgur.com/4cnkHz6.png)
 
 ## Requirements
