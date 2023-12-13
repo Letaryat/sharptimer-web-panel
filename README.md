@@ -2,11 +2,11 @@
 Web panel for SharpTimer - CounterStrikeSharp plugin.
 ![preview](https://i.imgur.com/4cnkHz6.png)
 
-##Requirements
+## Requirements
 - PHP 8.0+,
 - [SharpTimer by deafps](https://github.com/DEAFPS/SharpTimer) with mysql enabled,
 
-##Instalation
+## Instalation
 - Throw files into your webhosting,
 - Configure config.php file with database credentials,
 `
@@ -17,9 +17,10 @@ $db = "db_test";
 `
 - Configure config.php to your liking,
 
-###Additional informations:
+## Additional informations:
 - You can change color palette in style.css file.
-`:root{
+```
+:root{
     --background: #0C0D13;
     --secondary: #101219;
     --striperow:#101219;
@@ -28,10 +29,11 @@ $db = "db_test";
     --border-col:#0F111B;
     --fontcolor: #e3e3e3;
     --borderradius: 10px;
-}`
+}
+```
 - You can turn on / off server list.
 - You can add / remove servers from list in $serverq variable:
-`
+```
 $serverq = array(
     0 => array(
         'type' => 'csgo',
@@ -52,4 +54,4 @@ $serverq = array(
         'fakeip' => ''
     )
 );
-`
+```
