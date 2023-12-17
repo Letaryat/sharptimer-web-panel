@@ -1,6 +1,7 @@
 <?php 
 
     include("../../config.php");
+
     $i = 0;
     if(isset($_POST['input'])){
         $input = $conn -> real_escape_string($_POST['input']);
@@ -9,7 +10,7 @@
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 $i++;
-                echo '<a target="_blank" href="/sharptimer-web-panel/profile/' . $row['SteamID'] . '/"><div';
+                echo '<a target="_blank" href="profile/'.$row['SteamID'] . '/"><div';
                 if($i % 2 == 0){
                     echo ' id="stripped"';
                 }

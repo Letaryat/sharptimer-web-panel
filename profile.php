@@ -142,19 +142,18 @@ if(isset($_GET['sid'])){
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $i++;
-                            echo '<a target="_blank" href="/sharptimer-web-panel/profile/' . $row['SteamID'] . '/"><div';
-                            if ($i % 2 == 0) {
+                            echo '<a target="_blank" href="profile/'.$row['SteamID'] . '/"><div';
+                            if($i % 2 == 0){
                                 echo ' id="stripped"';
-                            } else {
-                                echo "";
                             }
-                            echo ' class="row">';
-                            echo '<span>' . $i . '</span>';
-                            echo '<span>' . $row['PlayerName'] . '</span>';
-                            echo '<span>' . $row['FormattedTime'] . '</span>';
-                            echo '<span>' . $row['MapName'] . '</span>';
-                            echo '<span>' . $row['MapName'] . '</span>';
-                            echo '</div></a>';
+                            else{echo "";}
+                            echo ' class="row">
+                            <span>'.$i.'</span>
+                            <span>'.$row['PlayerName'].'</span>
+                            <span>'.$row['FormattedTime'].'</span>
+                            <span>'.$row['MapName'].'</span>
+                            <span>'.$row['MapName'].'</span>
+                            </div></a>';
                         }
                     }
                     ?>
