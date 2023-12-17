@@ -1,9 +1,9 @@
 <?php
 // Database connection:
-$host = "";
-$user = "";
+$host = "localhost";
+$user = "root";
 $pass = "";
-$db = "";
+$db = "db_test";
 $conn = new mysqli($host, $user, $pass, $db);
 if(!$conn){
     die("connection failed" . mysqli_connect_error());
@@ -21,6 +21,9 @@ $links = '
 
 #Default map for leaderboard which should load when joining a website
 $defaultmap = "surf_ace";
+
+#Steam Web Api - It is needed to show player avatars on their profiles. It can be empty, then it will show default steam avatar.
+$steamauth['apikey'] = '';
 
 // Map sections => true (on) or false (off)
 #It's creates a map sections for each mode (kz, surf, bunnyhop) in map list. If it's turned off there won't be any sections.

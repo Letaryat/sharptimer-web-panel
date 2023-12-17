@@ -1,11 +1,12 @@
 <?php
 require_once("config.php");
 require_once('assets/GameQ/Autoloader.php');
-
+require_once('assets/php/functions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="<?php BaseURL(); ?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,12 +17,12 @@ require_once('assets/GameQ/Autoloader.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="style.css?version=3">
-    <link href="assets/dist/hamburgers.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css?version=3">
+    <link href="assets/css/hamburgers.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo $pagetitle ?>">
     <meta property="og:description" content="Your statistics in one place!">
@@ -59,7 +60,7 @@ require_once('assets/GameQ/Autoloader.php');
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="assets/logo.png" alt="logo">
+                <img src="assets/images/logo.png" alt="logo">
                 <h1>
                     <?php echo $pagetitle ?>
                 </h1>
@@ -319,7 +320,7 @@ require_once('assets/GameQ/Autoloader.php');
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $i++;
-                            echo '<a target="_blank" href="https://steamcommunity.com/profiles/' . $row['SteamID'] . '"><div';
+                            echo '<a target="_blank" href="/sharptimer-web-panel/profile/' . $row['SteamID'] . '/"><div';
                             if ($i % 2 == 0) {
                                 echo ' id="stripped"';
                             } else {
@@ -362,7 +363,7 @@ require_once('assets/GameQ/Autoloader.php');
         $('.selector').on('click', function () {
             var data_id = $(this).data('id');
             $.ajax({
-                url: 'assets/ajax/selection.php',
+                url: 'assets/php/selection.php',
                 type: 'POST',
                 data: { id: data_id },
                 dataType: 'text',
@@ -382,7 +383,7 @@ require_once('assets/GameQ/Autoloader.php');
                 //alert(input);
                 if (input != "") {
                     $.ajax({
-                        url: 'assets/ajax/livesearch.php',
+                        url: 'assets/php/livesearch.php',
                         type: 'POST',
                         data: { input: input },
                         dataType: 'text',

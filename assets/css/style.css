@@ -289,10 +289,6 @@ main{
     margin-right: 10px;
 }
 
-.row span:nth-child(5), .row span:nth-child(1){
-    text-align: center;
-
-}
 
 #stripped{
     background-color: var(--striperow);

@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteRule ^([a-zA-Z0-9-/]+).html$ profile.php?sid=$1
+RewriteRule ^([a-zA-Z0-9-/]+)$ profile.php?sid=$1
+
+ErrorDocument 404 /sharptimer-web-panel/errors/403.php
+ErrorDocument 403 /sharptimer-web-panel/errors/403.php
