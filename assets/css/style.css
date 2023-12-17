@@ -449,6 +449,24 @@ footer a{
         justify-content: center;
         align-items: center;
         font-size: 34px;
+        border: 1px solid var(--secondary);
+    }
+    .togglemaps::before{
+        content: "\f00d";
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 800;
+        transform:rotate(180deg);
+        transition: 0.2s all ease-in-out;
+    }
+    .togglemaps.active::before{
+        content:"\f550";
+        font-family: 'Font Awesome 6 Free';
+        animation-name: fade;
+        animation-duration: 0.2s;
+        animation-fill-mode:forwards;
+        font-weight: 800;
+        transform: rotate(0deg);
+        color:var(--fontcolor);
     }
     .togglemaps:hover, .togglemaps:active{
         background:var(--stripe-hover);

@@ -164,7 +164,7 @@ require_once('assets/php/functions.php');
         <div class="wrapper">
             <div class="map-list2">
                 <div id="sticky">
-                <li class="togglemaps" onclick="toggleMaps()"><i class="fa-solid fa-xmark"></i></li>
+                <li class="togglemaps" onclick="toggleMaps()"></li>
                     <ul class="modes">
 
                         <?php
@@ -314,26 +314,7 @@ require_once('assets/php/functions.php');
                 <div class="players">
                     <?php
                     $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE MapName = '{$defaultmap}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
-
-                    $result = $conn->query($sql);
-                    $i = 0;
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $i++;
-                            echo '<a target="_blank" href="/sharptimer-web-panel/profile/' . $row['SteamID'] . '/"><div';
-                            if ($i % 2 == 0) {
-                                echo ' id="stripped"';
-                            } else {
-                                echo "";
-                            }
-                            echo ' class="row">';
-                            echo '<span>' . $i . '</span>';
-                            echo '<span>' . $row['PlayerName'] . '</span>';
-                            echo '<span>' . $row['FormattedTime'] . '</span>';
-                            echo '<span>' . $row['MapName'] . '</span>';
-                            echo '</div></a>';
-                        }
-                    }
+                    ShowRows($sql);
                     ?>
                 </div>
             </div>

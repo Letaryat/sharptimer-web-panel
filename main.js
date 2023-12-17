@@ -12,7 +12,15 @@
         var mappeno = document.querySelector(".mappeno");
         function toggleMaps(){
             mappeno.classList.toggle("invisible");
+            document.querySelector(".togglemaps").classList.toggle("active")
         }
+        //Toggle mobile menu
+        function toggleMobile() {
+            let hamburger = document.querySelector(".hamburger");
+            document.body.classList.toggle("active");
+            hamburger.classList.toggle("is-active");
+        }
+        //TABS - W3SCHOOLS:
         function openMode(e, modeName) {
             var i, content, tablink;
             content = document.getElementsByClassName("content");
@@ -29,27 +37,10 @@
 
             if(mappeno.classList.contains("invisible")){
                 mappeno.classList.remove("invisible");
+                document.querySelector(".togglemaps").classList.remove("active");
             }
             else{
                 
-            }
-        }
-
-        //Toggle mobile menu
-        function toggleMobile() {
-            let hamburger = document.querySelector(".hamburger");
-            document.body.classList.toggle("active");
-            hamburger.classList.toggle("is-active");
-            //checks if menu isn't opened
-            if(!document.body.classList.contains("active")){
-                //if it's not checks if body has class open
-                if(document.body.classList.contains('open')){
-                    document.body.classList.remove('open');
-                    leaderboard.style.marginTop = "0px";
-                }else{}
-            }
-            else{
-                return;
             }
         }
 

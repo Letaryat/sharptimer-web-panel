@@ -1,4 +1,6 @@
 <?php
+if (!defined('SITE_ROOT')) define('SITE_ROOT', __DIR__);
+
 // Database connection:
 $host = "localhost";
 $user = "root";

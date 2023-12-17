@@ -26,6 +26,28 @@
         echo "/".$rurl[1]."/";
     }
 
-
-
+    function ShowRows($sql){
+        $i = 0;
+        require(SITE_ROOT."/config.php");
+        $result = $conn->query($sql);
+        if($result->num_rows > 0){
+            while($row = $result->fetch_assoc()){
+                $i++;
+                echo '<a target="_blank" href="profile/'.$row['SteamID'] . '/"><div';
+                if($i % 2 == 0){
+                    echo ' id="stripped"';
+                }
+                else{echo "";}
+                echo ' class="row">
+                <span>'.$i.'</span>
+                <span>'.$row['PlayerName'].'</span>
+                <span>'.$row['FormattedTime'].'</span>
+                <span>'.$row['MapName'].'</span>
+                </div></a>';
+            }
+        }
+        else{
+            echo "<div id='strangerdanger' class='row'>Player not found.</div>";
+        }
+    }
 ?>
