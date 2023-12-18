@@ -50,4 +50,21 @@
             echo "<div id='strangerdanger' class='row'>Player not found.</div>";
         }
     }
+    function SocialURL(){
+        $json = file_get_contents("core/socials.json");
+        $myJson = json_decode($json, true);
+        #echo count($myJson);
+        for($x = 0; $x < count($myJson); $x++){
+            if($myJson[$x]['local'] == true){?>
+            <li><a href="<?php echo BaseURL().$myJson[$x]['url']?>"><?php echo $myJson[$x]['name'] ?></a></li><?php
+            }
+            else{?>
+                <li><a href="<?php echo $myJson[$x]['url']?>"><?php echo $myJson[$x]['name']?></a></li><?php 
+            }
+        }
+    }
+
+
+
+
 ?>

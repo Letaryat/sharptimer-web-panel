@@ -1,5 +1,7 @@
 <?php
+#\/\/\/ DO NOT TOUCH THAT \/\/\/#
 if (!defined('SITE_ROOT')) define('SITE_ROOT', __DIR__);
+#/\/\/\ DO NOT TOUCH THAT /\/\/\#
 
 // Database connection:
 $host = "localhost";
@@ -15,12 +17,6 @@ if(!$conn){
 #Page title:
 $pagetitle = "SharpTimer Web Panel";
 
-#Hyperlinks for navigation | If you don't need it you can just delete all the contents or variable.
-$links = '
-<li><a href="https://discord.com/invite/Rzf7fCzpnw"><i class="fa-brands fa-discord"></i></a></li>
-<li><a href="https://steamcommunity.com/groups/pierdolnikeu"><i class="fa-brands fa-steam"></i></a></li>
-';
-
 #Default map for leaderboard which should load when joining a website
 $defaultmap = "surf_ace";
 
@@ -35,7 +31,7 @@ $mapdivision = true;
 
 #Which tab with map should be opened as a default - Only works if $mapdivision = true
 #(can be surf, bh, kz, other)
-$tabopened = "other";
+$tabopened = "surf";
 
 // How many records should be displayed in leaderboard:
 $limit = 100;

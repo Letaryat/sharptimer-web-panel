@@ -1,0 +1,17 @@
+{
+        "0":{
+            "local":false,
+            "url":"https://steamcommunity.com/groups/pierdolnikeu",
+            "name":"<i class='fa-brands fa-steam'></i> Steam"
+        },
+        "1":{
+            "local":false,
+            "url":"https://discord.com/invite/Rzf7fCzpnw",
+            "name":"<i class='fa-brands fa-discord'></i> Discord"
+        },
+        "2":{
+            "local":true,
+            "url":"faq.php",
+            "name":"FAQ"
+        }
+}

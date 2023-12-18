@@ -1,9 +1,9 @@
-@import './style.css';
+@import './colors.css';
 .profileheader{
     position: relative;
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 80%;
     height: 150px;
     border: 1px solid var(--secondary);
     background:var(--secondary);
@@ -17,6 +17,7 @@
     background-position-y: -120px;
     */
     background-position-y: 50%;
+    margin-top: 20px;
 }
 .profileheader::before{
     content:"";
@@ -118,19 +119,24 @@
 }
 #profile-wrapper{
     flex-flow: column;
-}
-.leaderboard{
     width: 100%;
-}
-.row{
-    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
 }
 
 
 /* RWD */
 
+@media (max-width:1024px){
+    .profileheader{
+        width: 90%;
+    }
+
+}
+
 @media (max-width: 768px) {
     .profileheader{
+        width: 90%;
         height: 100%;
         flex-flow: column;
         align-items: center;
@@ -163,7 +169,5 @@
         margin-top:5px;
         margin-bottom: 5px;
     }
-    .row {
-        grid-template-columns: 1fr 2fr 1fr 2fr 2fr;
-      }
+
 }

@@ -1,14 +1,4 @@
-:root{
-    --background: #0C0D13;
-    --secondary: #101219;
-    --striperow:#101219;
-    --stripe-hover:#6389e82f;
-    --hover: #6389E8;
-    --border-col:#0F111B;
-    --fontcolor: #e3e3e3;
-    --borderradius: 10px;
-}
-
+@import './colors.css';
 ::-webkit-scrollbar {
     height: 6px;
     width: 3px;
@@ -85,7 +75,7 @@ header{
 .header-container ul li{
     margin-bottom: 0;
 }
-ul, ol{
+ul{
     list-style-type: none;
 
 }
@@ -160,8 +150,24 @@ a:hover{
     box-sizing: border-box;
     padding: 15px;
     width: 100%;
-    margin-bottom: 5px;
-    
+    margin-bottom: 5px; 
+    transition: 0.2s all ease-in-out;
+}
+.mappeno li:hover{
+    padding-left: 30px;
+}
+.mappeno li::before{
+    position: absolute;
+    content: "\f054";
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 800;
+    margin-left: 20px;
+    opacity: 0;
+    transition: 0.2s ease-in-out all;
+}
+.mappeno li:hover:before{
+    margin-left: -20px;
+    opacity: 1;
 }
 .content{
     animation-name: fade;
@@ -560,6 +566,11 @@ footer a{
     body.active{
         overflow:hidden;
     }
+    .moreinfo p{
+        font-size:12px !important;
+        width: 100% !important;
+        text-align:center !important;
+    }
 }
 
 @media (max-width: 1280px){
@@ -567,6 +578,19 @@ footer a{
         grid-template-columns: 1fr 1fr;
         gap:10px;
       }
+    .header-container{
+        height: 100%;
+        flex-flow: column;
+
+    }
+    .header-container ul{
+        margin-top: 10px;
+    }
+    .moreinfo p{
+        font-size: 14px;
+        width: 125px;
+        text-align: right;
+    }
 }
 
 @media (max-width: 768px) {

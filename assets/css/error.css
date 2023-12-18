@@ -1,0 +1,33 @@
+@import './colors.css';
+main{
+    margin-top:0px;
+    height: 100vh;
+    flex-flow: column;
+}
+h1{
+    font-size: 64px;
+}
+h2{
+    font-size: 48px;
+}
+.button-container{
+margin-top: 10px;
+
+}
+.button-container a {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 200px;
+    background:var(--stripe-hover);
+    border:1px solid var(--hover);
+    border-radius: var(--borderradius);
+}
+.button-container a:hover{
+    background:var(--secondary);
+    border:1px solid var(--secondary);
+
+}
