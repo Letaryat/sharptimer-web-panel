@@ -1,8 +1,4 @@
-#RewriteEngine On
-#DirectoryIndex index.php index.html index.htm
-#Options -Indexes
-#RewriteRule ^([a-zA-Z0-9-/]+).html$ profile.php?sid=$1
-#RewriteRule ^([a-zA-Z0-9-/]+)$ profile.php?sid=$1
+RewriteEngine On
 ErrorDocument 404 /sharptimer-web-panel/errors/error.php
 ErrorDocument 403 /sharptimer-web-panel/errors/error.php
 
