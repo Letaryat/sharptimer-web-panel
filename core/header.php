@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <base href="<?php BaseURL(); ?>">
     <meta charset="UTF-8">

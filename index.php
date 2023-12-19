@@ -4,9 +4,12 @@ require_once('assets/GameQ/Autoloader.php');
 require_once('assets/php/functions.php');
 ?>
     <?php require_once('core/header.php'); ?>
+    <div id="strangerdanger" class="row" style="width: 60%;
+  margin-left: 20%;">This is DEV 1.0.2 Version</div>
     <?php if ($serverlist === true && !empty($serverq)) { ?>
         <div class="server-container">
             <div class="serverlist">
+
                 <?php
                 $GameQ = new \GameQ\GameQ();
                 $GameQ->addServers($serverq);
@@ -22,7 +25,7 @@ require_once('assets/php/functions.php');
                         echo 'id="online"';
                     } ?>>
                         <div class="basicinfo">
-                            <h4>
+                            <p class="server-name">
                                 <?php
                                 if (empty($serverq[$x]['fakename'])) {
                                     if ($results[$serverq[$x]['host']]['gq_online'] == "0") {
@@ -34,7 +37,7 @@ require_once('assets/php/functions.php');
                                     echo $serverq[$x]['fakename'];
                                 }
                                 ?>
-                            </h4>
+                            </p>
                             <p><a href="steam://connect/<?php
                             if (empty($serverq[$x]['fakeip'])) {
                                 echo $serverq[$x]['host'];
@@ -79,6 +82,7 @@ require_once('assets/php/functions.php');
     </div>
     <main>
         <div class="wrapper">
+            
             <div class="map-list2">
                 <div id="sticky">
                 <li class="togglemaps" onclick="toggleMaps()"></li>

@@ -63,6 +63,8 @@ header{
 
 }
 .logo img{
+    width: 35px;
+    height: 45px;
     max-width: 35px;
     filter:grayscale(0%);
 
@@ -326,6 +328,10 @@ main{
     flex-flow: column;
     justify-content: space-around;
     height: 100%;
+}
+
+.server-name{
+    font-weight: 700;
 }
 
 #online{
