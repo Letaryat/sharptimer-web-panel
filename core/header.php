@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <base href="<?php BaseURL(); ?>">
     <meta charset="UTF-8">
@@ -12,12 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css?version=3">
-    <!--<link rel="stylesheet" type="text/css" href="./assets/css/profiles.css?version=0"> -->
-    <link href="assets/css/hamburgers.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="<?php BaseURL() ?>assets/css/style.css?version=3">
+    <link href="<?php BaseURL() ?>assets/css/hamburgers.min.css" rel="stylesheet">
+    <script type="text/javascript" src="<?php BaseURL() ?>assets/js/jquery-3.7.1.min.js"></script>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo $pagetitle ?>">
@@ -45,7 +43,7 @@
     <div class="mobile-nav">
         <ul>
             <?php
-                    SocialURL();
+            SocialURL();
             ?>
         </ul>
     </div>
@@ -54,7 +52,9 @@
             <div class="logo">
                 <img src="assets/images/logo.png" alt="logo">
                 <h1>
-                    <a href="<?php SITE_ROOT ?>"><?php echo $pagetitle ?></a>
+                    <a href="<?php SITE_ROOT ?>">
+                        <?php echo $pagetitle ?>
+                    </a>
                 </h1>
                 <div class="helpme">
                     <input id="search" type="search" placeholder="Search by Nickname or SteamID64">
@@ -62,7 +62,7 @@
             </div>
             <ul>
                 <?php
-                    SocialURL();
+                SocialURL();
                 ?>
             </ul>
 

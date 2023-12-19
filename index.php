@@ -83,7 +83,6 @@ require_once('assets/php/functions.php');
                 <div id="sticky">
                 <li class="togglemaps" onclick="toggleMaps()"></li>
                     <ul class="modes">
-
                         <?php
                         //SURF SQL:
                         $sqlsurf = "SELECT DISTINCT MapName FROM `PlayerRecords` WHERE MapName LIKE 'SURF%' ORDER BY MapName ASC ";

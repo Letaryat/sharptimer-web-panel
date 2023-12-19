@@ -156,19 +156,7 @@ a:hover{
 .mappeno li:hover{
     padding-left: 30px;
 }
-.mappeno li::before{
-    position: absolute;
-    content: "\f054";
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 800;
-    margin-left: 20px;
-    opacity: 0;
-    transition: 0.2s ease-in-out all;
-}
-.mappeno li:hover:before{
-    margin-left: -20px;
-    opacity: 1;
-}
+
 .content{
     animation-name: fade;
     animation-duration: 0.5s;

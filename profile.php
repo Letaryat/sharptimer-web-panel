@@ -4,13 +4,8 @@ require_once("./assets/php/functions.php");
 
 
 if(isset($_GET['sid'])){
-    //print_r($sasaexplode);
-
-    #print_r (explode("/",$_GET['sid']));
     $sid = mysqli_real_escape_string($conn, $_GET['sid']);
     $sidexplode = explode("/", $sid);
-    //$sidexplode = $sid;
-    //print_r ($sidexplode);
     $query = "SELECT * FROM `playerrecords` WHERE SteamID = '{$sidexplode[1]}'";
     $result = mysqli_query($conn, $query) or die("bad query");
     $row = mysqli_fetch_array($result);
@@ -25,7 +20,7 @@ if(isset($_GET['sid'])){
         <div id="profile-wrapper" class="wrapper">
                 <div class="profileheader">
                     <div class="user-info">
-                    <a target="_blank" href="https://steamcommunity.com/profiles/<?php echo $row['SteamID']?>"><div class="avatar">
+                    <a href="https://steamcommunity.com/profiles/<?php echo $row['SteamID']?>"><div class="avatar">
                             <img  src="<?php echo getAvatar($sid)?>" alt="<?php echo $sid?>">
                         </div></a>
 
@@ -38,12 +33,6 @@ if(isset($_GET['sid'])){
 
                         </div>
                     </div>
-                <!--
-                    <div class="user-links">
-                        <a href="">Steam</a>
-                        <a href="">Faceit</a>
-                    </div>
-            -->
                 </div>
 </div>
     <main>

@@ -7,8 +7,8 @@ require_once('../assets/php/functions.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/error.css">
+    <link rel="stylesheet" href="<?php echo BaseURL()."assets/css/style.css"?>">
+    <link rel="stylesheet" href="<?php echo BaseURL()."assets/css/error.css"?>">
     <title>D:</title>
 </head>
 <body>
