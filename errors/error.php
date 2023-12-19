@@ -7,8 +7,9 @@ require_once('../assets/php/functions.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo BaseURL()."assets/css/style.css"?>">
-    <link rel="stylesheet" href="<?php echo BaseURL()."assets/css/error.css"?>">
+    <link rel="stylesheet" href="<?php BaseURL()?>assets/css/style.css">
+    <link rel="stylesheet" href="<?php BaseURL()?>assets/css/error.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png">
     <title>D:</title>
 </head>
 <body>

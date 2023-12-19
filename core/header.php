@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="<?php BaseURL(); ?>">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="<?php BaseURL() ?>assets/css/style.css?version=4">
-    <link href="<?php BaseURL() ?>assets/css/hamburgers.min.css" rel="stylesheet">
-    <script type="text/javascript" src="<?php BaseURL() ?>assets/js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css?version=4">
+    <link href="assets/css/hamburgers.min.css" rel="stylesheet">
+    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo $pagetitle ?>">
@@ -51,7 +51,7 @@
             <div class="logo">
                 <img src="assets/images/logo.png" alt="logo">
                 <h1>
-                    <a href="<?php SITE_ROOT ?>">
+                    <a href="index.php">
                         <?php echo $pagetitle ?>
                     </a>
                 </h1>

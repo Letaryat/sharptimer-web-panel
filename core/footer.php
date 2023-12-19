@@ -1,5 +1,5 @@
 <footer>
-        <a id="topbutton" href="<?php echo $_SERVER['REQUEST_URI'] ?>#top"><i class="fa-solid fa-arrow-up"></i></a>
+        <a id="topbutton" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
         <div class="wrapper">
             <div>
                 <h3>
@@ -14,5 +14,5 @@
             </div>
         </div>
     </footer>
-    <script type="text/javascript" src="<?php BaseURL() ?>assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
 </body>

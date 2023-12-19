@@ -33,7 +33,7 @@
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 $i++;
-                echo '<a href="profile/'.$row['SteamID'] . '/"><div';
+                echo '<a href="profile.php?sid='.$row['SteamID'] . '/"><div';
                 if($i % 2 == 0){
                     echo ' id="stripped"';
                 }
@@ -56,7 +56,7 @@
         #echo count($myJson);
         for($x = 0; $x < count($myJson); $x++){
             if($myJson[$x]['local'] == true){?>
-            <li><a href="<?php echo BaseURL().$myJson[$x]['url']?>"><?php echo $myJson[$x]['name'] ?></a></li><?php
+            <li><a href="<?php echo $myJson[$x]['url']?>"><?php echo $myJson[$x]['name'] ?></a></li><?php
             }
             else{?>
                 <li><a href="<?php echo $myJson[$x]['url']?>"><?php echo $myJson[$x]['name']?></a></li><?php 

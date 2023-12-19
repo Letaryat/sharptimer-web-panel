@@ -416,7 +416,7 @@ footer a{
         width: 100%;
     }
     .logo img{
-        max-width: 24px;
+        max-width: 45px;
     }
     .header-container{
         width: 90%;
@@ -682,6 +682,13 @@ input:focus{
     animation-fill-mode:forwards;
 }
 
+.hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::after, .hamburger.is-active .hamburger-inner::before {
+    background-color:var(--fontcolor) !important;
+}
+
+.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before {
+    background-color:var(--fontcolor) !important;
+}
 
 
 @keyframes fade{

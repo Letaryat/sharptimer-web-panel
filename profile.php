@@ -6,9 +6,10 @@ require_once("./assets/php/functions.php");
 if(isset($_GET['sid'])){
     $sid = mysqli_real_escape_string($conn, $_GET['sid']);
     $sidexplode = explode("/", $sid);
-    $query = "SELECT * FROM `playerrecords` WHERE SteamID = '{$sidexplode[1]}'";
+    $query = "SELECT * FROM `PlayerRecords` WHERE SteamID = '{$sidexplode[0]}'";
     $result = mysqli_query($conn, $query) or die("bad query");
     $row = mysqli_fetch_array($result);
+    $rand = rand(1,3);
     if(empty($row)){
         header("Location: ../index.php");
     }
@@ -27,8 +28,9 @@ if(isset($_GET['sid'])){
                         <div class="infos">
                             <h3><?php echo $row['PlayerName']?></h3>
                             <span>
-                                <img id="rank" src="./assets/images/ranks/sharptimer/s1.svg" alt="rank">
-                                <p>Adam Malysz 1</p>
+                                <img id="rank" src="./assets/images/ranks/sharptimer/s<?php echo $rand ?>.svg" alt="rank">
+                                <p>Adam Malysz <?php echo $rand ?></p>
+                                <span style="font-size:8px;"> - (img randomize with every page refresh for testing)</span>
                             </span>
 
                         </div>
@@ -44,16 +46,16 @@ if(isset($_GET['sid'])){
 
                         <?php
                         //SURF SQL:
-                        $sqlsurf = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'SURF%' and SteamID = '{$sidexplode[1]}' ORDER BY MapName ASC";
+                        $sqlsurf = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'SURF%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
                         $resultsurf = $conn->query($sqlsurf);
                         //KZ SQL:
-                        $sqlkz = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'KZ%' and SteamID = '{$sidexplode[1]}' ORDER BY MapName ASC";
+                        $sqlkz = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'KZ%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
                         $resultkz = $conn->query($sqlkz);
                         //BunnyHop SQL:
-                        $sqlbh = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'BHOP%' and SteamID = '{$sidexplode[1]}' ORDER BY MapName ASC";
+                        $sqlbh = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'BHOP%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
                         $resultbh = $conn->query($sqlbh);
                         //OTHERS SQL:
-                        $sqlother = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName NOT LIKE 'BHOP%' AND MapName NOT LIKE 'SURF%' AND MapName NOT LIKE 'KZ%'  and SteamID = '{$sidexplode[1]}' ORDER BY MapName ASC";
+                        $sqlother = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName NOT LIKE 'BHOP%' AND MapName NOT LIKE 'SURF%' AND MapName NOT LIKE 'KZ%'  and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
                         $resultother = $conn->query($sqlother);
                         if ($mapdivision === true) {
                             if ($resultsurf->num_rows > 0) {
@@ -173,20 +175,42 @@ if(isset($_GET['sid'])){
                     </ul>
                 </div>
             </div>
-            <div class="leaderboard">
+            <div id="profile-leaderboard" class="leaderboard">
                 <div class="info">
                     <div class="row">
                         <span> <i class="fa-solid fa-ranking-star"></i> </span>
                         <span> <i class="fa-solid fa-person-running"></i> Player </span>
                         <span> <i class="fa-solid fa-clock"></i> Time</span>
                         <span> <i class="fa-solid fa-map"></i> Map </span>
-
+                        <span> <i class="fa-solid fa-map"></i> Completed </span>
                     </div>
                 </div>
                 <div class="players">
                     <?php
-                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE SteamID = '{$sidexplode[1]}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
-                    ShowRows($sql);
+                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE SteamID = '{$sidexplode[0]}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
+                    $i = 0;
+                    require(SITE_ROOT."/config.php");
+                    $result = $conn->query($sql);
+                    if($result->num_rows > 0){
+                        while($row = $result->fetch_assoc()){
+                            $i++;
+                            echo '<div';
+                            if($i % 2 == 0){
+                                echo ' id="stripped"';
+                            }
+                            else{echo "";}
+                            echo ' class="row">
+                            <span>'.$i.'</span>
+                            <span>'.$row['PlayerName'].'</span>
+                            <span>'.$row['FormattedTime'].'</span>
+                            <span>'.$row['MapName'].'</span>
+                            <span> A LOT :) </span>
+                            </div>';
+                        }
+                    }
+                    else{
+                        echo "<div id='strangerdanger' class='row'>Player not found.</div>";
+                    }
                     ?>
                 </div>
             </div>
@@ -196,7 +220,7 @@ if(isset($_GET['sid'])){
     <script>
         $('.selector').on('click', function () {
             var data_id = $(this).data('id');
-            var sid_data = "<?php echo $sidexplode[1]?>";
+            var sid_data = "<?php echo $sidexplode[0]?>";
             $.ajax({
                 url: 'assets/php/selectionprofile.php',
                 type: 'POST',
