@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="<?php BaseURL() ?>assets/css/style.css?version=3">
+    <link rel="stylesheet" type="text/css" href="<?php BaseURL() ?>assets/css/style.css?version=4">
     <link href="<?php BaseURL() ?>assets/css/hamburgers.min.css" rel="stylesheet">
     <script type="text/javascript" src="<?php BaseURL() ?>assets/js/jquery-3.7.1.min.js"></script>
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
