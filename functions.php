@@ -57,6 +57,17 @@
             echo "<div id='strangerdanger' class='row'>Player not found.</div>";
         }
     }
+
+    function CountSocialUrl($uri){
+        $json = file_get_contents("views/partials/socials.json");
+        $myJson = json_decode($json, true);
+        for($x = 0; $x < count($myJson); $x++){
+            if($myJson[$x]['local'] == true){
+                echo 'profile'. '=>'.'controllers/profile.php';
+            }
+        }
+    }
+
     function SocialURL(){
         $json = file_get_contents("views/partials/socials.json");
         $myJson = json_decode($json, true);

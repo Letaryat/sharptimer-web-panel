@@ -5,10 +5,12 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 echo __DIR__ . "<br/>"; 
 echo $uri . "<br/>";
 
+$z = UriExplode($uri);
+
 
 $routes = [
-    UriExplode($uri) => 'controllers/index.php',
-    UriExplode($uri).'profile' => 'controllers/profile.php',
+    $z => 'controllers/index.php',
+    $z.'profile' => 'controllers/profile.php',
 ];
 
 if(array_key_exists($uri, $routes)){
