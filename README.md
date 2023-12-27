@@ -18,7 +18,7 @@ $db = "";
 - Configure config.php to your liking,
 
 ## Additional informations:
-- You can change color palette in style.css file,
+- You can change color palette in views/assets/css/colors.css file,
 ```
 :root{
     --background: #0C0D13;

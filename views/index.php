@@ -1,61 +1,104 @@
 <?php
-require_once("./config.php");
-require_once("./assets/php/functions.php");
-
-
-if(isset($_GET['sid'])){
-    $sid = mysqli_real_escape_string($conn, $_GET['sid']);
-    $sidexplode = explode("/", $sid);
-    $query = "SELECT * FROM `PlayerRecords` WHERE SteamID = '{$sidexplode[0]}'";
-    $result = mysqli_query($conn, $query) or die("bad query");
-    $row = mysqli_fetch_array($result);
-    $rand = rand(1,3);
-    if(empty($row)){
-        header("Location: ../index.php");
-    }
-}
+#require_once("config.php");
+require_once('assets/GameQ/Autoloader.php');
+#require_once('assets/php/functions.php');
 ?>
+    <?php require_once('partials/header.php'); ?>
+    <div id="strangerdanger" class="row" style="width: 60%;
+  margin-left: 20%;">This is DEV 1.0.2 Version</div>
+    <?php if ($serverlist === true && !empty($serverq)) { ?>
+        <div class="server-container">
+            <div class="serverlist">
 
-    <?php require_once('core/header.php')?>
-    <link rel="stylesheet" type="text/css" href="./assets/css/profiles.css?version=0">
-        <div id="profile-wrapper" class="wrapper">
-                <div class="profileheader">
-                    <div class="user-info">
-                    <a href="https://steamcommunity.com/profiles/<?php echo $row['SteamID']?>"><div class="avatar">
-                            <img  src="<?php echo getAvatar($sid)?>" alt="<?php echo $sid?>">
-                        </div></a>
+                <?php
+                $GameQ = new \GameQ\GameQ();
+                $GameQ->addServers($serverq);
+                $GameQ->setOption('timeout', 5);
+                $results = $GameQ->process();
 
-                        <div class="infos">
-                            <h3><?php echo $row['PlayerName']?></h3>
-                            <span>
-                                <img id="rank" src="./assets/images/ranks/sharptimer/s<?php echo $rand ?>.svg" alt="rank">
-                                <p>Adam Malysz <?php echo $rand ?></p>
-                                <span style="font-size:8px;"> - (img randomize with every page refresh for testing)</span>
-                            </span>
-
+                for ($x = 0; $x <= count($serverq) - 1; $x++) {
+                    //$mapbackground = 'https://image.gametracker.com/images/maps/160x120/csgo/'.$results[$serverq[$x]['host']]['map'].".jpg";
+                    ?>
+                    <div class="server" <?php if ($results[$serverq[$x]['host']]['gq_online'] == "0") {
+                        echo 'id="offline"';
+                    } else {
+                        echo 'id="online"';
+                    } ?>>
+                        <div class="basicinfo">
+                            <p class="server-name">
+                                <?php
+                                if (empty($serverq[$x]['fakename'])) {
+                                    if ($results[$serverq[$x]['host']]['gq_online'] == "0") {
+                                        echo "Dead";
+                                    } else {
+                                        echo $results[$serverq[$x]['host']]['gq_hostname'];
+                                    }
+                                } else {
+                                    echo $serverq[$x]['fakename'];
+                                }
+                                ?>
+                            </p>
+                            <p><a href="steam://connect/<?php
+                            if (empty($serverq[$x]['fakeip'])) {
+                                echo $serverq[$x]['host'];
+                            } else {
+                                echo $serverq[$x]['fakeip'];
+                            }
+                            ?>">
+                                    <?php
+                                    if (empty($serverq[$x]['fakeip'])) {
+                                        echo $serverq[$x]['host'];
+                                    } else {
+                                        echo $serverq[$x]['fakeip'];
+                                    } ?>
+                                </a> </p>
                         </div>
+                        <?php if ($results[$serverq[$x]['host']]['gq_online'] == "0") {
+                            echo "----";
+                        } else { ?>
+                            <div class="moreinfo">
+                                <p>Map:
+                                    <?php echo $results[$serverq[$x]['host']]['map'] ?>
+                                </p>
+                                <p>Players:
+                                    <?php echo $results[$serverq[$x]['host']]['num_players'] ?> /
+                                    <?php echo $results[$serverq[$x]['host']]['max_players'] ?>
+                                </p>
+
+
+                            </div>
+
+                        <?php } ?>
+
                     </div>
-                </div>
-</div>
+                    <?php
+                }
+    } else {
+        echo "";
+
+    }
+    ?>
+    </div>
+    </div>
     <main>
         <div class="wrapper">
+            
             <div class="map-list2">
                 <div id="sticky">
-                <li class="togglemaps" onclick="toggleMaps()"></li>
+                <div class="togglemaps" onclick="toggleMaps()"></div>
                     <ul class="modes">
-
                         <?php
                         //SURF SQL:
-                        $sqlsurf = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'SURF%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
+                        $sqlsurf = "SELECT DISTINCT MapName FROM `PlayerRecords` WHERE MapName LIKE 'SURF%' ORDER BY MapName ASC ";
                         $resultsurf = $conn->query($sqlsurf);
                         //KZ SQL:
-                        $sqlkz = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'KZ%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
+                        $sqlkz = "SELECT DISTINCT MapName FROM `PlayerRecords` WHERE MapName LIKE 'KZ%' ORDER BY MapName ASC ";
                         $resultkz = $conn->query($sqlkz);
                         //BunnyHop SQL:
-                        $sqlbh = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'BHOP%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
+                        $sqlbh = "SELECT DISTINCT MapName FROM `PlayerRecords` WHERE MapName LIKE 'BHOP%' ORDER BY MapName ASC ";
                         $resultbh = $conn->query($sqlbh);
                         //OTHERS SQL:
-                        $sqlother = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName NOT LIKE 'BHOP%' AND MapName NOT LIKE 'SURF%' AND MapName NOT LIKE 'KZ%'  and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
+                        $sqlother = "SELECT DISTINCT MapName FROM `PlayerRecords` WHERE MapName NOT LIKE 'BHOP%' AND MapName NOT LIKE 'SURF%' AND MapName NOT LIKE 'KZ%' ORDER BY MapName ASC ";
                         $resultother = $conn->query($sqlother);
                         if ($mapdivision === true) {
                             if ($resultsurf->num_rows > 0) {
@@ -108,11 +151,10 @@ if(isset($_GET['sid'])){
                     }
                     
                     ?>>
-                    <li class="selector" data-id="%">All Maps & Gamemodes</li>
                     <?php
                         if ($mapdivision === true) {
                             if ($resultsurf->num_rows > 0) {
-                                echo '<div id="surf" class="content';
+                                echo '<ol id="surf" class="content';
                                 if ($tabopened === "surf") {
                                     echo ' opened">';
                                 } else {
@@ -123,10 +165,10 @@ if(isset($_GET['sid'])){
                                 } ?>
 
                                 <?php
-                                echo '</div>';
+                                echo '</ol>';
                             }
                             if ($resultbh->num_rows > 0) {
-                                echo '<div id="bh" class="content';
+                                echo '<ol id="bh" class="content';
                                 if ($tabopened === "bh") {
                                     echo ' opened">';
                                 } else {
@@ -135,10 +177,10 @@ if(isset($_GET['sid'])){
                                 while ($row = $resultbh->fetch_assoc()) {
                                     echo '<li class="selector" data-id="' . $row['MapName'] . '">' . $row['MapName'] . '</li>';
                                 }
-                                echo '</div>';
+                                echo '</ol>';
                             }
                             if ($resultkz->num_rows > 0) {
-                                echo '<div id="kz" class="content';
+                                echo '<ol id="kz" class="content';
                                 if ($tabopened === "kz") {
                                     echo ' opened">';
                                 } else {
@@ -147,10 +189,10 @@ if(isset($_GET['sid'])){
                                 while ($row = $resultkz->fetch_assoc()) {
                                     echo '<li class="selector" data-id="' . $row['MapName'] . '">' . $row['MapName'] . '</li>';
                                 }
-                                echo '</div>';
+                                echo '</ol>';
                             }
                             if ($resultother->num_rows > 0) {
-                                echo '<div id="other" class="content';
+                                echo '<ol id="other" class="content';
                                 if ($tabopened === "other") {
                                     echo ' opened">';
                                 } else {
@@ -159,7 +201,7 @@ if(isset($_GET['sid'])){
                                 while ($row = $resultother->fetch_assoc()) {
                                     echo '<li class="selector" data-id="' . $row['MapName'] . '">' . $row['MapName'] . '</li>';
                                 }
-                                echo '</div>';
+                                echo '</ol>';
                             }
                         } else {
                             $sql = "SELECT DISTINCT MapName FROM `PlayerRecords` ORDER BY MapName ASC";
@@ -175,56 +217,34 @@ if(isset($_GET['sid'])){
                     </ul>
                 </div>
             </div>
-            <div id="profile-leaderboard" class="leaderboard">
+            <div class="leaderboard">
                 <div class="info">
                     <div class="row">
                         <span> <i class="fa-solid fa-ranking-star"></i> </span>
                         <span> <i class="fa-solid fa-person-running"></i> Player </span>
                         <span> <i class="fa-solid fa-clock"></i> Time</span>
                         <span> <i class="fa-solid fa-map"></i> Map </span>
-                        <span> <i class="fa-solid fa-map"></i> Completed </span>
+
                     </div>
                 </div>
                 <div class="players">
                     <?php
-                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE SteamID = '{$sidexplode[0]}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
-                    $i = 0;
-                    require(SITE_ROOT."/config.php");
-                    $result = $conn->query($sql);
-                    if($result->num_rows > 0){
-                        while($row = $result->fetch_assoc()){
-                            $i++;
-                            echo '<div';
-                            if($i % 2 == 0){
-                                echo ' id="stripped"';
-                            }
-                            else{echo "";}
-                            echo ' class="row">
-                            <span>'.$i.'</span>
-                            <span>'.$row['PlayerName'].'</span>
-                            <span>'.$row['FormattedTime'].'</span>
-                            <span>'.$row['MapName'].'</span>
-                            <span> A LOT :) </span>
-                            </div>';
-                        }
-                    }
-                    else{
-                        echo "<div id='strangerdanger' class='row'>Player not found.</div>";
-                    }
+                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE MapName = '{$defaultmap}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
+                    ShowRows($sql);
                     ?>
                 </div>
             </div>
         </div>
     </main>
-    <?php require_once('core/footer.php')?>
+
+    <?php require_once('partials/footer.php')?>
     <script>
         $('.selector').on('click', function () {
             var data_id = $(this).data('id');
-            var sid_data = "<?php echo $sidexplode[0]?>";
             $.ajax({
-                url: 'assets/php/selectionprofile.php',
+                url: 'scripts/ajax/selection.php',
                 type: 'POST',
-                data: { id: data_id, sid: sid_data},
+                data: { id: data_id },
                 dataType: 'text',
                 success: function (data) {
                     $('.players').html(data);
@@ -236,7 +256,29 @@ if(isset($_GET['sid'])){
                 }
             });
         });
-        
+        $(document).ready(function () {
+            $("#search").keyup(function () {
+                var input = $(this).val();
+                //alert(input);
+                if (input != "") {
+                    $.ajax({
+                        url: 'scripts/ajax/livesearch.php',
+                        type: 'POST',
+                        data: { input: input },
+                        dataType: 'text',
+                        success: function (data) {
+                            $('.players').html(data);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            $('.players').html('');
+                            alert('Error Loading');
+                        }
+                    });
+                } else {
+                    //console.log("essa");
+                }
+            });
+        });
     </script>
 </body>
 

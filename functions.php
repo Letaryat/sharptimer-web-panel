@@ -20,20 +20,23 @@
         }
 
     }
+
+/*
     function BaseURL(){
         $url = $_SERVER['REQUEST_URI'];
         $rurl = explode("/", $url);
         echo "/".$rurl[1]."/";
     }
+*/
 
     function ShowRows($sql){
         $i = 0;
-        require(SITE_ROOT."/config.php");
+        require('config.php');
         $result = $conn->query($sql);
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 $i++;
-                echo '<a href="profile.php?sid='.$row['SteamID'] . '/"><div';
+                echo '<a href="profile?sid='.$row['SteamID'] . '/"><div';
                 if($i % 2 == 0){
                     echo ' id="stripped"';
                 }
@@ -51,7 +54,7 @@
         }
     }
     function SocialURL(){
-        $json = file_get_contents("core/socials.json");
+        $json = file_get_contents("views/partials/socials.json");
         $myJson = json_decode($json, true);
         #echo count($myJson);
         for($x = 0; $x < count($myJson); $x++){

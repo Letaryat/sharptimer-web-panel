@@ -1,5 +1,5 @@
 <?php
-    require_once("./functions.php");
+    require_once("../../functions.php");
     require_once("../../config.php");
     $id = $conn -> real_escape_string($_POST['id']);
     $sid = $conn -> real_escape_string($_POST['sid']);

@@ -154,6 +154,9 @@
         justify-content: center;
         flex-flow: column;
     }
+    .avatar:after{
+        top: 20px;
+    }
     .infos{
         margin-left:0;
     }

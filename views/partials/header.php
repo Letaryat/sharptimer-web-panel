@@ -12,10 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css?version=4">
-    <link href="assets/css/hamburgers.min.css" rel="stylesheet">
-    <script type="text/javascript" src="assets/js/jquery-3.7.1.min.js"></script>
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png">
+    <link rel="stylesheet" type="text/css" href="views/assets/css/style.css?version=4">
+    <link rel="stylesheet" type="text/css" href="views/assets/css/profiles.css?version=4">
+    <link href="views/assets/css/hamburgers.min.css" rel="stylesheet">
+    <script type="text/javascript" src="views/assets/js/jquery-3.7.1.min.js"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="views/assets/images/favicons/favicon-32x32.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo $pagetitle ?>">
     <meta property="og:description" content="Your statistics in one place!">
@@ -25,6 +26,7 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:footer" content="SharpTimer">
     <meta name="theme-color" content="#6389E8">
+    <meta name="description" content="Your SharpTimer statistics and leaderboard in one place!">
     <title>
         <?php echo $pagetitle ?>
     </title>
@@ -33,7 +35,7 @@
 <body>
     <div id="top"></div>
     <div class="mobiletoggler" onclick="toggleMobile()">
-        <button class="hamburger hamburger--spin" type="button">
+        <button class="hamburger hamburger--spin" type="button" aria-label="Menu">
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
             </span>
@@ -49,9 +51,9 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="assets/images/logo.png" alt="logo">
+                <img src="views/assets/images/logo.png" alt="logo">
                 <h1>
-                    <a href="index.php">
+                    <a href="/sharptimer-web-panel/">
                         <?php echo $pagetitle ?>
                     </a>
                 </h1>

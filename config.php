@@ -1,8 +1,4 @@
 <?php
-#\/\/\/ DO NOT TOUCH THAT \/\/\/#
-if (!defined('SITE_ROOT')) define('SITE_ROOT', __DIR__);
-#/\/\/\ DO NOT TOUCH THAT /\/\/\#
-
 // Database connection:
 $host = "localhost";
 $user = "root";

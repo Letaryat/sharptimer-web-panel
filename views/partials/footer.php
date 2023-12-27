@@ -1,10 +1,10 @@
 <footer>
-        <a id="topbutton" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
+        <a id="topbutton" href="#top" aria-label="To the top page"><i class="fa-solid fa-arrow-up"></i></a>
         <div class="wrapper">
             <div>
-                <h3>
+                <p class="pagetitle">
                     <?php echo $pagetitle ?>
-                </h3>
+                </p>
                 <p>
                     <?php echo $footerdesc ?>
                 </p>
@@ -14,5 +14,5 @@
             </div>
         </div>
     </footer>
-    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="views/assets/js/main.js"></script>
 </body>

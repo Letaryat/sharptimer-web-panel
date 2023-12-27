@@ -1,5 +1,5 @@
-<?php 
-    require_once("./functions.php");
+<?php     
+    require_once("../../functions.php");
     require_once("../../config.php");
     $i = 0;
     if(isset($_POST['input'])){
