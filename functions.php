@@ -28,7 +28,11 @@
         echo "/".$rurl[1]."/";
     }
 */
-
+    function UriExplode($uri){
+        $ex = explode("/", $uri);
+        $x = "/".$ex[1]."/";
+        return $x;
+    }
     function ShowRows($sql){
         $i = 0;
         require('config.php');

@@ -190,7 +190,6 @@ if(isset($_GET['sid'])){
                     <?php
                     $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE SteamID = '{$sidexplode[0]}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
                     $i = 0;
-                    require(SITE_ROOT."/config.php");
                     $result = $conn->query($sql);
                     if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()){
