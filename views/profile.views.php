@@ -1,26 +1,7 @@
-<?php
-require_once("./config.php");
-#require_once("./assets/php/functions.php");
 
-
-if(isset($_GET['sid'])){
-    $sid = mysqli_real_escape_string($conn, $_GET['sid']);
-    $sidexplode = explode("/", $sid);
-    echo "<br/> Test : " . $sid . " sidexpldoe: " . $sidexplode[0];
-    $query = "SELECT * FROM `PlayerRecords` WHERE SteamID = '{$sidexplode[0]}'";
-    $result = mysqli_query($conn, $query) or die("bad query");
-    $row = mysqli_fetch_array($result);
-    $rand = rand(1,3);
-    if(empty($row)){
-        header("Location: ../index.php");
-    }
-}
-?>
-
-    <?php require_once('partials/header.php')?>
     <link rel="stylesheet" type="text/css" href="./assets/css/profiles.css?version=0">
         <div id="profile-wrapper" class="wrapper">
-                <div class="profileheader">
+                <div class="profileheader vip">
                     <div class="user-info">
                     <a href="https://steamcommunity.com/profiles/<?php echo $row['SteamID']?>"><div class="avatar">
                             <img  src="<?php echo getAvatar($sid)?>" alt="<?php echo $sid?>">
@@ -37,6 +18,44 @@ if(isset($_GET['sid'])){
                         </div>
                     </div>
                 </div>
+                <div class="player-settings">
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Times connected</h4>
+                            <p>1</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Times connected</h4>
+                            <p>1</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Times connected</h4>
+                            <p>1</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Times connected</h4>
+                            <p>1</p>
+                        </div>
+                    </div>
+                </div>
 </div>
     <main>
         <div class="wrapper">
@@ -46,36 +65,24 @@ if(isset($_GET['sid'])){
                     <ul class="modes">
 
                         <?php
-                        //SURF SQL:
-                        $sqlsurf = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'SURF%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
-                        $resultsurf = $conn->query($sqlsurf);
-                        //KZ SQL:
-                        $sqlkz = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'KZ%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
-                        $resultkz = $conn->query($sqlkz);
-                        //BunnyHop SQL:
-                        $sqlbh = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'BHOP%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
-                        $resultbh = $conn->query($sqlbh);
-                        //OTHERS SQL:
-                        $sqlother = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName NOT LIKE 'BHOP%' AND MapName NOT LIKE 'SURF%' AND MapName NOT LIKE 'KZ%'  and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";
-                        $resultother = $conn->query($sqlother);
                         if ($mapdivision === true) {
                             if ($resultsurf->num_rows > 0) {
-                                echo '<li class="tablink';
+                                echo '<li class="tablink ';
                                 if ($tabopened == "surf") {
                                     echo ' active"';
                                 } else {
                                     echo '"';
                                 }
-                                echo 'onclick="openMode(event,' . "'surf'" . ')">SURF</li>';
+                                echo 'onclick="openMode(event,' . "'surf'" . ')">Surf</li>';
                             }
                             if ($resultbh->num_rows > 0) {
-                                echo '<li class="tablink';
+                                echo '<li class="tablink ';
                                 if ($tabopened == "bh") {
                                     echo ' active"';
                                 } else {
                                     echo '"';
                                 }
-                                echo 'onclick="openMode(event,' . "'bh'" . ')">BH</li>';
+                                echo 'onclick="openMode(event,' . "'bh'" . ')">Bhop</li>';
                             }
                             if ($resultkz->num_rows > 0) {
                                 echo '<li class="tablink';
@@ -109,7 +116,7 @@ if(isset($_GET['sid'])){
                     }
                     
                     ?>>
-                    <li class="selector" data-id="%">All Maps & Gamemodes</li>
+                    <li class="selector active" data-id="%" onclick="selectorActive(event)">All Personal Best</li>
                     <?php
                         if ($mapdivision === true) {
                             if ($resultsurf->num_rows > 0) {
@@ -120,7 +127,7 @@ if(isset($_GET['sid'])){
                                     echo '">';
                                 }
                                 while ($row = $resultsurf->fetch_assoc()) {
-                                    echo '<li class="selector" data-id="' . $row['MapName'] . '">' . $row['MapName'] . '</li>';
+                                    echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                                 } ?>
 
                                 <?php
@@ -134,7 +141,7 @@ if(isset($_GET['sid'])){
                                     echo '">';
                                 }
                                 while ($row = $resultbh->fetch_assoc()) {
-                                    echo '<li class="selector" data-id="' . $row['MapName'] . '">' . $row['MapName'] . '</li>';
+                                    echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                                 }
                                 echo '</ol>';
                             }
@@ -146,7 +153,7 @@ if(isset($_GET['sid'])){
                                     echo '">';
                                 }
                                 while ($row = $resultkz->fetch_assoc()) {
-                                    echo '<li class="selector" data-id="' . $row['MapName'] . '">' . $row['MapName'] . '</li>';
+                                    echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                                 }
                                 echo '</ol>';
                             }
@@ -158,7 +165,7 @@ if(isset($_GET['sid'])){
                                     echo '">';
                                 }
                                 while ($row = $resultother->fetch_assoc()) {
-                                    echo '<li class="selector" data-id="' . $row['MapName'] . '">' . $row['MapName'] . '</li>';
+                                    echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                                 }
                                 echo '</ol>';
                             }
@@ -167,7 +174,7 @@ if(isset($_GET['sid'])){
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
-                                    echo '<li class="selector" data-id="' . $row['MapName'] . '">' . $row['MapName'] . '</li>';
+                                    echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                                 }
 
                             }

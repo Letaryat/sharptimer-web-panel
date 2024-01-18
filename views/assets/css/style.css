@@ -138,7 +138,7 @@ a:hover{
 .mappeno{
     overflow-y: auto;
     overflow-x: hidden;
-    height: 660px;
+
 }
 .mappeno.invisible{
     display: block !important;
@@ -185,6 +185,11 @@ a:hover{
     cursor:pointer;
     background-color: var(--stripe-hover) !important;
     color:var(--hover);
+}
+.selector.active{
+    background: var(--stripe-hover);
+    padding-left: 30px;
+    color: var(--hover);
 }
 
 /* LEADERBOARD AND MAIN */

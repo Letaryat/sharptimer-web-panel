@@ -1,9 +1,4 @@
-<?php
-#require_once("config.php");
-require_once('assets/GameQ/Autoloader.php');
-#require_once('assets/php/functions.php');
-?>
-    <?php require_once('partials/header.php'); ?>
+
     <div id="strangerdanger" class="row" style="width: 60%;
   margin-left: 20%;">This is DEV 1.0.2 Version</div>
     <?php if ($serverlist === true && !empty($serverq)) { ?>
@@ -161,7 +156,7 @@ require_once('assets/GameQ/Autoloader.php');
                                     echo '">';
                                 }
                                 while ($row = $resultsurf->fetch_assoc()) {
-                                    echo '<li class="selector" data-id="' . $row['MapName'] . '">' . $row['MapName'] . '</li>';
+                                    echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                                 } ?>
 
                                 <?php
@@ -237,7 +232,6 @@ require_once('assets/GameQ/Autoloader.php');
         </div>
     </main>
 
-    <?php require_once('partials/footer.php')?>
     <script>
         $('.selector').on('click', function () {
             var data_id = $(this).data('id');
@@ -280,6 +274,4 @@ require_once('assets/GameQ/Autoloader.php');
             });
         });
     </script>
-</body>
 
-</html>

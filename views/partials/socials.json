@@ -11,12 +11,7 @@
         },
         "2":{
             "local":true,
-            "url":"faq.php",
-            "name":"FAQ"
-        },
-        "3":{
-            "local":true,
-            "url":"faq.php",
+            "url":"faq",
             "name":"FAQ"
         }
 }

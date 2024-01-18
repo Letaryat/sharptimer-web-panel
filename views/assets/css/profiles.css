@@ -127,6 +127,55 @@
     grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
 
 }
+.player-settings{
+    display: grid;
+    width: 80%;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+.player-settings .box{
+    display: flex;
+    gap: 10px;
+    box-sizing: border-box;
+    padding: 15px;
+    background: var(--secondary);
+    border-radius: var(--borderradius);
+    color: var(--hover);
+    align-items: center;
+}
+
+.player-settings .box:hover{
+    transform: scale(1.03);
+}
+
+.player-settings .box .icon i{
+    font-size: 38px;
+    transition: 0.2s ease-in-out all;
+}
+.player-settings .box:hover .icon i{
+    text-shadow: 1px 1px rgba(0, 238, 255, 0.253)
+}
+.profileheader.vip{
+    border: 1px solid rgb(255, 208, 0);
+    box-shadow: 0px 0px 0px 4px rgba(255, 217, 0, 0.25);
+}
+
+/*
+.profileheader.vip::after{
+    position: absolute;
+    content: "\f005";
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 800;
+    z-index: 2;
+    font-size: 64px;
+    right:30px;
+    top:30px;
+    color:rgb(255, 226, 96);
+    text-shadow: 1px 4px 15px rgba(255, 226, 96, 0.42);
+}
+*/
 
 /* RWD */
 

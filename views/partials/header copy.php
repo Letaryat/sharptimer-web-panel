@@ -51,7 +51,7 @@
             <div class="logo">
                 <img src="views/assets/images/logo.png" alt="logo">
                 <h1>
-                    <a href='<?php echo BasicURL(); ?>'>
+                    <a href="/sharptimer-web-panel/">
                         <?php echo $pagetitle ?>
                     </a>
                 </h1>

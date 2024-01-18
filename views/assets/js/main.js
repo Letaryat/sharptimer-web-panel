@@ -44,3 +44,19 @@
             }
         }
 
+        function toggleActive(e){
+            tablink = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablink.length; i++) {
+                tablink[i].className = tablink[i].className.replace(" active", "");
+            }
+            e.currentTarget.className += " active";
+        }
+
+        function selectorActive(e){
+            var selector = document.getElementsByClassName('selector');
+            for(i = 0; i < selector.length; i++){
+                selector[i].className = selector[i].className.replace(" active", "");
+            }
+            e.currentTarget.className += " active";
+            console.log(e);
+        }

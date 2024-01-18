@@ -16,3 +16,4 @@
     </footer>
     <script type="text/javascript" src="views/assets/js/main.js"></script>
 </body>
+</html>

@@ -1,9 +1,3 @@
-<?php
-require_once("config.php");
-require_once('assets/php/functions.php');
-?>
-    <link rel="stylesheet" href="./assets/css/faq.css">
-    <?php require_once('core/header.php'); ?>
     <main>
         <div class="wrapper">
             <div>
@@ -20,7 +14,4 @@ require_once('assets/php/functions.php');
             </div>
         </div>
     </main>
-    <?php require_once('core/footer.php')?>
-
-
 </html>
