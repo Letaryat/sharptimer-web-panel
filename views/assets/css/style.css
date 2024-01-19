@@ -384,6 +384,43 @@ footer .pagetitle{
     font-weight: 700;
 }
 
+/* dropdown */
+
+.dropdown:hover .dropdown-content{
+    display: block !important;
+    animation-name: fade;
+    animation-duration: 0.3s;
+    animation-fill-mode:forwards;
+}
+.dropdown-content{
+    display: none !important;
+    position: absolute;
+    width: 200px;
+    background: var(--secondary);
+    border-radius: 5px;
+    border: 1px solid var(--secondary);
+    box-sizing: border-box;
+    padding: 5px;
+    margin-left: -40px;
+    z-index: 99;
+    height: auto !important;
+    text-align: justify;
+    
+}
+.dropdown-content li a{
+    margin-top: 5px !important;
+    height: 25px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+.dropdown-content li a:hover{
+    background:var(--stripe-hover);
+}
+
 
 /* RWD NAVBAR */
 

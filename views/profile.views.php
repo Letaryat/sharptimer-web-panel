@@ -1,6 +1,6 @@
 
     <link rel="stylesheet" type="text/css" href="./assets/css/profiles.css?version=0">
-        <div id="profile-wrapper" class="wrapper">
+    <div id="profile-wrapper" class="wrapper">
                 <div class="profileheader vip">
                     <div class="user-info">
                     <a href="https://steamcommunity.com/profiles/<?php echo $row['SteamID']?>"><div class="avatar">
@@ -30,33 +30,42 @@
                     </div>
                     <div class="box">
                         <div class="icon">
-                            <i class="fa-solid fa-clock"></i>
+                        <i class="fa-solid fa-plug"></i>
                         </div>
                         <div class="statistics">
-                            <h4>Times connected</h4>
+                            <h4>Last Connected</h4>
                             <p>1</p>
                         </div>
                     </div>
                     <div class="box">
                         <div class="icon">
-                            <i class="fa-solid fa-clock"></i>
+                        <i class="fa-solid fa-stopwatch-20"></i>
                         </div>
                         <div class="statistics">
-                            <h4>Times connected</h4>
-                            <p>1</p>
+                            <h4>Timer</h4>
+                            <p>On</p>
                         </div>
                     </div>
                     <div class="box">
                         <div class="icon">
-                            <i class="fa-solid fa-clock"></i>
+                        <i class="fa-regular fa-keyboard"></i>
                         </div>
                         <div class="statistics">
-                            <h4>Times connected</h4>
-                            <p>1</p>
+                            <h4>Hidden keys</h4>
+                            <p>On</p>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <div class="icon">
+                        <i class="fa-solid fa-volume-off"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Sounds</h4>
+                            <p>On</p>
                         </div>
                     </div>
                 </div>
-</div>
+    </div>
     <main>
         <div class="wrapper">
             <div class="map-list2">

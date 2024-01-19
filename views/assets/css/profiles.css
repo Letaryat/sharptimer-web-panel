@@ -131,7 +131,7 @@
     display: grid;
     width: 80%;
     justify-content: space-between;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr 1fr 1fr 1fr;
     gap: 10px;
     margin-top: 10px;
 }
@@ -140,14 +140,20 @@
     gap: 10px;
     box-sizing: border-box;
     padding: 15px;
-    background: var(--secondary);
+    background: linear-gradient(90deg, var(--secondary) 0%, var(--hover) 100%); 
+    background-size: 1500%;
+    background-repeat: no-repeat;
     border-radius: var(--borderradius);
     color: var(--hover);
     align-items: center;
+    transition: 0.2s ease-in-out all;
 }
 
 .player-settings .box:hover{
-    transform: scale(1.03);
+    background-color: var(--secondary);
+    transform:translateY(-5px);
+    background-size: 500%;
+    box-shadow: 1px 2px 0px 0px var(--hover);
 }
 
 .player-settings .box .icon i{
@@ -176,6 +182,7 @@
     text-shadow: 1px 4px 15px rgba(255, 226, 96, 0.42);
 }
 */
+
 
 /* RWD */
 
