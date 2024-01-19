@@ -421,6 +421,26 @@ footer .pagetitle{
     background:var(--stripe-hover);
 }
 
+/*error box*/
+.error-box{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border:1px solid var(--hover);
+    padding: 50px;
+    width: 500px;
+    background: var(--stripe-hover);
+    border-radius: var(--borderradius);
+    gap:10px;
+}
+.error-box .row{
+    display: flex !important;
+    border:1px solid var(--hover);
+    background: var(--stripe-hover);
+    text-align: center;
+}
 
 /* RWD NAVBAR */
 
