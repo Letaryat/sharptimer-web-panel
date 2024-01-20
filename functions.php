@@ -83,9 +83,19 @@
     function SocialURL(){
         $json = file_get_contents("views/partials/socials.json");
         $myJson = json_decode($json, true);
+        #to check if it's active
+        $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+        $v = UriExplodeControllers($uri);
         for($x = 0; $x < count($myJson); $x++){
             if($myJson[$x]['local'] == true){?>
-            <li><a href="<?php echo $myJson[$x]['url']?>"><?php echo $myJson[$x]['name'] ?></a></li><?php
+            <li><a
+            <?php
+            #adding id that it is active
+            if($v === $myJson[$x]['url']){
+                echo 'id="active"';
+            }
+            ?>
+            href="<?php echo $myJson[$x]['url']?>"><?php echo $myJson[$x]['name']?></a></li><?php
             }
             else{?>
                 <li><a href="<?php echo $myJson[$x]['url']?>"><?php echo $myJson[$x]['name']?></a></li><?php 

@@ -4,6 +4,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $z = UriExplode($uri);
 $x = UriExplodeControllers($uri);
 $filename = "controllers/" . $x . ".php";
+#echo $filename;
 
 #I think that this isn't needed anymore since I've made a dynamic router but:
 #If I would like to make a modules not in controllers folder but for example in module folder it should be needed

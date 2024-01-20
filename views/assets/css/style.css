@@ -76,6 +76,15 @@ header{
 .header-container ul li{
     margin-bottom: 0;
 }
+.header-container ul li a#active{
+    color:var(--hover);
+}
+.header-container ul li a#active:after{
+    position: absolute;
+    content: "";
+    background: var(--hover);
+
+}
 ul{
     list-style-type: none;
 
@@ -378,6 +387,10 @@ footer .wrapper div:nth-child(1){
 footer a{
     font-weight: 600;
     color:var(--hover);
+    transition: 0.2s ease-in-out all;
+}
+footer a:hover{
+    color:var(--fontcolor);
 }
 footer .pagetitle{
     font-size: 18px;
@@ -430,7 +443,7 @@ footer .pagetitle{
     box-sizing: border-box;
     border:1px solid var(--hover);
     padding: 50px;
-    width: 500px;
+
     background: var(--stripe-hover);
     border-radius: var(--borderradius);
     gap:10px;
@@ -630,6 +643,13 @@ footer .pagetitle{
         font-size:12px !important;
         width: 100% !important;
         text-align:center !important;
+    }
+    .player-settings{
+        grid-template-columns: 1fr !important;
+    }
+    .player-settings .box{
+        flex-flow: column;
+        text-align: center;
     }
 }
 
