@@ -1,9 +1,8 @@
 # sharptimer-web-panel
 Web panel for SharpTimer - CounterStrikeSharp plugin. [LIVE DEMO](https://movement.pierdolnik.eu/)
 ![preview](https://i.imgur.com/4cnkHz6.png)
-<div align="center">
-<a href="https://ko-fi.com/letaryat"><img src="https://storage.ko-fi.com/cdn/brandasset/kofi_button_red.png" alt="Support me on Ko-Fi"></a>
-</div>
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H8TK0L9)
 
 
 ## Requirements
