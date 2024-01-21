@@ -3,7 +3,7 @@
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $z = UriExplode($uri);
 $x = UriExplodeControllers($uri);
-$filename = "controllers/" . $x . ".php";
+$filename = "modules/" . $x . ".php";
 #echo $filename;
 
 #I think that this isn't needed anymore since I've made a dynamic router but:
@@ -11,6 +11,8 @@ $filename = "controllers/" . $x . ".php";
 #The dynamic router checks if the file exists in controllers folder and if so it requires a file. So let it stay for now.
 $routes = [
     $z => 'controllers/index.php',
+    $z.'profile' => 'controllers/profile.php',
+    $z.'adminpanel' => 'controllers/adminpanel.php',
 ];
 #echo "<div class='row' id='strangerdanger'>Routing URL: ".$uri . "</div><br/>";
 #echo $filename;

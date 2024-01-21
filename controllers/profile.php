@@ -8,7 +8,7 @@ if (isset($_GET['sid'])) {
     $row = mysqli_fetch_array($result);
     $rand = rand(1, 3);
     if (empty($row)) {
-        header("Location: ../index.php");
+        header("Location: error");
     }
 }
 //SURF SQL:

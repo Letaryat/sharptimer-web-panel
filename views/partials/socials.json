@@ -13,10 +13,5 @@
             "local":true,
             "url":"faq",
             "name":"FAQ"
-        },
-        "3":{
-            "local":true,
-            "url":"test",
-            "name":"TEST"
         }
 }

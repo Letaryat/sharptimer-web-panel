@@ -63,6 +63,7 @@
                 <?php
                 SocialURL();
                 ?>
+            <!--
             <div class="dropdown">
                 <li class="dropbtn">DropDown</li>
                 <ul class="dropdown-content">
@@ -73,7 +74,32 @@
                     <li><a href="">link</a></li>
                     <li><a href="">link</a></li>
                 </ul>
-            </div>
+            </div> -->
+            <?php
+            if(!isset($_SESSION['steamid'])) {
+
+                loginbutton(); //login button
+            
+            }  else {
+                require('admins.php');
+                include ('scripts/steamauth/userInfo.php'); //To access the $steamprofile array
+                //Protected content
+                echo "<div class='dropdown'>
+                <img class='dropbtn' style='border-radius:100%;' src='".$steamprofile['avatar']."'>
+                    <ul class='dropdown-content'>
+                        <li><a href='profile?sid=".$steamprofile['steamid']."/'>".$steamprofile['personaname']."</a></li>
+                        <li><a href=''>link</a></li>";
+                        if(in_array($steamprofile['steamid'], $admins)){
+                            echo "<li><a href='adminpanel'>Admin Panel</a></li>";
+                        }
+                echo "<form id='steam-logout-form' action='' method='get'><button class='steam-button' name='logout' type='submit'><i class='fa-solid fa-arrow-right-from-bracket'></i>Logout</button></form>
+                        </ul>
+                </div>";
+            }     
+
+
+
+            ?>
             </ul>
 
         </div>

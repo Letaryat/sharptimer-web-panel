@@ -397,7 +397,7 @@ footer .pagetitle{
     font-weight: 700;
 }
 
-/* dropdown */
+/* dropdown 
 
 .dropdown:hover .dropdown-content{
     display: block !important;
@@ -405,6 +405,15 @@ footer .pagetitle{
     animation-duration: 0.3s;
     animation-fill-mode:forwards;
 }
+
+*/
+.dropdown.active .dropdown-content{
+    display: block !important;
+    animation-name: fade;
+    animation-duration: 0.3s;
+    animation-fill-mode:forwards;
+}
+
 .dropdown-content{
     display: none !important;
     position: absolute;
@@ -432,6 +441,28 @@ footer .pagetitle{
 }
 .dropdown-content li a:hover{
     background:var(--stripe-hover);
+}
+.dropbtn{
+    transition: 0.2s cubic-bezier(.7,.02,.22,.99) all;
+}
+.dropbtn:hover{
+    cursor: pointer;
+    margin-top:5px;
+}
+.dropbtn:after{
+    opacity: 0;
+    margin-left:-25px;
+    margin-top:0px;
+    position: absolute;
+    content: "\f0d7";
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 800;
+    transition: 0.2s cubic-bezier(.7,.02,.22,.99) all;
+    color:var(--hover);
+}
+.dropbtn:hover::after{
+    opacity: 1;
+    margin-top:20px;
 }
 
 /*error box*/
@@ -478,6 +509,33 @@ footer .pagetitle{
 
     cursor: pointer;
 }
+
+.steam-button{
+    position: relative;
+    box-sizing: border-box;
+    padding: 10px;
+    background: #1b2838;
+    border-radius: 5px;
+    border: none;
+    color: var(--fontcolor);
+    font-size: 16px !important;    
+}
+.steam-button:hover{
+    background:#2a3d53;
+    color:var(--hover);
+}
+
+button:hover{
+    cursor: pointer;
+}
+button.steam-button{
+    margin-top:10px;
+}
+#steam-logout-form{
+    display: flex;
+    justify-content: center;
+}
+
 
 /* RWD: */
 @media (max-width: 1024px) {

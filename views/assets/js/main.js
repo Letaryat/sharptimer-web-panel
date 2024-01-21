@@ -60,3 +60,24 @@
             e.currentTarget.className += " active";
             console.log(e);
         }
+    
+        function DropDownClick(event){
+            event.currentTarget.classList.toggle('active');
+        /*
+          let dropdown = document.getElementsByClassName('dropdown-content');
+            if(document.body.classList.contains('active')){
+                dropdown[0].classList.toggle('active');
+            }else{
+                dropdown[1].classList.toggle('active');
+
+            }
+        */
+        }
+/*
+        window.addEventListener("resize", function(){
+            if(window.innerWidth > 1024){
+                document.body.classList.remove('active');
+            }
+        })
+
+*/

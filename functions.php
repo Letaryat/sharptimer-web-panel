@@ -3,11 +3,11 @@
     #getAvatar function is made by: https://github.com/bman46/Steam-Avatar
     function getAvatar($steamIDCode){
         require 'config.php';
-        if(empty($steamauth['apikey'])){
+        if(empty($steamapikey)){
             return "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/";
         }
         else{
-            $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$steamauth['apikey']."&steamids=".$steamIDCode); 
+            $url = file_get_contents("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$steamapikey."&steamids=".$steamIDCode); 
             $content = json_decode($url, true);
     
             $returnVal = $content['response']['players'][0]['avatarfull'];
@@ -100,6 +100,42 @@
             else{?>
                 <li><a href="<?php echo $myJson[$x]['url']?>"><?php echo $myJson[$x]['name']?></a></li><?php 
             }
+        }
+        if(!empty(glob('./modules'))){
+            $a = 0;
+            $exptrzy = [];
+            foreach(glob('modules/*.*') as $filename){
+                $a++;
+                $expjeden = explode("/",$filename);
+                $expdwa = explode(".", $expjeden[1]);
+                array_push($exptrzy, $expdwa[0]);
+            }
+            $statement = $a > 3;
+            if($statement){
+                $a++;
+                echo '<div onclick="DropDownClick(event)" class="dropdown">
+                <li class="dropbtn">More</li>
+                <ul class="dropdown-content">';
+                for($e = 0; $e < count($exptrzy); $e++){
+                    echo '<li>
+                    <a ';
+                    if($v === $exptrzy[$e]){
+                        echo 'id="active"';
+                    }
+                    echo 'href="'.$exptrzy[$e].'">'.$exptrzy[$e].'</a></li>';
+                }
+                echo '</ul></div>';
+            }else{
+                for($e = 0; $e < count($exptrzy); $e++){
+                    echo '<li>
+                    <a ';
+                    if($v === $exptrzy[$e]){
+                        echo 'id="active"';
+                    }
+                    echo 'href="'.$exptrzy[$e].'">'.$exptrzy[$e].'</a></li>';
+                }
+            }
+
         }
     }
 
