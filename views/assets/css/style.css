@@ -635,12 +635,12 @@ input{
 
 .modal.fadein{
     animation-name: slideup;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-fill-mode:forwards;
 }
 .modal.fadeout{
     animation-name: slidedown;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-fill-mode:forwards;
 }
 /* RWD: */
