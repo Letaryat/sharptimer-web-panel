@@ -1,17 +1,31 @@
-    <main>
-        <div class="wrapper">
-            <div>
-            <h2>This could be used as a template for other pages if you need some.</h2>
-            <h3>You need to add href manualy in core/socials.json and "local" set on "true"</h3>
-            <h4>If you don't need this page you can just delete it ¯\_(ツ)_/¯ </h4>
-            <ol>
-                Rules:
-                <li>Servers for femboys only</li>
-                <li>Play fortnite 24/7</li>
-                <li>remember no preorders</li>
-                <li>no cs2</li>
-            </ol>
-            </div>
+    <main style="flex-flow:column;">
+        tick: <br/>
+        <?php 
+        $tick = "2762";
+        function ticktoseconds($tick){
+            $number = $tick / 64;
+            return number_format((float)$number,3, ".", "");
+        }
+        echo ticktoseconds($tick);
+        ?>
+        <br/>
+        <p style="margin-top:20px;"class="wynik">test</p>
+        <input class="number" pattern="^([0-5]\d):([0-5]\d):([0-5]\d)$" type="number">
+
+
+        <div>
+            
         </div>
+
+
+        <script>
+            let input = document.querySelector('.number');
+            let wynik = document.querySelector('.wynik');
+            input.addEventListener('input', function(){
+                let value = input.value / 64;
+
+                wynik.innerHTML = value.toFixed(3);
+            });
+        </script>
     </main>
 </html>

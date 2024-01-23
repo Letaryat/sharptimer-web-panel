@@ -565,10 +565,10 @@ body.modalactive{
     z-index: 101;
 }
 .modal-exit{
-  font-size: 64px;
+  font-size: 45px;
   position: fixed;
   z-index: 102;
-  right: 35%;
+  right: 36%;
   top: 20%;
 }
 .modal-exit:hover{
@@ -633,12 +633,12 @@ input{
     border:none;
 }
 
-.modal.fadein{
+.slideup{
     animation-name: slideup;
     animation-duration: 0.3s;
     animation-fill-mode:forwards;
 }
-.modal.fadeout{
+.slidedown{
     animation-name: slidedown;
     animation-duration: 0.3s;
     animation-fill-mode:forwards;

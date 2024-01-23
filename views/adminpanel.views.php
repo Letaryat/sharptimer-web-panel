@@ -43,8 +43,10 @@
         $('.modal-exit').on('click', function(){
             console.log();
             $('.modal').addClass('fadeout');
+            $('.modal-container').addClass("slidedown");
             setTimeout(function(){
             $('.modal').removeClass('active fadein fadeout');
+            $('.modal-container').removeClass('slideup slidedown');
             $(document.body).removeClass('modalactive');
             $('.modal-content').remove();
             }, 500)
@@ -56,6 +58,7 @@
             var modal = $('.modal');
             modal.addClass("active fadein");
             $(document.body).addClass('modalactive');
+            $('.modal-container').addClass("slideup");
             $.ajax({
                 url: 'scripts/ajax/edit.php',
                 type: 'POST',
