@@ -6,19 +6,19 @@
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
                 $i++;
-                echo '<div ';
+                echo '<a href="profile?sid='.$row['SteamID'] . '/"><div';
                 if($i % 2 == 0){
                     echo ' id="stripped"';
                 }
                 else{echo "";}
-                echo ' class="siur row">
+                echo ' class="row">
                 <span>'.$i.'</span>
-                <span><a href="profile?sid='.$row['SteamID'] . '/">'.$row['PlayerName'].'</a></span>
+                <span>'.$row['PlayerName'].'</span>
                 <span>'.$row['FormattedTime'].'</span>
                 <span>'.$row['MapName'].'</span>
-                <span href="javascript:void(0)" data-steamid="'.$row['SteamID'].'" data-mapname="'.$row['MapName'].'"  class="admin-button edit"><i class="fa-solid fa-pen"></i> Edit Record</span>
-                <span href="javascript:void(0)" data-steamid="'.$row['SteamID'].'" data-mapname="'.$row['MapName'].'" class="admin-button delete"><i class="fa-solid fa-trash"></i> Delete Record</span>
-                </div>';
+                <span class="edit">Edit</span>
+                <span class="delete">Delete</span>
+                </div></a>';
             }
         }
         else{
@@ -32,5 +32,16 @@
         header("Location: error");
     }
     else{
-        require 'views/adminpanel.views.php';
+        if (isset($_GET['sid'])) {
+        $sid = mysqli_real_escape_string($conn, $_GET['sid']);
+        $sidexplode = explode("/", $sid);
+        #echo "<br/> Test : " . $sid . " sidexpldoe: " . $sidexplode[0];
+        $query = "SELECT * FROM `PlayerRecords` WHERE SteamID = '{$sidexplode[0]}'";
+        $result = mysqli_query($conn, $query) or die("bad query");
+        $row = mysqli_fetch_array($result);
+        $rand = rand(1, 3);
+        if (empty($row)) {
+            header("Location: error");
+        }
+}
     }

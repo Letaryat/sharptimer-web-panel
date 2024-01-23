@@ -8,10 +8,5 @@
             "local":false,
             "url":"https://discord.com/invite/Rzf7fCzpnw",
             "name":"<i class='fa-brands fa-discord'></i> Discord"
-        },
-        "2":{
-            "local":true,
-            "url":"faq",
-            "name":"FAQ"
         }
 }

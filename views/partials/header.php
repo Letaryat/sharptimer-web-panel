@@ -84,8 +84,8 @@
                 require('admins.php');
                 include ('scripts/steamauth/userInfo.php'); //To access the $steamprofile array
                 //Protected content
-                echo "<div class='dropdown'>
-                <img class='dropbtn' style='border-radius:100%;' src='".$steamprofile['avatar']."'>
+                echo "<div onclick='DropDownClick(event)' class='dropdown'>
+                <img  class='dropbtn' style='border-radius:100%;' src='".$steamprofile['avatar']."'>
                     <ul class='dropdown-content'>
                         <li><a href='profile?sid=".$steamprofile['steamid']."/'>".$steamprofile['personaname']."</a></li>
                         <li><a href=''>link</a></li>";

@@ -63,6 +63,7 @@
     
         function DropDownClick(event){
             event.currentTarget.classList.toggle('active');
+            console.log(event);
         /*
           let dropdown = document.getElementsByClassName('dropdown-content');
             if(document.body.classList.contains('active')){

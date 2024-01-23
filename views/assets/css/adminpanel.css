@@ -1,0 +1,59 @@
+@import './colors.css';
+.adminpanel{
+    text-align: center;
+}
+.adminpanel ul{
+    margin-top: 10px;
+}
+.adminpanel ul li{
+    display: inline-block;
+}
+.admin-functions li{
+    box-sizing: border-box;
+    padding: 10px;
+    background: var(--stripe-hover);
+    border:1px solid var(--hover);
+    border-radius:var(--borderradius);
+}
+main{
+    flex-flow: column;
+}
+.leaderboard{
+    width: 70%;
+}
+.row{
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+}
+.row .admin-button{
+    text-align: center;
+}
+.row .admin-button:hover{
+    transform:scale(1.2);
+    filter:saturate(5);
+}
+.row .edit{
+
+    color:rgb(255, 206, 115);
+}
+.row .delete{
+    color:rgb(255, 125, 125);
+}
+.info .row span:nth-child(5){
+    text-align: center;
+}
+.player-edit{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.player-edit img{
+    width: 75px;
+    border-radius: 100%;
+}
+.player-edit h3{
+    margin-left:10px;
+}
+#mapname-edit{
+    margin-top:10px;
+}
