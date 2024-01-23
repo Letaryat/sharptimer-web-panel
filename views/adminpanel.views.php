@@ -29,9 +29,8 @@
     </main>
 
     <div class="modal">
-        <div class="modal-container">
-        <div class="modal-exit"><i class="fa-solid fa-circle-xmark"></i></div>
-            <div class="modal-content"></div>
+    <div class="modal-exit"><i class="fa-solid fa-circle-xmark"></i></div>
+        <div class="modal-container"></div>
             <!--
             <div class="player-edit">
             <img src="https://i.pinimg.com/564x/18/10/ae/1810ae3befd6c341bcc4d818b4a945ff.jpg" alt="pfp">
@@ -39,17 +38,15 @@
             </div>
             <p id="mapname-edit">surf_siurek</p>
             -->
-        </div>
     </div>
     <script>
         $('.modal-exit').on('click', function(){
             console.log();
             $('.modal').addClass('fadeout');
             setTimeout(function(){
-            $('.modal').removeClass('active');
+            $('.modal').removeClass('active fadein fadeout');
             $(document.body).removeClass('modalactive');
-            $('.modal').removeClass('fadein');
-            $('.modal').removeClass('fadeout');
+            $('.modal-content').remove();
             }, 500)
         })
         $('.edit').on('click', function () {
@@ -65,11 +62,11 @@
                 data: { steamdata: steam_id, mapname: map_name},
                 dataType: 'text',
                 success: function (data) {
-                    $('.modal-content').html(data);
+                    $('.modal-container').html(data);
                     //console.log(data);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    $('.modal-content').html('');
+                    $('.modal-container').html('');
                     alert('Error Loading');
                 }
             });

@@ -46,14 +46,36 @@ main{
     display:flex;
     justify-content: center;
     align-items: center;
+    flex-flow: column;
 }
 .player-edit img{
     width: 75px;
+    height: 75px;
     border-radius: 100%;
 }
 .player-edit h3{
-    margin-left:10px;
+    margin-top: 10px;
 }
 #mapname-edit{
     margin-top:10px;
+    margin-bottom: 10px;
+}
+
+
+@keyframes rotate{
+    0%{
+        opacity:0%;
+        transform: rotate(-180deg) scale(0);
+    }
+    100%{
+        opacity:100%;
+        transform: rotate(0deg) scale(1);
+    }
+
+}
+
+.player-edit.rotate img{
+    animation-name: rotate;
+    animation-duration: 0.5s;
+    animation-fill-mode:forwards;
 }

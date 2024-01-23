@@ -568,12 +568,80 @@ body.modalactive{
   font-size: 64px;
   position: fixed;
   z-index: 102;
-  left: 1810px;
-  top: 10px;
+  right: 35%;
+  top: 20%;
 }
 .modal-exit:hover{
     color:var(--hover);
     cursor: pointer;
+}
+.modal-content{
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content form{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    width: 60%;
+}
+
+input{
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    background: var(--stripe-hover);
+    border: 1px solid var(--hover);
+    margin-bottom: 10px;
+    color: var(--fontcolor);
+}
+.form-button-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-button-container #success, #cancel{
+   /* width: 130px; */
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#000;
+    font-weight: 800;
+}
+.form-button-container #success:hover, #cancel:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+#success{
+    background:#46ff6e;
+    border:none;
+}
+#cancel{
+    background:#ff5a5a;
+    border:none;
+}
+
+.modal.fadein{
+    animation-name: slideup;
+    animation-duration: 0.5s;
+    animation-fill-mode:forwards;
+}
+.modal.fadeout{
+    animation-name: slidedown;
+    animation-duration: 0.5s;
+    animation-fill-mode:forwards;
 }
 /* RWD: */
 @media (max-width: 1024px) {
@@ -883,6 +951,29 @@ input:focus{
     background-color:var(--fontcolor) !important;
 }
 
+@keyframes slideup{
+    0%{
+        opacity:0%;
+        transform: translateY(-50px);
+    }
+    100%{
+        opacity:100%;
+        transform: translateY(0px);
+    }
+
+}
+
+@keyframes slidedown{
+    0%{
+        opacity:100%;
+        transform: translateY(0px);
+    }
+    100%{
+        opacity:0%;
+        transform: translateY(50px);
+    }
+
+}
 
 @keyframes fade{
     0%{
