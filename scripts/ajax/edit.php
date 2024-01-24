@@ -52,15 +52,15 @@ if ($result->num_rows > 0) {
     })
 
 
-    let input = document.querySelector('.testek');
-    let wynik = document.querySelector('.time');
+    var input = document.querySelector('.testek');
+    var wynik = document.querySelector('.time');
     input.addEventListener('input', function () {
         var minutesinput = input.value[0] + input.value[1];
         var minutes = minutesinput * 60;
         var seconds = input.value[3] + input.value[4];
         var mili = input.value[6] + input.value[7] + input.value[8];
-        let sum = +minutes + +seconds + +(mili / 1000);
-        let tick = Math.round(sum * 64);
+        var sum = +minutes + +seconds + +(mili / 1000);
+        var tick = Math.round(sum * 64);
         if(isNaN(tick)){
             wynik.value = "Use correct format";
         }

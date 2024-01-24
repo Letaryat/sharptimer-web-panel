@@ -563,6 +563,7 @@ body.modalactive{
     box-sizing: border-box;
     padding: 10px;
     z-index: 101;
+    box-shadow: 0px 5px 15px -9px var(--background);
 }
 .modal-exit{
   font-size: 45px;
@@ -589,6 +590,7 @@ body.modalactive{
     flex-flow: column;
     width: 60%;
 }
+
 
 input{
     box-sizing: border-box;

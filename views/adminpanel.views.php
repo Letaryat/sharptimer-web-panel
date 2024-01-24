@@ -81,8 +81,32 @@
             console.log(steam_id);
             var modal = $('.modal');
             modal.addClass("active fadein");
+            $(document.body).addClass('modalactive');
+            $('.modal-container').addClass("slideup");
             $.ajax({
                 url: 'scripts/ajax/delete.php',
+                type: 'POST',
+                data: { steamdata: steam_id, mapname: map_name},
+                dataType: 'text',
+                success: function (data) {
+                    $('.modal-container').html(data);
+                    //console.log(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.modal-container').html('');
+                    alert('Error Loading');
+                }
+            });
+        });
+        /*
+        $('.delete').on('click', function () {
+            var steam_id = $(this).data('steamid');
+            var map_name = $(this).data('mapname');
+            console.log(steam_id);
+            var modal = $('.modal');
+            modal.addClass("active fadein");
+            $.ajax({
+                url: 'scripts/ajax/edit.php',
                 type: 'POST',
                 data: { steamdata: steam_id, mapname: map_name},
                 dataType: 'text',
@@ -96,5 +120,6 @@
                 }
             });
         });
+        */
     </script>
 </html>
