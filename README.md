@@ -1,5 +1,5 @@
 # sharptimer-web-panel
-Web panel for SharpTimer - CounterStrikeSharp plugin. [LIVE DEMO](https://movement.pierdolnik.eu/) [LIVE DEMO](https://movement.pierdolnik.eu/)<br />
+Web panel for SharpTimer - CounterStrikeSharp plugin. [LIVE DEMO](https://movement.pierdolnik.eu/) [KOFI](https://ko-fi.com/letaryat/)<br />
 
 ![preview](https://i.imgur.com/4cnkHz6.png)
 
