@@ -14,6 +14,6 @@
             </div>
         </div>
     </footer>
-    <script type="text/javascript" src="views/assets/js/main.js"></script>
+    <script type="text/javascript" src="<?php echo BasicURL();?>views/assets/js/main.js"></script>
 </body>
 </html>

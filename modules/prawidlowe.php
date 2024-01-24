@@ -1,6 +1,6 @@
     <main style="flex-flow:column;">
     <form action="prawidlowedwa" method="post">
-    <input class="testek" type="text" maxlength="7" placeholder="00:00:000" name="czas">
+    <input class="testek" type="text" minlength="9" maxlength="9" placeholder="00:00:000" name="czas" required>
     <input type="submit">
     </form>
 

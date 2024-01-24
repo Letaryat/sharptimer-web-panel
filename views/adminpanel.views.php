@@ -40,6 +40,7 @@
             -->
     </div>
     <script>
+
         $('.modal-exit').on('click', function(){
             console.log();
             $('.modal').addClass('fadeout');

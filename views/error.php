@@ -1,4 +1,3 @@
-    <?php require_once('partials/header.php'); ?>
     <main>
         <div style="justify-content: center;" class="wrapper">
             <div class="error-box">
@@ -12,7 +11,4 @@
             </div>
         </div>
     </main>
-    <?php require_once('partials/footer.php')?>
-
-
 </html>
