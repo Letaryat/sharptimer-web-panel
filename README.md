@@ -1,11 +1,13 @@
 # sharptimer-web-panel
-Web panel for SharpTimer - CounterStrikeSharp plugin. [LIVE DEMO](https://movement.pierdolnik.eu/) [KOFI](https://ko-fi.com/letaryat/)<br />
+Web panel for SharpTimer - CounterStrikeSharp plugin. [LIVE DEMO](https://movement.pierdolnik.eu/) <br />
 
 ![preview](https://i.imgur.com/4cnkHz6.png)
 
 ## Requirements
 - PHP 7.4+,
 - [SharpTimer by deafps](https://github.com/DEAFPS/SharpTimer) with mysql enabled,
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H8TK0L9)
 
 ## Instalation
 - Throw files into your hosting,
