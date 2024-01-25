@@ -9,11 +9,13 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $formattedtime = $row['FormattedTime'];
+        /*
         if (strlen($formattedtime) <= "8") {
             $formattedtime = "0" . $formattedtime;
         } else {
             echo "wieksze " . strlen($formattedtime);
         }
+        */
         echo '<div class="modal-content">
         <div id="steam-id" class="player-edit rotate" data-steam="' . $steamdata . '">
         <img src="' . getAvatar($steamdata) . '" alt="' . $row['PlayerName'] . '">
@@ -46,7 +48,14 @@ if ($result->num_rows > 0) {
 
 <script>
     $(document).ready(function () {
-        $('#formattedtime').mask('00:00.000');
+        var formattedtime = "<?php echo $formattedtime ?>";
+        console.log(formattedtime.length);
+        if( formattedtime.length <= 8){
+            $('#formattedtime').mask('0:00.000');
+        }else{
+            $('#formattedtime').mask('00:00.000');
+        }
+
     })
     $("form").submit(function (event) {
             var formData = {
@@ -63,7 +72,8 @@ if ($result->num_rows > 0) {
                 encode: true,
                 success: function (data) {
                     console.log(data)
-                    $("#refresh").load(" #refresh > *");
+                    location.reload()
+                    //$("#refresh").load(" #refresh > *");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(errorThrown);
