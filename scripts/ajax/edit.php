@@ -1,4 +1,3 @@
-
 <?php
 require_once("../../config.php");
 require_once("../../functions.php");
@@ -10,27 +9,26 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $formattedtime = $row['FormattedTime'];
-        if(strlen($formattedtime) <= "8"){
-            $formattedtime = "0".$formattedtime;
-        }
-        else{
-            echo "wieksze ".strlen($formattedtime);
+        if (strlen($formattedtime) <= "8") {
+            $formattedtime = "0" . $formattedtime;
+        } else {
+            echo "wieksze " . strlen($formattedtime);
         }
         echo '<div class="modal-content">
-        <div class="player-edit rotate">
+        <div id="steam-id" class="player-edit rotate" data-steam="' . $steamdata . '">
         <img src="' . getAvatar($steamdata) . '" alt="' . $row['PlayerName'] . '">
         <h3>' . $row['PlayerName'] . '</h3>    
         </div>
-        <p id="mapname-edit">Map: ' . $map . '</p>
-        <form>
+        <p class="mapname-edit" data-mapname="' . $map . '">Map: ' . $map . '</p>
+        <form id="#form" action="scripts/ajax/editquery.php" method="POST">
         <label for="nickname">Nickname:</label>
-        <input type="text" id="nickname" name="nickname" value="'.$row['PlayerName'].'" required>
+        <input type="text" id="nickname" name="nickname" value="' . $row['PlayerName'] . '" required>
         <label for="time">Time:</label>
-        <input class="testek" type="text" value="'.$formattedtime.'" name="czas">
+        <input id="formattedtime" type="text" value="' . $formattedtime . '" name="time">
         <label for="time">Ticks:</label>
-        <input type="text" class="time" name="time" value="'.$row['TimerTicks'].'" required disabled>
+        <input id="ticks" type="text" class="time" name="ticks" value="' . $row['TimerTicks'] . '" required >
         <label for="finished">Times Finished</label>
-        <input type="number" min="0" id="finished" name="finished" required>
+        <input type="number" min="0" id="finished" name="finished" value="" required>
         <div class="form-button-container">
         <input id="success" type="submit" value="Update">
         </div></div>
@@ -48,11 +46,34 @@ if ($result->num_rows > 0) {
 
 <script>
     $(document).ready(function () {
-        $('.testek').mask('00:00.000');
+        $('#formattedtime').mask('00:00.000');
     })
+    $("form").submit(function (event) {
+            var formData = {
+                nickname: $("#nickname").val(),
+                ftime: $("#formattedtime").val(),
+                ticks: $("#ticks").val(),
+                steam_id : $('#steam-id').data('steam'),
+                map_name : $('.mapname-edit').data('mapname'),
+            };
+            $.ajax({
+                type: "POST",
+                url: "scripts/ajax/editquery.php",
+                data: formData,
+                encode: true,
+                success: function (data) {
+                    console.log(data)
+                    $("#refresh").load(" #refresh > *");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+            event.preventDefault();
+        });
 
 
-    var input = document.querySelector('.testek');
+    var input = document.querySelector('#formattedtime');
     var wynik = document.querySelector('.time');
     input.addEventListener('input', function () {
         var minutesinput = input.value[0] + input.value[1];
@@ -61,10 +82,10 @@ if ($result->num_rows > 0) {
         var mili = input.value[6] + input.value[7] + input.value[8];
         var sum = +minutes + +seconds + +(mili / 1000);
         var tick = Math.round(sum * 64);
-        if(isNaN(tick)){
+        if (isNaN(tick)) {
             wynik.value = "Use correct format";
         }
-        else{
+        else {
             wynik.value = tick;
         }
 

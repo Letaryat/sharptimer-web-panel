@@ -19,7 +19,7 @@
                         <span> <i class="fa-solid fa-map"></i> Action </span>
                     </div>
                 </div>
-                <div class="players">
+                <div id="refresh" class="players">
                     <?php
                     $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE MapName = 'surf_deathstar'  ORDER BY `TimerTicks` ASC";
                     ShowRowsAdminPanel($sql);
