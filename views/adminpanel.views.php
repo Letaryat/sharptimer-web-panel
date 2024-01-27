@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="views/assets/css/adminpanel.css">
        <main>
         <div class="adminpanel" class="wrapper">
-            <h1>Admin Panel</h1>
+            <h1>Welcome back to the Poor-Panel</h1>
+            <h2>What are we going to do today?</h2>
             <ul class="admin-functions">
                 <a class="delete"><li>DELETE</li></a>
                 <a href=""><li>Edit Record</li></a>

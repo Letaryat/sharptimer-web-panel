@@ -1,6 +1,14 @@
 @import './colors.css';
 .adminpanel{
-    text-align: center;
+    position: relative;
+    width: 80%;
+    text-align: justify;
+    box-sizing: border-box;
+    background: var(--stripe-hover);
+    border: 1px solid var(--hover);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 .adminpanel ul{
     margin-top: 10px;
@@ -11,9 +19,8 @@
 .admin-functions li{
     box-sizing: border-box;
     padding: 10px;
-    background: var(--stripe-hover);
-    border:1px solid var(--hover);
-    border-radius:var(--borderradius);
+    background: var(--secondary);
+    border-radius: 5px;
 }
 main{
     flex-flow: column;

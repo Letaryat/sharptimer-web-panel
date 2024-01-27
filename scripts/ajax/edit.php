@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
         <input id="success" type="submit" value="Update">
         </div>
         </form>
-        </div>
+
         
 ';
     }
@@ -113,3 +113,5 @@ if ($result->num_rows > 0) {
     });
 
 </script>
+
+<?php echo '</div>';?>
