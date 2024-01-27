@@ -3,7 +3,7 @@
         <div class="adminpanel" class="wrapper">
             <h1>Admin Panel</h1>
             <ul class="admin-functions">
-                <a href=""><li>Edit Record</li></a>
+                <a class="delete"><li>DELETE</li></a>
                 <a href=""><li>Edit Record</li></a>
                 <a href=""><li>Edit Record</li></a>
                 <a href=""><li>Edit Record</li></a>
@@ -21,7 +21,7 @@
                 </div>
                 <div id="refresh" class="players">
                     <?php
-                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE MapName = 'surf_deathstar'  ORDER BY `TimerTicks` ASC";
+                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE MapName = 'surf_mesa_revo'  ORDER BY `TimerTicks` ASC";
                     ShowRowsAdminPanel($sql);
                     ?>
                 </div>
@@ -50,9 +50,16 @@
             $('.modal-container').removeClass('slideup slidedown');
             $(document.body).removeClass('modalactive');
             $('.modal-content').remove();
-            }, 500)
+            }, 500);
+            $("input:checked").each(function(){
+                $('input:checkbox').prop('checked', false);
+            })
+
         })
         $('.edit').on('click', function () {
+            $("input:checked").each(function(){
+                $('input:checkbox').prop('checked', false);
+            })
             var steam_id = $(this).data('steamid');
             var map_name = $(this).data('mapname');
             console.log(steam_id);
@@ -76,17 +83,19 @@
             });
         });
         $('.delete').on('click', function () {
-            var steam_id = $(this).data('steamid');
-            var map_name = $(this).data('mapname');
-            console.log(steam_id);
             var modal = $('.modal');
             modal.addClass("active fadein");
             $(document.body).addClass('modalactive');
             $('.modal-container').addClass("slideup");
+            var checkbox = new Array();
+            $("input:checked").each(function(){
+                checkbox.push($(this).val());
+            })
+            var map_name = $('.edit').data('mapname');
             $.ajax({
                 url: 'scripts/ajax/delete.php',
                 type: 'POST',
-                data: { steamdata: steam_id, mapname: map_name},
+                data: { checkbox: checkbox, mapname: map_name},
                 dataType: 'text',
                 success: function (data) {
                     $('.modal-container').html(data);

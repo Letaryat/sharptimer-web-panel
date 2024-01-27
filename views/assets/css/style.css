@@ -556,7 +556,7 @@ body.modalactive{
     background:var(--secondary);
     border-radius: var(--borderradius);
     width: 500px;
-    height: 500px;
+    min-height: 500px;
     display: flex;
     align-items: center;
     flex-flow: column;
@@ -601,6 +601,56 @@ input{
     margin-bottom: 10px;
     color: var(--fontcolor);
 }
+
+.row input{
+    margin-bottom:0px !important;
+}
+
+.checkbox-container{
+    text-align: center;
+
+}
+.checkbox-container input{
+    position: absolute;
+    opacity: 0;
+    cursor:pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark{
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    margin-top: -15px;
+    border-radius: 5px;
+    right: 50px;
+}
+.checkmark:hover{
+    cursor: pointer;
+}
+.checkbox-container input ~ .checkmark{
+    background:var(--stripe-hover);
+    color:var(--hover);
+}
+
+.checkbox-container input:checked ~ .checkmark{
+    background: #602e2e;
+    color: #e87d7d;
+}
+.checkbox-container .checkmark:after{
+    content:"";
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "\f12d";
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 800;
+}
+
 .form-button-container{
     display: flex;
     align-items: center;

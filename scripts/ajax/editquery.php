@@ -1,10 +1,10 @@
 <?php
     require('../../config.php');
-    $nick = $_POST['nickname'];
-    $ftime = $_POST['ftime'];
-    $ticks = $_POST['ticks'];
-    $steamid = $_POST['steam_id'];
-    $map = $_POST['map_name'];
+    $nick = $conn->real_escape_string($_POST['nickname']);
+    $ftime = $conn->real_escape_string($_POST['ftime']);
+    $ticks = $conn->real_escape_string($_POST['ticks']);
+    $steamid = $conn->real_escape_string($_POST['steam_id']);
+    $map = $conn->real_escape_string($_POST['map_name']);
     echo $nick . " " . $ftime . " " . $ticks . " " . $steamid . " " . $map;
     #$sql = "INSERT INTO playerrecords (MapName, SteamID, PlayerName, TimerTicks, FormattedTime) VALUES ('$map','$steam','$nickname','$ticks','$time')";
     $sql = "UPDATE playerrecords SET PlayerName = '$nick', TimerTicks = '$ticks', FormattedTime = '$ftime' WHERE SteamID = '$steamid' AND MapName = '$map'";
