@@ -1,7 +1,7 @@
 
     <link rel="stylesheet" type="text/css" href="./assets/css/profiles.css?version=0">
     <div id="profile-wrapper" class="wrapper">
-                <div class="profileheader vip">
+                <div class="profileheader <?php if($rowsec['IsVip'] === "1"){ echo 'vip';}?>">
                     <div class="user-info">
                     <a href="https://steamcommunity.com/profiles/<?php echo $row['SteamID']?>"><div class="avatar">
                             <img  src="<?php echo getAvatar($sid)?>" alt="<?php echo $sid?>">
@@ -11,7 +11,8 @@
                             <h3><?php echo $row['PlayerName']?></h3>
                             <span>
                                 <img id="rank" src="./assets/images/ranks/sharptimer/s<?php echo $rand ?>.svg" alt="rank">
-                                <p>Adam Malysz <?php echo $rand ?></p>
+                                <p><?php if(empty($rowsec)){ echo "no info";} 
+                            else{echo $rowsec['GlobalPoints'];}?></p>
                                 <span style="font-size:8px;"> - (img randomize with every page refresh for testing)</span>
                             </span>
 
@@ -25,7 +26,8 @@
                         </div>
                         <div class="statistics">
                             <h4>Times connected</h4>
-                            <p>1</p>
+                            <p><?php if(empty($rowsec)){ echo "no info";} 
+                            else{echo $rowsec['TimesConnected'];}?></p>
                         </div>
                     </div>
                     <div class="box">
@@ -34,7 +36,8 @@
                         </div>
                         <div class="statistics">
                             <h4>Last Connected</h4>
-                            <p>1</p>
+                            <p><?php if(empty($rowsec)){ echo "no info";} 
+                            else{echo date("Y-m-d H:i:s", $rowsec['LastConnected']);}?></p>
                         </div>
                     </div>
                     <div class="box">
@@ -43,7 +46,13 @@
                         </div>
                         <div class="statistics">
                             <h4>Timer</h4>
-                            <p>On</p>
+                            <p><?php if(empty($rowsec)){ echo "no info";} 
+                            else{
+                                if($rowsec['HideTimerHud'] === "1"){
+                                    echo "On";
+                                }else{
+                                    echo "Off";}
+                               }?></p>
                         </div>
                     </div>
                     <div class="box">
@@ -52,7 +61,13 @@
                         </div>
                         <div class="statistics">
                             <h4>Hidden keys</h4>
-                            <p>On</p>
+                            <p><?php if(empty($rowsec)){ echo "no info";} 
+                            else{
+                                if($rowsec['HideKeys'] === "1"){
+                                    echo "On";
+                                }else{
+                                    echo "Off";}
+                               }?></p>
                         </div>
                     </div>
                     <div class="box">
@@ -61,7 +76,13 @@
                         </div>
                         <div class="statistics">
                             <h4>Sounds</h4>
-                            <p>On</p>
+                            <p><?php if(empty($rowsec)){ echo "no info";} 
+                            else{
+                                if($rowsec['SoundsEnabled'] === "1"){
+                                    echo "On";
+                                }else{
+                                    echo "Off";}
+                               }?></p>
                         </div>
                     </div>
                 </div>

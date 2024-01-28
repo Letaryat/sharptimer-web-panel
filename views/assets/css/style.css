@@ -447,7 +447,6 @@ footer .pagetitle{
 }
 .dropbtn:hover{
     cursor: pointer;
-    margin-top:5px;
 }
 .dropbtn:after{
     opacity: 0;
@@ -788,7 +787,7 @@ input{
     }
     .content{
     overflow-y: auto;
-    height: 150px;
+    height: 250px;
     position: relative;
     }
     .wrapper{
@@ -867,6 +866,9 @@ input{
         flex-flow: column;
         text-align: center;
     }
+    .info .row{
+        display: none;
+    }
 }
 
 @media (max-width: 1280px){
@@ -893,7 +895,21 @@ input{
 }
 
 @media (max-width: 768px) {
-
+    .modal-exit{
+        top: 10%;
+        right:0%;
+    }
+    .checkmark{
+        margin-top:-105px;
+        margin-right:-30px;
+    }
+    .players .row{
+    display: flex;
+    flex-flow: column;
+    height: 100px;
+    justify-content: space-between;
+    font-size: 16px;
+    }
     body.active .mobile-nav{
         padding-top:20%;
     }

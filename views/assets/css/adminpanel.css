@@ -3,18 +3,26 @@
     position: relative;
     width: 80%;
     text-align: justify;
-    box-sizing: border-box;
     background: var(--stripe-hover);
     border: 1px solid var(--hover);
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.adminpanel:hover{
+    border:1px solid transparent;
+    background:var(--secondary);
 }
 .adminpanel ul{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: end;
     margin-top: 10px;
 }
 .adminpanel ul li{
     display: inline-block;
+    font-weight: 500;
 }
 .admin-functions li{
     box-sizing: border-box;
@@ -22,12 +30,14 @@
     background: var(--secondary);
     border-radius: 5px;
 }
+.admin-functions li:hover{
+    transform: translateY(-5px);
+
+}
 main{
     flex-flow: column;
 }
-.leaderboard{
-    width: 70%;
-}
+
 .row{
     grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
 }
@@ -38,12 +48,29 @@ main{
     transform:scale(1.2);
     filter:saturate(5);
 }
-.row .edit{
+.admin-button.edit{
 
     color:rgb(255, 206, 115);
 }
+.delete li{
+    background:#ff5a5a !important;
+    color: #790000;
+}
+.delete li:hover{
+    background:#ff7272 !important;
+    box-shadow: 1px 5px 0px 0px #790000;
+}
+.vip li{
+    background:#ffa45a !important;
+    color: #864a1a;
+}
+.vip li:hover{
+    background:#ffd079 !important;
+    box-shadow: 1px 5px 0px 0px #864a1a;
+}
 .row .delete{
     color:rgb(255, 125, 125);
+
 }
 .info .row span:nth-child(5){
     text-align: center;
@@ -66,6 +93,9 @@ main{
 #mapname-edit{
     margin-top:10px;
     margin-bottom: 10px;
+}
+.adminpanel p:nth-child(1){
+    font-size: 25px;
 }
 
 

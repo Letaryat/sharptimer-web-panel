@@ -13,6 +13,7 @@ $routes = [
     $z => 'controllers/index.php',
     $z.'profile' => 'controllers/profile.php',
     $z.'adminpanel' => 'controllers/adminpanel.php',
+    $z.'vippanel' => 'controllers/vippanel.php',
 ];
 #echo "<div class='row' id='strangerdanger'>Routing URL: ".$uri . "</div><br/>";
 #echo $filename;

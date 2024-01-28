@@ -1,10 +1,10 @@
 <?php
-require_once("../../config.php");
-require_once("../../functions.php");
-$map = $conn -> real_escape_string($_POST['mapname']);
+require_once("../../../config.php");
+require_once("../../../functions.php");
 echo "<div class='modal-content' style='display:grid;height: 500px;
 grid-template-rows: 1fr 5fr 1fr;'>";
 if(isset($_POST['checkbox'])){
+    $map = $conn -> real_escape_string($_POST['mapname']);
     $checkbox = $_POST['checkbox'];
     echo '<h4>Are you sure that you want to delete these records:</h4><div style="min-height: 350px;max-height: 350px;
     overflow: scroll;width: 100%;">';
@@ -48,7 +48,7 @@ else{
         })
         console.log(steamid);
         $.ajax({
-            url:'scripts/ajax/deletequery.php',
+            url:'scripts/ajax/queries/deletequery.php',
             type: 'POST',
             data: {steamid: steamid, map:map},
             dataType: 'text',

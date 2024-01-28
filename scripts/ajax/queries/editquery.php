@@ -1,5 +1,5 @@
 <?php
-    require('../../config.php');
+    require('../../../config.php');
     $nick = $conn->real_escape_string($_POST['nickname']);
     $ftime = $conn->real_escape_string($_POST['ftime']);
     $ticks = $conn->real_escape_string($_POST['ticks']);

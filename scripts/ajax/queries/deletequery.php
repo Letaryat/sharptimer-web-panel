@@ -1,5 +1,5 @@
 <?php
-require('../../config.php');
+require('../../../config.php');
 $map = $conn -> real_escape_string($_POST['map']);
 if(isset($_POST['steamid'])){
     $steamids = $_POST['steamid'];
