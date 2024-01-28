@@ -60,6 +60,16 @@ main{
     background:#ff7272 !important;
     box-shadow: 1px 5px 0px 0px #790000;
 }
+
+.add li{
+    background:#5affc0 !important;
+    color: #00793d;
+}
+.add li:hover{
+    background:#72ffc9 !important;
+    box-shadow: 1px 5px 0px 0px #00794b;
+}
+
 .vip li{
     background:#ffa45a !important;
     color: #864a1a;
@@ -96,6 +106,12 @@ main{
 }
 .adminpanel p:nth-child(1){
     font-size: 25px;
+}
+
+.row img{
+    width: 276px;
+    height: 55px;
+    border-radius: 0;
 }
 
 
