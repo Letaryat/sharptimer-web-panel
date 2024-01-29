@@ -2,22 +2,13 @@
 #idk what is happening here but it works somehow :)
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $z = UriExplode($uri);
-$x = UriExplodeControllers($uri);
-$filename = "modules/" . $x . ".php";
-#echo $filename;
-
-#I think that this isn't needed anymore since I've made a dynamic router but:
-#If I would like to make a modules not in controllers folder but for example in module folder it should be needed
-#The dynamic router checks if the file exists in controllers folder and if so it requires a file. So let it stay for now.
+$filename = "modules/" . UriExplodeControllers($uri) . ".php";
 $routes = [
     $z => 'controllers/index.php',
     $z.'profile' => 'controllers/profile.php',
     $z.'adminpanel' => 'controllers/adminpanel.php',
     $z.'vippanel' => 'controllers/vippanel.php',
 ];
-#echo "<div class='row' id='strangerdanger'>Routing URL: ".$uri . "</div><br/>";
-#echo $filename;
-
 if(array_key_exists($uri, $routes)){
     require $routes[$uri];
 }

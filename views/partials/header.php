@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="<?php echo BasicURL();?>views/assets/css/style.css?version=4">
-    <link rel="stylesheet" type="text/css" href="<?php echo BasicURL();?>views/assets/css/profiles.css?version=4">
-    <link href="<?php echo BasicURL();?>views/assets/css/hamburgers.min.css" rel="stylesheet">
-    <script type="text/javascript" src="<?php echo BasicURL();?>views/assets/js/jquery-3.7.1.min.js"></script>
-    <script type="text/javascript" src="<?php echo BasicURL();?>views/assets/js/jquery.mask.js"></script>
-    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo BasicURL();?>views/assets/images/favicons/favicon-32x32.png">
+    <link rel="stylesheet" type="text/css" href="views/assets/css/style.css?version=4">
+    <link rel="stylesheet" type="text/css" href="views/assets/css/profiles.css?version=4">
+    <link href="/views/assets/css/hamburgers.min.css" rel="stylesheet">
+    <script type="text/javascript" src="views/assets/js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="views/assets/js/jquery.mask.js"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="views/assets/images/favicons/favicon-32x32.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo $pagetitle ?>">
     <meta property="og:description" content="Your statistics in one place!">

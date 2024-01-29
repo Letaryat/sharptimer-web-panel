@@ -9,11 +9,11 @@
                     <?php echo $footerdesc ?>
                 </p>
             </div>
-            <div class="authors">SharpTimer: <a href="https://github.com/DEAFPS/SharpTimer">deafps</a> <br /> Web panel:
+            <div class="authors">SharpTimer: <a href="https://github.com/DEAFPS/SharpTimer">deafps</a> <br /> Web panel 1.1:
                 <a href="https://github.com/Letaryat">Letaryat</a>
             </div>
         </div>
     </footer>
-    <script type="text/javascript" src="<?php echo BasicURL();?>views/assets/js/main.js"></script>
+    <script type="text/javascript" src="views/assets/js/main.js"></script>
 </body>
 </html>

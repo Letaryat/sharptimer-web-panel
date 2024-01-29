@@ -1,6 +1,4 @@
 
-    <div id="strangerdanger" class="row" style="width: 60%;
-  margin-left: 20%;">This is DEV 1.0.2 Version</div>
     <?php if ($serverlist === true && !empty($serverq)) { ?>
         <div class="server-container">
             <div class="serverlist">

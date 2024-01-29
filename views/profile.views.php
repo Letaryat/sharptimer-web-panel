@@ -12,8 +12,7 @@
                             <span>
                                 <img id="rank" src="./assets/images/ranks/sharptimer/s<?php echo $rand ?>.svg" alt="rank">
                                 <p><?php if(empty($rowsec)){ echo "no info";} 
-                            else{echo $rowsec['GlobalPoints'];}?></p>
-                                <span style="font-size:8px;"> - (img randomize with every page refresh for testing)</span>
+                            else{echo $rowsec['GlobalPoints'] . " points";}?></p>
                             </span>
 
                         </div>

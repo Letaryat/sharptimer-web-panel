@@ -7,7 +7,7 @@ require('../../../config.php');
     $result = $conn->query($sql);
     if($result->num_rows > 0){
       echo "chuj jeden";
-      $sqlupdate = "UPDATE playerstats SET PlayerName = '$nick', BigGifID = '$gif', IsVip = '1' WHERE SteamID = '$steam'";
+      $sqlupdate = "UPDATE PlayerStats SET PlayerName = '$nick', BigGifID = '$gif', IsVip = '1' WHERE SteamID = '$steam'";
       if ($conn->query($sqlupdate) === TRUE) {
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -15,7 +15,7 @@ require('../../../config.php');
     }
     else{
       echo "chuj dwa";
-      $sqladd = "INSERT INTO playerstats (SteamID, PlayerName, TimesConnected, LastConnected, GlobalPoints, HideTimerHud, HideKeys, SoundsEnabled, IsVip, BigGifID) VALUES ('{$steam}', '{$nick}', 0, 0, 0, 0, 0, 0, 1, '{$gif}')";
+      $sqladd = "INSERT INTO PlayerStats (SteamID, PlayerName, TimesConnected, LastConnected, GlobalPoints, HideTimerHud, HideKeys, SoundsEnabled, IsVip, BigGifID) VALUES ('{$steam}', '{$nick}', 0, 0, 0, 0, 0, 0, 1, '{$gif}')";
       if ($conn->query($sqladd) === TRUE) {
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
