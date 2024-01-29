@@ -1,11 +1,4 @@
-    <main>
-    <?php
-    $test = "1:20:00";
-    $test2 = (float)$test;
-    $test3 = floatval($test);
-    echo $test3;
-    var_dump($test3);
-
-    ?>
+    <main style="flex-flow:column;">
+        <p>this thiny only for dropdown to show up</p>
     </main>
 </html>

@@ -50,7 +50,7 @@ Iść za wrócone życie podziękować Bogu),
 
 // GameQ integration - Creates poorish serverlist at index page.
 #GameQ (serverlist) true (on) or false (off)
-$serverlist = true;
+$serverlist = false;
 
 #Server list:
 #Fakename can be omitted or empty if you don't want it.

@@ -14,6 +14,6 @@
             </div>
         </div>
     </footer>
-    <script type="text/javascript" src="views/assets/js/main.js"></script>
+    <script type="text/javascript" src="views/assets/js/main.js?version=1"></script>
 </body>
 </html>

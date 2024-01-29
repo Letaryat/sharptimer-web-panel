@@ -424,7 +424,7 @@ footer .pagetitle{
     box-sizing: border-box;
     padding: 5px;
     margin-left: -40px;
-    z-index: 99;
+    z-index: 100;
     height: auto !important;
     text-align: justify;
     

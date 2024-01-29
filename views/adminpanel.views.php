@@ -13,8 +13,8 @@
             <p>Welcome back to the Poor-Panel</p>
             <p>What are we going to do today?</p>
             <ul class="admin-functions">
-                <a class="delete"><li>DELETE</li></a>
-                <a class="vip" href="vippanel"><li>Manage VIP</li></a>
+            <a class="vip" href="vippanel"><li>Manage VIP</li></a>
+            <a class="delete"><li>DELETE</li></a>
             </ul>
         </div>
 </div>
