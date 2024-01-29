@@ -6,7 +6,7 @@ if (isset($_GET['sid'])) {
     $query = "SELECT * FROM `PlayerRecords` WHERE SteamID = '{$sidexplode[0]}'";
     $result = mysqli_query($conn, $query) or die("bad query");
     $row = mysqli_fetch_array($result);
-    $querysec = "SELECT * FROM `playerstats` WHERE SteamID = '{$sidexplode[0]}'";
+    $querysec = "SELECT * FROM `PlayerStats` WHERE SteamID = '{$sidexplode[0]}'";
     $resultsec = mysqli_query($conn, $querysec) or die("bad query sec");
     $rowsec = mysqli_fetch_array($resultsec);
     $rand = rand(1, 3);
