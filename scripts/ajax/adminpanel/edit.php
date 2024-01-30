@@ -48,7 +48,6 @@ if ($result->num_rows > 0) {
 <script>
     var formattedtime = "<?php echo $formattedtime ?>";
     $(document).ready(function () {
-        console.log(formattedtime.length);
         $('#formattedtime').mask('00:Z0.000', {translation:  {'Z': {pattern: /[0-6]/, optional: false}}});
         /*
         if( formattedtime.length <= 8){
@@ -73,7 +72,6 @@ if ($result->num_rows > 0) {
                 data: formData,
                 encode: true,
                 success: function (data) {
-                    console.log(data)
                     setTimeout(() => {
                         location.reload()
                     }, 500);

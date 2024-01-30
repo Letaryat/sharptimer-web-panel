@@ -46,14 +46,12 @@ else{
         $(".delete-info").each(function(){
             steamid.push($(this).data('deleteid'));
         })
-        console.log(steamid);
         $.ajax({
             url:'scripts/ajax/queries/deletequery.php',
             type: 'POST',
             data: {steamid: steamid, map:map},
             dataType: 'text',
             success: function(data){
-                //console.log(data);
                 location.reload()
             },
             error:function(jqXHR,textStatus,errorThrown){

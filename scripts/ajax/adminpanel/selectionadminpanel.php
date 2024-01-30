@@ -10,13 +10,11 @@
 
 <script>
             $('.edit').on('click', function () {
-            console.log("help");
             $("input:checked").each(function(){
                 $('input:checkbox').prop('checked', false);
             })
             var steam_id = $(this).data('steamid');
             var map_name = $(this).data('mapname');
-            console.log(steam_id);
             var modal = $('.modal');
             modal.addClass("active fadein");
             $(document.body).addClass('modalactive');

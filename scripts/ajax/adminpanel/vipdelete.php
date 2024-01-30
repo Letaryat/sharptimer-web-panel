@@ -44,7 +44,6 @@ else{
         $(".delete-info").each(function(){
             steamid.push($(this).data('deleteid'));
         })
-        console.log(steamid);
         $.ajax({
             url:'scripts/ajax/queries/vipdeletequery.php',
             type: 'POST',

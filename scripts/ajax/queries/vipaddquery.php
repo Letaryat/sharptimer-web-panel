@@ -1,8 +1,8 @@
 <?php
 require('../../../config.php');
-    $nick = $_POST['nickname'];
-    $gif = $_POST['gif'];
-    $steam = $_POST['steam_id'];
+    $nick = $conn->real_escape_string($_POST['nickname']);
+    $gif = $conn->real_escape_string($_POST['gif']);
+    $steam = $conn->real_escape_string($_POST['steam_id']);
     $sql = "SELECT * FROM PlayerStats WHERE SteamID = '{$steam}'";
     $result = $conn->query($sql);
     if($result->num_rows > 0){

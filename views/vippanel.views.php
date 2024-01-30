@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="views/assets/css/adminpanel.css">
 <div style="position: relative;
   display: flex;
   justify-content: center;
@@ -12,8 +11,8 @@
 <div class="adminpanel">
             <p>Vip management</p>
             <ul class="admin-functions">
-                <a class="add"><li>Add</li></a>
-                <a class="delete"><li>DELETE</li></a>
+                <li class="add"><a >ADD</a></li>
+                <li class="delete"><a>DELETE</a></li>
             </ul>
         </div>
 </div>
@@ -58,21 +57,6 @@
     </div>
 
     <script>
-        $('.modal-exit').on('click', function(){
-            console.log();
-            $('.modal').addClass('fadeout');
-            $('.modal-container').addClass("slidedown");
-            setTimeout(function(){
-            $('.modal').removeClass('active fadein fadeout');
-            $('.modal-container').removeClass('slideup slidedown');
-            $(document.body).removeClass('modalactive');
-            $('.modal-content').remove();
-            }, 500);
-            $("input:checked").each(function(){
-                $('input:checkbox').prop('checked', false);
-            })
-        })
-
         $('.add').on('click', function () {
             $("input:checked").each(function(){
                 $('input:checkbox').prop('checked', false);

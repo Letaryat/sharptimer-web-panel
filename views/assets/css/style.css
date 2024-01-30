@@ -638,6 +638,7 @@ input{
     background: #602e2e;
     color: #e87d7d;
 }
+
 .checkbox-container .checkmark:after{
     content:"";
     position: absolute;

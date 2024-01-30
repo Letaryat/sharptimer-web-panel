@@ -12,7 +12,16 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="views/assets/css/style.css?version=5">
-    <link rel="stylesheet" type="text/css" href="views/assets/css/profiles.css?version=5">
+    <?php
+    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    $z = UriExplode($uri);
+    if($uri === $z."profile"){
+        echo '<link rel="stylesheet" type="text/css" href="views/assets/css/profiles.css?version=5">';
+    }
+    if($uri === $z."adminpanel" || $uri === $z."vippanel"){
+        echo '<link rel="stylesheet" href="views/assets/css/adminpanel.css?version=0">';
+    }
+    ?>
     <link href="/views/assets/css/hamburgers.min.css" rel="stylesheet">
     <script type="text/javascript" src="views/assets/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="views/assets/js/jquery.mask.js"></script>

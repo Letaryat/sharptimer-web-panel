@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="views/assets/css/adminpanel.css">
 <div style="position: relative;
   display: flex;
   justify-content: center;
@@ -13,8 +12,8 @@
             <p>Welcome back to the Poor-Panel</p>
             <p>What are we going to do today?</p>
             <ul class="admin-functions">
-            <a class="vip" href="vippanel"><li>Manage VIP</li></a>
-            <a class="delete"><li>DELETE</li></a>
+            <li class="vip"><a  href="vippanel">Manage VIP</a></li>
+            <li class="delete"><a >DELETE</a></li>
             </ul>
         </div>
 </div>
@@ -202,22 +201,6 @@
                 }
             });
         });
-
-
-        $('.modal-exit').on('click', function(){
-            console.log();
-            $('.modal').addClass('fadeout');
-            $('.modal-container').addClass("slidedown");
-            setTimeout(function(){
-            $('.modal').removeClass('active fadein fadeout');
-            $('.modal-container').removeClass('slideup slidedown');
-            $(document.body).removeClass('modalactive');
-            $('.modal-content').remove();
-            }, 500);
-            $("input:checked").each(function(){
-                $('input:checkbox').prop('checked', false);
-            })
-        })
         $('.delete').on('click', function () {
             var modal = $('.modal');
             modal.addClass("active fadein");

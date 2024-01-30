@@ -25,14 +25,20 @@
     font-weight: 500;
 }
 .admin-functions li{
-    box-sizing: border-box;
-    padding: 10px;
     background: var(--secondary);
     border-radius: 5px;
 }
 .admin-functions li:hover{
     transform: translateY(-5px);
-
+}
+.admin-functions li a{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  justify-content: center;
+  align-content: center;
 }
 main{
     flex-flow: column;
@@ -52,31 +58,39 @@ main{
 
     color:rgb(255, 206, 115);
 }
-.delete li{
+.delete{
     background:#ff5a5a !important;
+
+}
+.delete a{
     color: #790000;
 }
-.delete li:hover{
+.delete:hover{
     background:#ff7272 !important;
     box-shadow: 1px 5px 0px 0px #790000;
 }
 
-.add li{
+.add{
     background:#5affc0 !important;
     color: #00793d;
 }
-.add li:hover{
+.add:hover{
     background:#72ffc9 !important;
     box-shadow: 1px 5px 0px 0px #00794b;
 }
-
-.vip li{
-    background:#ffa45a !important;
-    color: #864a1a;
+.add a{
+    color: #00793d !important;
 }
-.vip li:hover{
+
+.vip{
+    background:#ffa45a !important;
+}
+.vip:hover{
     background:#ffd079 !important;
     box-shadow: 1px 5px 0px 0px #864a1a;
+}
+.vip a{
+    color: #864a1a !important;
 }
 .row .delete{
     color:rgb(255, 125, 125);

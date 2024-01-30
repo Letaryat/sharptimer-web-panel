@@ -2,10 +2,13 @@
         window.onscroll = function(){BoxShadows()};
         function BoxShadows(){
             let leaderboardinfo = document.querySelector(".leaderboard").getBoundingClientRect();
-            if(leaderboardinfo.top < -1){
-                document.querySelector(".info").classList.add("boxshadows");
-            }else{
-                document.querySelector(".info").classList.remove("boxshadows");
+            var infocontainer = document.querySelector(".info");
+            if(infocontainer != null){
+                if(leaderboardinfo.top < -1){
+                    infocontainer.classList.add("boxshadows");
+                }else{
+                    infocontainer.classList.remove("boxshadows");
+                }
             }
         }
         //Toggle mobile menu
@@ -58,27 +61,10 @@
                 selector[i].className = selector[i].className.replace(" active", "");
             }
             e.currentTarget.className += " active";
-            console.log(e);
+            //console.log(e);
         }
     
         function DropDownClick(event){
+            var dropdowns = document.getElementsByClassName('dropdown');
             event.currentTarget.classList.toggle('active');
-            console.log(event);
-        /*
-          let dropdown = document.getElementsByClassName('dropdown-content');
-            if(document.body.classList.contains('active')){
-                dropdown[0].classList.toggle('active');
-            }else{
-                dropdown[1].classList.toggle('active');
-
-            }
-        */
         }
-/*
-        window.addEventListener("resize", function(){
-            if(window.innerWidth > 1024){
-                document.body.classList.remove('active');
-            }
-        })
-
-*/

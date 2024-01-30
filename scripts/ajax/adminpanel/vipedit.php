@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
                 data: formData,
                 encode: true,
                 success: function (data) {
-                    console.log(data)
+                    //console.log(data)
                     setTimeout(() => {
                         location.reload()
                     }, 500);

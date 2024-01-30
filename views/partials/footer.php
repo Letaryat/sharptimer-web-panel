@@ -15,5 +15,6 @@
         </div>
     </footer>
     <script type="text/javascript" src="views/assets/js/main.js?version=1"></script>
+    <script src="views/assets/js/my_jquery.js"></script>
 </body>
 </html>
