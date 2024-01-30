@@ -73,18 +73,6 @@
                 <?php
                 SocialURL();
                 ?>
-            <!--
-            <div class="dropdown">
-                <li class="dropbtn">DropDown</li>
-                <ul class="dropdown-content">
-                    <li><a href="dupnie">Error Page</a></li>
-                    <li><a href="">link</a></li>
-                    <li><a href="">link</a></li>
-                    <li><a href="">link</a></li>
-                    <li><a href="">link</a></li>
-                    <li><a href="">link</a></li>
-                </ul>
-            </div> -->
             <?php
             if(!isset($_SESSION['steamid'])) {
 
@@ -100,7 +88,9 @@
                         <li><a href='profile?sid=".$steamprofile['steamid']."/'>".$steamprofile['personaname']."</a></li>
                         <li><a href=''>link</a></li>";
                         if(in_array($steamprofile['steamid'], $admins)){
-                            echo "<li><a href='adminpanel'>Admin Panel</a></li>";
+                            echo "<li><a href='adminpanel'>Admin Panel</a></li>
+                                  <li><a href='vippanel'>Vip Panel</a></li>
+                            ";
                         }
                 echo "<form id='steam-logout-form' action='' method='get'><button class='steam-button' name='logout' type='submit'><i class='fa-solid fa-arrow-right-from-bracket'></i>Logout</button></form>
                         </ul>
