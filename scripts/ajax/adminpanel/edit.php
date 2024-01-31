@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
         <label for="time">Ticks:</label>
         <input id="ticks" type="text" class="time" name="ticks" value="' . $row['TimerTicks'] . '" required >
         <label for="finished">Times Finished</label>
-        <input type="number" min="0" id="finished" name="finished" value="" required>
+        <input type="number" min="0" id="finished" name="finished" value="'.$row['TimesFinished'].'" required>
         <div class="form-button-container">
         <input id="success" type="submit" value="Update">
         </div>
@@ -65,6 +65,7 @@ if ($result->num_rows > 0) {
                 ticks: $("#ticks").val(),
                 steam_id : $('#steam-id').data('steam'),
                 map_name : $('.mapname-edit').data('mapname'),
+                finished : $("#finished").val(),
             };
             $.ajax({
                 type: "POST",

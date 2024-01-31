@@ -22,7 +22,7 @@
         echo '<link rel="stylesheet" href="views/assets/css/adminpanel.css?version=0">';
     }
     ?>
-    <link href="/views/assets/css/hamburgers.min.css" rel="stylesheet">
+    <link href="views/assets/css/hamburgers.min.css" rel="stylesheet">
     <script type="text/javascript" src="views/assets/js/jquery-3.7.1.min.js"></script>
     <script type="text/javascript" src="views/assets/js/jquery.mask.js"></script>
     <link rel="icon" type="image/png" sizes="32x32" href="views/assets/images/favicons/favicon-32x32.png">

@@ -20,3 +20,18 @@ $(document).keyup(function(e){
         }
     }
 })
+
+$('.donate').click(function(){
+    var widthdonate = $('.donate-content').width() + 'px';
+    $('.donate').toggleClass('active');
+    if($('.donate').hasClass('active')){
+        $('.donate').css('transform','translateX(0px)');
+    }else{
+        $('.donate').css('transform','translateX(-'+widthdonate+')');
+    }
+})
+
+$(document).ready(function() {
+    var widthdonate = $('.donate-content').width() + 'px';
+    $('.donate').css('transform','translateX(-'+widthdonate+')');
+});

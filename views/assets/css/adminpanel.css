@@ -3,8 +3,8 @@
     position: relative;
     width: 80%;
     text-align: justify;
-    background: var(--stripe-hover);
-    border: 1px solid var(--hover);
+    background: var(--secondary);
+    border: 1px solid #1e222f;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -45,7 +45,8 @@ main{
 }
 
 .row{
-    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+   /* grid-template-columns: 1fr 2fr 1fr 1fr 2fr 1fr 1fr; */
+   grid-template-columns: 1fr 2fr 2fr 2fr 2fr 1fr 1fr;
 }
 .row .admin-button{
     text-align: center;
@@ -96,9 +97,11 @@ main{
     color:rgb(255, 125, 125);
 
 }
+/*
 .info .row span:nth-child(5){
     text-align: center;
 }
+*/
 .player-edit{
     position: relative;
     display:flex;

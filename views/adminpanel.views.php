@@ -162,6 +162,7 @@
                         <span> <i class="fa-solid fa-person-running"></i> Player </span>
                         <span> <i class="fa-solid fa-clock"></i> Time</span>
                         <span> <i class="fa-solid fa-map"></i> Map </span>
+                        <span> <i class="fa-solid fa-map"></i> Times finished </span>
                         <span> <i class="fa-solid fa-map"></i> Action </span>
                     </div>
                 </div>
