@@ -271,7 +271,7 @@ main{
 
 .row{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
     align-items: center;
     margin-top: 5px;
     background-color: var(--secondary);
@@ -704,6 +704,8 @@ input{
     display: flex;
     z-index: 110;
     border-radius: 10px;
+    transform: translateX(-500px);
+    transition: 0.2s cubic-bezier(1, 0, 0, 1) all;
 }
 .donate-container{
     display: flex;
@@ -717,8 +719,11 @@ input{
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background: var(--stripe-hover);
+    background: #1c243b;
     border-radius: 0px 10px 10px 0px;
+}
+.donate-button:hover{
+    cursor: pointer;
 }
 .donate-content{
     display: flex;
@@ -727,24 +732,49 @@ input{
     flex-direction: column;
     position: relative;
     background: var(--stripe-hover);
-    border-radius: 0px 10px 10px 0px;
+    /*border-radius: 0px 10px 10px 0px;*/
     overflow: auto;
 }
 .donate-content li{
     margin:0 !important;
-    background: var(--hover);
+    background: linear-gradient(to left, var(--hover) 50%, #1c243b 50%) right;
+    background-size: 200%;
     box-sizing: border-box;
     padding: 10px;
     width: 100%;
 }
-.donate-content li a:hover{
-    color:var(--secondary);
+.donate-content li:hover{
+    color:var(--hover);
+    background-position: left;
 }
+
+
+
+.donate-content li a:has(.fa-mug-hot):hover{
+    color:#FF5E5B;
+}
+
+.donate-content li a:has(.fa-heart):hover{
+    color:#ff4794;
+}
+
+
+/* only icon colored */
+
+/*
+
+.donate-content li a:hover .fa-mug-hot{
+    color:#8a4807;
+}
+.donate-content li a:hover .fa-heart{
+    color:#ff4794;
+}
+
+*/
+
+
 .donate.active{
     transform: translateX(0px) !important;
-}
-.donate.active .donate-content{
-
 }
 
 
@@ -1039,6 +1069,7 @@ input{
     border: 1px solid var(--stripe-hover);
     color: var(--fontcolor);
     border-radius: 10px;
+    margin-bottom:0;
     width: 250px;
     height: 40px;
     transition: 0.3s all cubic-bezier(0.25, 0.46, 0.45, 0.94);

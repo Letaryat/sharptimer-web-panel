@@ -219,12 +219,12 @@
                         <span> <i class="fa-solid fa-person-running"></i> Player </span>
                         <span> <i class="fa-solid fa-clock"></i> Time</span>
                         <span> <i class="fa-solid fa-map"></i> Map </span>
-                        <span> <i class="fa-solid fa-map"></i> Completed </span>
+                        <span> <i class="fa-solid fa-flag-checkered"></i> Finished </span>
                     </div>
                 </div>
                 <div class="players">
                     <?php
-                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE SteamID = '{$sidexplode[0]}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
+                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished` FROM PlayerRecords WHERE SteamID = '{$sidexplode[0]}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
                     $i = 0;
                     $result = $conn->query($sql);
                     if($result->num_rows > 0){
@@ -240,7 +240,7 @@
                             <span>'.$row['PlayerName'].'</span>
                             <span>'.$row['FormattedTime'].'</span>
                             <span>'.$row['MapName'].'</span>
-                            <span> A LOT :) </span>
+                            <span>'.$row['TimesFinished'].'</span>
                             </div>';
                         }
                     }

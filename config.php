@@ -13,7 +13,7 @@ if(!$conn){
 #Page title:
 $pagetitle = "SharpTimer Web Panel";
 
-#Default map for leaderboard which should load when joining a website
+#Default map for leaderboard which should load when joining a website || Now it loads global points by default
 $defaultmap = "surf_ace";
 
 #Steam Web Api - It is needed to show player avatars on their profiles. It can be empty, then it will show default steam avatar.
@@ -73,6 +73,20 @@ $serverq = array(
         'host' => '127.0.0.1:27015',
         'fakename' => 'Dead example',
         'fakeip' => ''
+    )
+);
+
+#Donate array for a shelf => If empty shelf won't appear.
+$donatearray = array(
+    0 => array(
+        'url' => 'https://ko-fi.com/letaryat',
+        'icon' => '<i class="fa-solid fa-mug-hot"></i>',
+        'title' => 'Donate me via Ko-FI'
+    ),
+    1 => array(
+        'url' => 'https://ko-fi.com/letaryat',
+        'icon' => '<i class="fa-solid fa-heart"></i>',
+        'title' => 'Another Example'
     )
 );
 

@@ -14,19 +14,32 @@
             </div>
         </div>
     </footer>
+    <?php 
+    if(!empty($donatearray)){
+
+    ?>
     <div class="donate">
         <div class="donate-container">
         <div class="donate-button">
         <i class="fa-solid fa-arrow-right"></i>
         </div>
-
         <ul class="donate-content">
-            <li><a href=""><i class="fa-solid fa-mug-hot"></i> Buy me a coffee!</a></li>
-            <li><a href=""><i class="fa-solid fa-mug-hot"></i> Donate via PayPal</a></li>
+            <?php 
+            if(!empty($donatearray)){
+                for($a = 0; $a < count($donatearray); $a++){
+                    echo '<li><a href="'.$donatearray[$a]['url'].'" target="_blank">'.$donatearray[$a]['icon']." ".$donatearray[$a]['title'].'</a></li>';
+
+                }
+            }
+            ?>
         </ul>
         </div>
-
     </div>
+
+    <?php 
+        }
+    ?>
+
     <script type="text/javascript" src="views/assets/js/main.js?version=1"></script>
     <script src="views/assets/js/my_jquery.js"></script>
 </body>

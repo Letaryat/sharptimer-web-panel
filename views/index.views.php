@@ -144,6 +144,9 @@
                     }
                     
                     ?>>
+
+                    <li class="selector active" data-id="global" onclick="selectorActive(event)">Global Points</li>
+
                     <?php
                         if ($mapdivision === true) {
                             if ($resultsurf->num_rows > 0) {
@@ -215,15 +218,14 @@
                     <div class="row">
                         <span> <i class="fa-solid fa-ranking-star"></i> </span>
                         <span> <i class="fa-solid fa-person-running"></i> Player </span>
-                        <span> <i class="fa-solid fa-clock"></i> Time</span>
-                        <span> <i class="fa-solid fa-map"></i> Map </span>
-
+                        <span> <i class="fa-solid fa-clock"></i> Points</span>
                     </div>
                 </div>
                 <div class="players">
                     <?php
-                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE MapName = '{$defaultmap}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
-                    ShowRows($sql);
+                    //$sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName` FROM PlayerRecords WHERE MapName = '{$defaultmap}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
+                    $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `GlobalPoints` FROM PlayerStats ORDER BY `GlobalPoints` DESC LIMIT $limit";
+                    ShowRowsGlobal($sql);
                     ?>
                 </div>
             </div>
@@ -248,6 +250,26 @@
                 }
             });
         });
+
+        $('.selector').on('click', function () {
+            var data_id = $(this).data('id');
+            $.ajax({
+                url: 'scripts/ajax/shit.php',
+                type: 'POST',
+                data: { id: data_id },
+                dataType: 'text',
+                success: function (data) {
+                    $('.info').html(data);
+                    //console.log(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.info').html('');
+                    alert('Error Loading');
+                }
+            });
+        });
+
+
         $(document).ready(function () {
             $("#search").keyup(function () {
                 var input = $(this).val();

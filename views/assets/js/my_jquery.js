@@ -20,18 +20,29 @@ $(document).keyup(function(e){
         }
     }
 })
-
+var widthdonate = $('.donate-content').width();
 $('.donate').click(function(){
-    var widthdonate = $('.donate-content').width() + 'px';
     $('.donate').toggleClass('active');
     if($('.donate').hasClass('active')){
         $('.donate').css('transform','translateX(0px)');
     }else{
-        $('.donate').css('transform','translateX(-'+widthdonate+')');
+        $('.donate').css('transform','translateX(-'+widthdonate+'px)');
     }
 })
 
 $(document).ready(function() {
-    var widthdonate = $('.donate-content').width() + 'px';
-    $('.donate').css('transform','translateX(-'+widthdonate+')');
+    $('.donate').css('transform','translateX(-'+widthdonate+'px)');
+    var countli = $('.donate-content > li').length;
+    if(countli > 1){
+        $('.donate-content').css('border-radius','0px 10px 10px 0px')
+    }
+    $('.donate-button').on("mouseenter",function(){
+        widthdonate -= 5;
+        $('.donate').css('transform','translateX(-'+widthdonate+'px)');
+    }).on("mouseleave", function(){
+        widthdonate += 5;
+        $('.donate').css('transform','translateX(-'+widthdonate+'px)');
+    })
+
 });
+
