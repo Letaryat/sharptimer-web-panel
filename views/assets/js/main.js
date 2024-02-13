@@ -1,4 +1,7 @@
-        //scroll down:
+var dropdowns = document.getElementsByClassName('dropdown');
+var mappeno = document.querySelector(".mappeno");
+
+      //scroll down:
         window.onscroll = function(){BoxShadows()};
         function BoxShadows(){
             let leaderboardinfo = document.querySelector(".leaderboard").getBoundingClientRect();
@@ -12,7 +15,7 @@
             }
         }
         //Toggle mobile menu
-        var mappeno = document.querySelector(".mappeno");
+
         function toggleMaps(){
             mappeno.classList.toggle("invisible");
             document.querySelector(".togglemaps").classList.toggle("active")
@@ -64,7 +67,20 @@
             //console.log(e);
         }
     
+
         function DropDownClick(event){
-            var dropdowns = document.getElementsByClassName('dropdown');
             event.currentTarget.classList.toggle('active');
+            Array.from(dropdowns).forEach(el =>{
+                if(el !== event.currentTarget){
+                    el.classList.remove('active');
+                }
+            })
+        }
+
+        window.onclick = function(e){
+            if(!e.target.matches('.dropbtn')){
+                Array.from(dropdowns).forEach(el =>{
+                    el.classList.remove('active');
+                })
+            }
         }

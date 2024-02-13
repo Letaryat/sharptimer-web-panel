@@ -58,19 +58,22 @@ $serverlist = false;
 $serverq = array(
     0 => array(
         'type' => 'csgo',
-        'host' => '51.83.172.143:23580',
+        'host' => '51.83.172.143',
+        'port' => '23580',
         'fakename' => '',
         'fakeip' => ''
     ),
     1 => array(
         'type' => 'csgo',
-        'host' => '51.83.172.143:23520',
+        'host' => '51.83.172.143',
+        'port' => '23520',
         'fakename' => '',
         'fakeip' => ''
     ),
     2 => array(
         'type' => 'csgo',
-        'host' => '127.0.0.1:27015',
+        'host' => '127.0.0.1',
+        'port' => '27015',
         'fakename' => 'Dead example',
         'fakeip' => ''
     )

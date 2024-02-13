@@ -28,12 +28,12 @@
                                 echo '<div style="grid-template-columns: 2fr 3fr 1fr 1fr; min-height:55px;" class="row">
                                 <span><a href="profile?sid=' . $row['SteamID'] . '/">' . $row['PlayerName'] . '</a></span>';
                                 if(filter_var($row['BigGifID'], FILTER_VALIDATE_URL) === FALSE){
-                                    echo "Not a valid URL";
+                                    echo "<span>Not a valid URL</span>";
                                 }else{
                                     echo '<img src="'.$row['BigGifID'].'">';
                                 }
                                 echo '
-                                <span style="text-align:left;" href="javascript:void(0)" data-steamid="' . $row['SteamID'] . '"  class="admin-button edit"><i class="fa-solid fa-pen"></i> Edit VIP</span>
+                                <span  href="javascript:void(0)" data-steamid="' . $row['SteamID'] . '"  class="admin-button edit"><i class="fa-solid fa-pen"></i></span>
                                 <label class="checkbox-container">
                                 <input type="checkbox" value="' . $row['SteamID'] . '" class="admin-button"></input>
                                 <span class="checkmark"></span>

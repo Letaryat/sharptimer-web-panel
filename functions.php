@@ -3,6 +3,7 @@
 #getAvatar function is made by: https://github.com/bman46/Steam-Avatar
 function getAvatar($steamIDCode)
 {
+    //require 'gunwo/config.php';
     require 'config.php';
     if (empty($steamapikey)) {
         return "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/";
@@ -66,6 +67,33 @@ function ShowRows($sql)
                 <span>' . $row['PlayerName'] . '</span>
                 <span>' . $row['FormattedTime'] . '</span>
                 <span>' . $row['MapName'] . '</span>
+                <span>' . $row['TimesFinished'] . '</span>
+                </div></a>';
+        }
+    } else {
+        echo "<div id='strangerdanger' class='row'>Player not found.</div>";
+    }
+}
+
+function ShowRowsGlobal($sql)
+{
+    $i = 0;
+    require('config.php');
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $i++;
+            echo '<a href="profile?sid=' . $row['SteamID'] . '/"><div';
+            if ($i % 2 == 0) {
+                echo ' id="stripped"';
+            } else {
+                echo "";
+            }
+            echo ' class="row">
+                <span>' . $i . '</span>
+                <span>' . $row['PlayerName'] . '</span>
+                <span>' . $row['GlobalPoints'] . '</span>
+                <span>' . $row['Cunt'] . '</span>
                 </div></a>';
         }
     } else {
@@ -157,6 +185,7 @@ function ShowRowsProfile($sql, $sid)
                     <span>' . $row['PlayerName'] . '</span>
                     <span>' . $row['FormattedTime'] . '</span>
                     <span>' . $row['MapName'] . '</span>
+                    <span>' . $row['TimesFinished'] . '</span>
                     </div>';
             }
         }
@@ -183,7 +212,8 @@ function ShowRowsAdminPanel($sql)
             <span><a href="profile?sid=' . $row['SteamID'] . '/">' . $row['PlayerName'] . '</a></span>
             <span>' . $row['FormattedTime'] . '</span>
             <span>' . $row['MapName'] . '</span>
-            <span href="javascript:void(0)" data-steamid="' . $row['SteamID'] . '" data-mapname="' . $row['MapName'] . '"  class="admin-button edit"><i class="fa-solid fa-pen"></i> Edit Record</span>
+            <span>' . $row['TimesFinished'] . '</span>
+            <span href="javascript:void(0)" data-steamid="' . $row['SteamID'] . '" data-mapname="' . $row['MapName'] . '"  class="admin-button edit"><i class="fa-solid fa-pen"></i></span>
             <label class="checkbox-container">
             <input type="checkbox" value="' . $row['SteamID'] . '" class="admin-button"></input>
             <span class="checkmark"></span>

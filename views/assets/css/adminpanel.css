@@ -1,17 +1,20 @@
 @import './colors.css';
 .adminpanel{
     position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
     width: 80%;
     text-align: justify;
     background: var(--secondary);
-    border: 1px solid #1e222f;
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
+    min-height: 130px;
 }
 .adminpanel:hover{
-    border:1px solid transparent;
+
     background:var(--secondary);
 }
 .adminpanel ul{

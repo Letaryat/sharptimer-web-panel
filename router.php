@@ -8,6 +8,7 @@ $routes = [
     $z.'profile' => 'controllers/profile.php',
     $z.'adminpanel' => 'controllers/adminpanel.php',
     $z.'vippanel' => 'controllers/vippanel.php',
+    $z.'vipsettings' => 'controllers/vipsettings.php',
 ];
 if(array_key_exists($uri, $routes)){
     require $routes[$uri];

@@ -9,12 +9,12 @@ if (isset($_GET['sid'])) {
     $querysec = "SELECT * FROM `PlayerStats` WHERE SteamID = '{$sidexplode[0]}'";
     $resultsec = mysqli_query($conn, $querysec) or die("bad query sec");
     $rowsec = mysqli_fetch_array($resultsec);
-    $rand = rand(1, 3);
+    $queryfav = "SELECT * FROM `PlayerRecords` WHERE `SteamID` = '{$sidexplode[0]}' ORDER BY `TimesFinished` DESC limit 1";
+    $resultfav = mysqli_query($conn, $queryfav) or die("bad query sec");
+    $rowfav = mysqli_fetch_array($resultfav);
     if (empty($row)) {
         header("Location: error");
     }
-
-
 }
 //SURF SQL:
 $sqlsurf = "SELECT SteamID, MapName FROM `PlayerRecords` WHERE MapName LIKE 'SURF%' and SteamID = '{$sidexplode[0]}' ORDER BY MapName ASC";

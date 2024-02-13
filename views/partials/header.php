@@ -16,9 +16,11 @@
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     $z = UriExplode($uri);
     if($uri === $z."profile"){
-        echo '<link rel="stylesheet" type="text/css" href="views/assets/css/profiles.css?version=5">';
+        echo '<link rel="stylesheet" type="text/css" href="views/assets/css/profiles.css?version=5">
+        <link rel="stylesheet" href="views/assets/css/swiper-bundle.min.css"/>';
+
     }
-    if($uri === $z."adminpanel" || $uri === $z."vippanel"){
+    if($uri === $z."adminpanel" || $uri === $z."vippanel" ||  $uri === $z."vipsettings"){
         echo '<link rel="stylesheet" href="views/assets/css/adminpanel.css?version=0">';
     }
     ?>
@@ -87,6 +89,12 @@
                     <ul class='dropdown-content'>
                         <li><a href='profile?sid=".$steamprofile['steamid']."/'>".$steamprofile['personaname']."</a></li>
                         <li><a href=''>link</a></li>";
+                        $queryplayervip = "SELECT * FROM `playerstats` WHERE SteamID = '{$steamprofile['steamid']}' AND `IsVip` = '1'";
+                        $resultplayervip = mysqli_query($conn, $queryplayervip) or die("bad query");
+                        $rowplayervip = mysqli_fetch_array($resultplayervip);
+                        if(!empty($rowplayervip) || in_array($steamprofile['steamid'], $admins)){
+                            echo "<li><a href='vipsettings'>VIP Settings</a></li>";
+                        }
                         if(in_array($steamprofile['steamid'], $admins)){
                             echo "<li><a href='adminpanel'>Admin Panel</a></li>
                                   <li><a href='vippanel'>Vip Panel</a></li>

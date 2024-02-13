@@ -38,6 +38,9 @@
 
     <?php 
         }
+        if($uri === $z."profile"){
+            echo '<script type="text/javascript" src="views/assets/js/swiper-bundle.min.js"></script>';
+        }
     ?>
 
     <script type="text/javascript" src="views/assets/js/main.js?version=1"></script>
