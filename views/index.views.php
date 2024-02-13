@@ -156,7 +156,7 @@
             </div>
             <div class="players">
                 <?php
-                $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `GlobalPoints`, (SELECT COUNT(*) FROM PlayerRecords WHERE playerstats.SteamID = playerrecords.SteamID) AS 'Cunt' FROM playerstats ORDER BY `GlobalPoints` DESC LIMIT $limit";
+                $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `GlobalPoints`, (SELECT COUNT(*) FROM PlayerRecords WHERE PlayerStats.SteamID = PlayerRecords.SteamID) AS 'Cunt' FROM PlayerStats ORDER BY `GlobalPoints` DESC LIMIT $limit";
                 ShowRowsGlobal($sql);
                 ?>
             </div>

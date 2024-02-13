@@ -1,5 +1,5 @@
 <?php
-$queryplayervip = "SELECT * FROM `playerstats` WHERE SteamID = '{$steamprofile['steamid']}' AND `IsVip` = '1'";
+$queryplayervip = "SELECT * FROM `PlayerStats` WHERE SteamID = '{$steamprofile['steamid']}' AND `IsVip` = '1'";
 $resultplayervip = mysqli_query($conn, $queryplayervip) or die("bad query");
 $rowplayervip = mysqli_fetch_array($resultplayervip);
 

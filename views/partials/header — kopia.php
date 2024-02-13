@@ -1,4 +1,4 @@
-
+﻿
 
 
 <!DOCTYPE html>
@@ -92,7 +92,7 @@
                     <ul class='dropdown-content'>
                         <li><a href='profile?sid=".$steamprofile['steamid']."/'>".$steamprofile['personaname']."</a></li>
                         <li><a href=''>link</a></li>";
-                        $queryplayervip = "SELECT * FROM `PlayerStats` WHERE SteamID = '{$steamprofile['steamid']}' AND `IsVip` = '1'";
+                        $queryplayervip = "SELECT * FROM `playerstats` WHERE SteamID = '{$steamprofile['steamid']}' AND `IsVip` = '1'";
                         $resultplayervip = mysqli_query($conn, $queryplayervip) or die("bad query");
                         $rowplayervip = mysqli_fetch_array($resultplayervip);
                         if(!empty($rowplayervip) || in_array($steamprofile['steamid'], $admins)){

@@ -1,6 +1,6 @@
 <?php
 require '../scripts/SourceQuery/bootstrap.php';
-require '../gunwo/config.php';
+require '../config.php';
 use xPaw\SourceQuery\SourceQuery;
 
 define('SQ_TIMEOUT', 1);
