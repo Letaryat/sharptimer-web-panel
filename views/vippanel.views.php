@@ -21,7 +21,7 @@
         <div style="width:100%;"class="leaderboard">
                 <div class="players">
                     <?php
-                        $sql = "SELECT * from playerstats WHERE IsVip = 1";
+                        $sql = "SELECT * from PlayerStats WHERE IsVip = 1";
                         $result = mysqli_query($conn, $sql) or die("Bad query");
                         if ($result->num_rows > 0) {
                             while($row = mysqli_fetch_assoc($result)){
