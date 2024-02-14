@@ -1345,3 +1345,23 @@ input:focus{
     display: flex;
     flex-flow: column;
 }
+.toast{
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.toast-element{
+  position: relative;
+  background: var(--stripe-hover);
+  padding: 20px;
+  box-sizing: border-box;
+  width: 300px;
+  border-radius: var(--borderradius);
+  display: flex;
+  justify-content: center;
+  color: #000;
+}

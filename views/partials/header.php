@@ -95,7 +95,7 @@
                         $queryplayervip = "SELECT * FROM `PlayerStats` WHERE SteamID = '{$steamprofile['steamid']}' AND `IsVip` = '1'";
                         $resultplayervip = mysqli_query($conn, $queryplayervip) or die("bad query");
                         $rowplayervip = mysqli_fetch_array($resultplayervip);
-                        if(!empty($rowplayervip) || in_array($steamprofile['steamid'], $admins)){
+                        if(!empty($rowplayervip)){
                             echo "<li><a href='vipsettings'>VIP Settings</a></li>";
                         }
                         if(in_array($steamprofile['steamid'], $admins)){

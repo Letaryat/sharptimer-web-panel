@@ -5,7 +5,7 @@ $rowplayervip = mysqli_fetch_array($resultplayervip);
 
 if (!isset($_SESSION['steamid'])) {
     header("Location: error");
-} elseif (!empty($rowplayervip) || !in_array($steamprofile['steamid'], $admins)) {
+} elseif (empty($rowplayervip) || !in_array($steamprofile['steamid'], $admins)) {
     header("Location: error");
 } else {
     require 'views/vipsettings.views.php';
