@@ -4,7 +4,11 @@ var mappeno = document.querySelector(".mappeno");
       //scroll down:
         window.onscroll = function(){BoxShadows()};
         function BoxShadows(){
-            let leaderboardinfo = document.querySelector(".leaderboard").getBoundingClientRect();
+            var leaderboard = document.querySelector(".leaderboard");
+            if(leaderboard === null){
+                return;
+            }
+            var leaderboardinfo = leaderboard.getBoundingClientRect();
             var infocontainer = document.querySelector(".info");
             if(infocontainer != null){
                 if(leaderboardinfo.top < -1){

@@ -237,7 +237,7 @@ main{
 }
 
 #strangerdanger{
-    background-color: #f056561a;
+    background-color: #27191f;
     border: 1px solid #ff898961;
     overflow: hidden;
     position: relative;
@@ -245,7 +245,7 @@ main{
 
 }
 #strangerdanger:hover{
-    background-color: #f0565652 !important;
+    background-color: #58272c !important;
     border: 1px solid #ff898996 !important;
 }
 #strangerdanger:before{
@@ -289,6 +289,11 @@ main{
     width: 25px;
     height: 25px;
     border-radius: 100%;
+}
+.players .row span:nth-child(4){
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .players .row span:nth-child(2){
@@ -709,8 +714,14 @@ input{
     opacity: 0.7;
 }
 #success{
-    background:#46ff6e;
-    border:none;
+    background-color: #19271b;
+    border: 1px solid #89ff9061;
+    color: #447948 !important;
+}
+#success:hover{
+    background-color: #36553a;
+    border: 1px solid #6afa7491;
+    color: #6afa7491 !important;
 }
 #cancel{
     background:#ff5a5a;
@@ -872,8 +883,163 @@ input{
   
 
 
+  .vip-preview{
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 50%;
+    background-repeat: no-repeat;
+    background-position: 50% 84%;
+    height: 200px;
+}
+.newgif{
+    margin-top: 10px;
+    max-width: 275px;
+}
+.newgif-input-container{
+    display: flex;
+    flex-flow: column;
+}
+
+
+/* TOAST */
+.toast{
+  position:absolute;
+  width: 100%;
+  height: 100px;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  pointer-events: none;
+}
+.toast.visible{
+    visibility: visible !important;
+}
+.toast-element{
+  position: relative;
+  background: var(--stripe-hover);
+  padding: 20px;
+  box-sizing: border-box;
+  width: 300px;
+  border-radius: var(--borderradius);
+  display: flex;
+  justify-content: center;
+  color: #000;
+}
+
+
+.mobile-nav{
+    display: none;
+}
+#topbutton{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    top:-25px;
+    height: 45px;
+    width: 45px;
+    background:var(--background);
+    color:var(--hover);
+    border-radius: 100%;
+    border:1px solid transparent;
+}
+#topbutton:hover{
+    top:-35px;
+    background:var(--stripe-hover);
+    color:var(--fontcolor);
+    border:1px solid var(--hover);
+}
+.helpme{
+    margin-left: 50px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.helpme i{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
+    background: var(--background);
+    border: 1px solid var(--stripe-hover);
+    border-radius: 5px;
+}
+.helpme i:hover{
+    cursor: pointer;
+}
+.helpme input{
+    display: block;
+    visibility: visible;
+    box-sizing: border-box;
+    padding: 8px;
+    background: var(--background);
+    border: 1px solid var(--stripe-hover);
+    color: var(--fontcolor);
+    border-radius: 10px;
+    margin-bottom:0;
+    width: 250px;
+    height: 40px;
+    transition: 0.3s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+input:focus{
+    outline: none;
+}
+
+.hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::after, .hamburger.is-active .hamburger-inner::before {
+    background-color:var(--fontcolor) !important;
+}
+
+.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before {
+    background-color:var(--fontcolor) !important;
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin-top:15px;
+    transition: 0.2s;
+}
 
 /* RWD: */
+
+
+@media (max-width: 1280px){
+    .modes {
+        grid-template-columns: 1fr 1fr;
+        gap:10px;
+      }
+    .header-container{
+        height: 100%;
+        flex-flow: column;
+
+    }
+    .header-container ul{
+        margin-top: 10px;
+    }
+    .moreinfo p{
+        font-size: 14px;
+        width: 125px;
+        text-align: right;
+    }
+    footer a{
+        color:#3770ff;
+    }
+}
+
+
 @media (max-width: 1024px) {
     
     header{
@@ -1058,32 +1224,10 @@ input{
         top:auto;
         bottom: 10px;
     }
-
-
-
-}
-
-@media (max-width: 1280px){
-    .modes {
-        grid-template-columns: 1fr 1fr;
-        gap:10px;
-      }
-    .header-container{
-        height: 100%;
-        flex-flow: column;
-
+    .vip-preview{
+        width: 100%;
     }
-    .header-container ul{
-        margin-top: 10px;
-    }
-    .moreinfo p{
-        font-size: 14px;
-        width: 125px;
-        text-align: right;
-    }
-    footer a{
-        color:#3770ff;
-    }
+
 }
 
 @media (max-width: 768px) {
@@ -1122,12 +1266,17 @@ input{
         font-family: 'Font Awesome 6 Free';
         font-weight: 800;
       }
+      /*
       .row span{
         position: relative;
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 100%;
       }
+      */
+    .row span::before{
+        margin-right: 5px;
+    }
     .row span:nth-child(1)::before{
         content: "\e561";
 
@@ -1151,93 +1300,9 @@ input{
 }
 
 
-.mobile-nav{
-    display: none;
-}
-#topbutton{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    top:-25px;
-    height: 45px;
-    width: 45px;
-    background:var(--background);
-    color:var(--hover);
-    border-radius: 100%;
-    border:1px solid transparent;
-}
-#topbutton:hover{
-    top:-35px;
-    background:var(--stripe-hover);
-    color:var(--fontcolor);
-    border:1px solid var(--hover);
-}
-.helpme{
-    margin-left: 50px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-}
-.helpme i{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    width: 30px;
-    height: 30px;
-    background: var(--background);
-    border: 1px solid var(--stripe-hover);
-    border-radius: 5px;
-}
-.helpme i:hover{
-    cursor: pointer;
-}
-.helpme input{
-    display: block;
-    visibility: visible;
-    box-sizing: border-box;
-    padding: 8px;
-    background: var(--background);
-    border: 1px solid var(--stripe-hover);
-    color: var(--fontcolor);
-    border-radius: 10px;
-    margin-bottom:0;
-    width: 250px;
-    height: 40px;
-    transition: 0.3s all cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-input:focus{
-    outline: none;
-}
-/* stupid animations */
 
-.fadein{
-    animation-name: fade;
-    animation-duration: 0.5s;
-    animation-fill-mode:forwards;
-}
-.fadeout{
-    animation-name: fadeout;
-    animation-duration: 0.5s;
-    animation-fill-mode:forwards;
-}
 
-#fadeout{
-    animation-name: fadeout;
-    animation-duration: 0.5s;
-    animation-fill-mode:forwards;
-}
-
-.hamburger.is-active .hamburger-inner, .hamburger.is-active .hamburger-inner::after, .hamburger.is-active .hamburger-inner::before {
-    background-color:var(--fontcolor) !important;
-}
-
-.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before {
-    background-color:var(--fontcolor) !important;
-}
+/* Animations */
 
 @keyframes slideup{
     0%{
@@ -1326,42 +1391,21 @@ input:focus{
     }
 }
 
-.vip-preview{
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 50%;
-    background-repeat: no-repeat;
-    background-position: 50% 100%; 
-    height:500px;
+/* stupid animations */
+
+.fadein{
+    animation-name: fade;
+    animation-duration: 0.5s;
+    animation-fill-mode:forwards;
 }
-.newgif{
-    margin-top: 10px;
-    max-width: 275px;
+.fadeout{
+    animation-name: fadeout;
+    animation-duration: 0.5s;
+    animation-fill-mode:forwards;
 }
-.newgif-input-container{
-    display: flex;
-    flex-flow: column;
-}
-.toast{
-  position: absolute;
-  width: 100%;
-  height: 100px;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.toast-element{
-  position: relative;
-  background: var(--stripe-hover);
-  padding: 20px;
-  box-sizing: border-box;
-  width: 300px;
-  border-radius: var(--borderradius);
-  display: flex;
-  justify-content: center;
-  color: #000;
+
+#fadeout{
+    animation-name: fadeout;
+    animation-duration: 0.5s;
+    animation-fill-mode:forwards;
 }

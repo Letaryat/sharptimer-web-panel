@@ -9,7 +9,9 @@
   margin-top: 15px;
   ">
 <div class="adminpanel">
-            <p>Vip management</p>
+            <p>Welcome to the Poor Vip management!</p>
+            <p>Who's gonna be lucky to gain a VIP access? ❤️</p>
+            <p>Or unlucky to get VIP access removed 💔</p>
             <ul class="admin-functions">
                 <li class="add"><a >ADD</a></li>
                 <li class="delete"><a>DELETE</a></li>

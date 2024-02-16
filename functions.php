@@ -3,8 +3,8 @@
 #getAvatar function is made by: https://github.com/bman46/Steam-Avatar
 function getAvatar($steamIDCode)
 {
-    //require 'gunwo/config.php';
-    require 'config.php';
+    require 'gunwo/config.php';
+    //require 'config.php';
     if (empty($steamapikey)) {
         return "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/";
     } else {
@@ -48,6 +48,64 @@ function BasicURL()
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
     return UriExplode($uri);
 }
+
+function CustomStyles(){
+    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    $filename = glob('modules/pages/*');
+    foreach($filename as $page){
+        $page2 = explode("/", $page);
+        if($page2[2] === UriExplodeControllers($uri)){
+            if(file_exists($page.'/'.$page2[2].'_style.css')){
+                //echo $page;
+                echo '<link rel="stylesheet" type="text/css" href="'.$page.'/'.$page2[2].'_style.css">';
+            }
+        }
+    }
+}
+
+function CustomJS(){
+    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    $filename = glob('modules/pages/*');
+    foreach($filename as $page){
+        $page2 = explode("/", $page);
+        if($page2[2] === UriExplodeControllers($uri)){
+            if(file_exists($page.'/'.$page2[2].'_script.js')){
+                echo '<script type="text/javascript"  src="'.$page.'/'.$page2[2].'_script.js"></script>';
+            }
+        }
+    }
+}
+
+function CustomMainStyles(){
+    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    $filename = glob('modules/main/*');
+    $z = UriExplode($uri);
+    foreach($filename as $page){
+        $page2 = explode("/", $page);
+        $page3 = explode("-", $page2[2]);
+        if($uri === $z){
+            if(file_exists($page.'/'.$page3[1].'_style.css')){
+                echo '<link rel="stylesheet" href="'.$page.'/'.$page3[1].'_style.css" type="text/css">';
+            }
+        }
+    }
+}
+function CustomMainJS(){
+    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    $filename = glob('modules/main/*');
+    $z = UriExplode($uri);
+    foreach($filename as $page){
+        $page2 = explode("/", $page);
+        $page3 = explode("-", $page2[2]);
+        //echo $page.'/'.$page3[1].'_script.js'."<br/>";
+        if($uri === $z){
+            if(file_exists($page.'/'.$page3[1].'_script.js')){
+                echo '<script type="module"  src="'.$page.'/'.$page3[1].'_script.js"></script>';
+            }
+        }
+    }
+}
+
 function ShowRows($sql)
 {
     $i = 0;
@@ -130,10 +188,10 @@ function SocialURL()
     if (!empty(glob('./modules'))) {
         $a = 0;
         $exptrzy = [];
-        foreach (glob('modules/*.*') as $filename) {
+        foreach (glob('modules/pages/*') as $filename) {
             $a++;
             $expjeden = explode("/", $filename);
-            $expdwa = explode(".", $expjeden[1]);
+            $expdwa = explode(".", $expjeden[2]);
             array_push($exptrzy, $expdwa[0]);
         }
         $statement = $a > 3;

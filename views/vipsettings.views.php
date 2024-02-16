@@ -1,5 +1,7 @@
-
+<div class="toast slideup"></div>
 <main style="flex-flow:column;">
+    <div style="background: var(--secondary); align-items:center; box-sizing:border-box; border-radius:var(--borderradius); padding:20px;" class="wrapper">
+    <div>
     <h2>Change gif</h2>
     <h3>Gif has to be 275x55 or less</h3>
     <form class="newgif-input-container" id="#form">
@@ -9,14 +11,25 @@
                 <input id="success" type="submit" value="Update">
             </div>
         </form>
-    <div style="justify-content: center" class="wrapper">
+    </div>
+    <div style="justify-content: end" class="wrapper">
         <div style="background-image:url('<?php echo BasicURL(); ?>views/assets/images/vipbanner.jpg')"
             class="vip-preview">
             <div class="newgif">
-                <img style="max-width:275px; height:55px" class="newgif-img" src="<?php echo $rowplayervip['BigGifID']?>">
+                <img style="max-width:275px; height:55px" class="newgif-img" src="<?php if($rowplayervip['BigGifID'] === "x"){
+                  echo "https://i.imgur.com/GYV48np.gif";  
+                }else{
+                 echo $rowplayervip['BigGifID'];
+                } ?>">
             </div>
         </div>
     </div>
+    </div>
+    <!--
+    <div style="padding:20px;"id="strangerdanger">testaaaaaaaaaaaaaaaaaaaaa</div>
+    -->
+
+
 </main>
 
 <script>
@@ -32,7 +45,7 @@
     input.addEventListener('input', function () {
         var url_re = /https?[^<"]+/g
         while (m = url_re.exec(input.value)) {
-            var imgur_re = /^https?:\/\/(\w+\.)?imgur.com\/(\w*\d\w*)+(\.[a-zA-Z]{3})?$/
+            var imgur_re = /^https?:\/\/(\w+\.)?i.imgur.com\/(\w*\d\w*)+(\.[a-zA-Z]{3})?$/
             newgif.src = imgur_re.test(m);
             if (imgur_re.test(m) === true) {
                 newgif.src = m;
@@ -53,17 +66,21 @@
                 data: formData,
                 encode: true,
                 success: function (data) {
-                    console.log(data);
-                    $('body').prepend('<div class="toast slideup"><div id="success" class="toast-element"><p>Gif changed!</p></div></div>')
+                    //console.log(data);
+                    $('.toast').html(data);
+                    $('.toast').addClass('visible');
                     setTimeout(() => {
-                        $(".toast").removeClass('.slideup');
+                        $(".toast").removeClass('slideup');
                         $(".toast").addClass('slidedown');
                         $(".newgif").load(" .newgif > *");
-                        /*
                         setTimeout(() => {
-                            location.reload()
+                            //location.reload();
+                            $(".toast").removeClass('slideup');
+                            $(".toast").removeClass('slidedown');
+                            $('.toast').removeClass('visible');
+                            $('.toast-element').remove();
+
                         }, 500);
-                        */
                     }, 2500);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

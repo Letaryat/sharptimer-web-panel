@@ -1,3 +1,23 @@
+
+
+
+<?php 
+    $filename = glob('modules/main/*');
+    foreach($filename as $page){
+        //echo $page;
+        $exp = explode("modules/main/",$page);
+        $exp2 = explode("-", $exp[1]);
+        //print_r($exp2);
+        if(file_exists($page.'/index.php')){
+            if($exp2[0] > $a = 0){
+                $a++;
+                echo "<div class='container'><div class='wrapper'>";
+                require_once($page.'/index.php');
+                echo "</div></div>";
+            }
+        }
+    }
+?>
 <?php if ($serverlist === true && !empty($serverq)) { ?>
     <div class="server-container">
         <div class="serverlist"></div>
@@ -11,7 +31,9 @@
         <div class="map-list2">
             <div id="sticky">
                 <div class="togglemaps" onclick="toggleMaps()"></div>
+
                 <ul class="modes">
+
                     <?php
                     //SURF SQL:
                     $sqlsurf = "SELECT DISTINCT MapName FROM `PlayerRecords` WHERE MapName LIKE 'SURF%' ORDER BY MapName ASC ";
@@ -78,7 +100,6 @@
                 ?>>
 
                     <li class="selector active" data-id="global" onclick="selectorActive(event)">Global Points</li>
-
                     <?php
                     if ($mapdivision === true) {
                         if ($resultsurf->num_rows > 0) {
@@ -88,6 +109,7 @@
                             } else {
                                 echo '">';
                             }
+                            echo '<li class="selector" data-id="surf_%" onclick="selectorActive(event)">All times SURF</li>';
                             while ($row = $resultsurf->fetch_assoc()) {
                                 echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                             } ?>
@@ -102,6 +124,7 @@
                             } else {
                                 echo '">';
                             }
+                            echo '<li class="selector" data-id="bhop_%" onclick="selectorActive(event)">All times BH</li>';
                             while ($row = $resultbh->fetch_assoc()) {
                                 echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                             }
@@ -114,6 +137,7 @@
                             } else {
                                 echo '">';
                             }
+                            echo '<li class="selector" data-id="kz_%" onclick="selectorActive(event)">All times KZ</li>';
                             while ($row = $resultkz->fetch_assoc()) {
                                 echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                             }
@@ -171,9 +195,9 @@
             url: "views/serverlist.views.php",
             type: "POST",
             beforeSend: function () {
-            $('.serverlist').html('<span style="text-align:center" class="loader"></span>');
-            $('.serverlist').css('grid-template-columns', 'auto');
-            $('.serverlist').css('justify-content', 'center');
+                $('.serverlist').html('<span style="text-align:center" class="loader"></span>');
+                $('.serverlist').css('grid-template-columns', 'auto');
+                $('.serverlist').css('justify-content', 'center');
             },
             success: function (data) {
                 setTimeout(() => {
@@ -194,7 +218,7 @@
             type: 'POST',
             data: { id: data_id },
             dataType: 'text',
-            beforeSend: function(){
+            beforeSend: function () {
                 $('.players').html('<span style="text-align:center" class="loader"></span>');
                 $('.players').css('display', 'flex');
                 $('.players').css('justify-content', 'center');
@@ -238,7 +262,7 @@
                     type: 'POST',
                     data: { input: input },
                     dataType: 'text',
-                    beforeSend: function(){
+                    beforeSend: function () {
                         $('.players').css('display', 'flex');
                         $('.players').css('justify-content', 'center');
                         $('.players').html('<span style="text-align:center" class="loader"></span>');

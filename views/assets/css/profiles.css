@@ -197,6 +197,10 @@
     .player-settings{
         width: 90%;
     }
+    .player-settings .box{
+        height: 150px;  
+        justify-content: center;
+    }
 
 }
 

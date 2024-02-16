@@ -12,11 +12,11 @@
 
             <div class="infos">
                 <h3>
-                    <?php if(empty($row['PlayerName'])){
+                    <?php if (empty($row['PlayerName'])) {
                         echo 'Player stats not found';
-                    }else{
+                    } else {
                         echo $row['PlayerName'];
-                    }?>
+                    } ?>
                 </h3>
                 <span>
                     <img id="rank" src="./assets/images/ranks/sharptimer/s<?php echo $rand ?>.svg" alt="rank">
@@ -37,137 +37,137 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="box">
-                    <div class="icon">
-                        <i class="fa-solid fa-clock"></i>
-                    </div>
-                    <div class="statistics">
-                        <h4>Times connected</h4>
-                        <p>
-                            <?php if (empty($rowsec)) {
-                                echo "no info";
-                            } else {
-                                echo $rowsec['TimesConnected'];
-                            } ?>
-                        </p>
-                    </div>
+                        <div class="icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Times connected</h4>
+                            <p>
+                                <?php if (empty($rowsec)) {
+                                    echo "no info";
+                                } else {
+                                    echo $rowsec['TimesConnected'];
+                                } ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                <div class="box">
-                <div class="icon">
-                        <i class="fa-solid fa-plug"></i>
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-plug"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Last Connected</h4>
+                            <p>
+                                <?php if (empty($rowsec)) {
+                                    echo "no info";
+                                } else {
+                                    echo date("Y-m-d H:i:s", $rowsec['LastConnected']);
+                                } ?>
+                            </p>
+                        </div>
                     </div>
-                    <div class="statistics">
-                        <h4>Last Connected</h4>
-                        <p>
-                            <?php if (empty($rowsec)) {
-                                echo "no info";
-                            } else {
-                                echo date("Y-m-d H:i:s", $rowsec['LastConnected']);
-                            } ?>
-                        </p>
-                    </div>
-                </div>
 
                 </div>
                 <div class="swiper-slide">
                     <div class="box">
-                    <div class="icon">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <div class="statistics">
-                        <h4>Favourite map</h4>
-                        <p>
-                            <?php if (empty($rowfav)) {
-                                echo "no info";
-                            } else {
-                                echo "<i>".$rowfav['MapName']."</i> - ".$rowfav['TimesFinished'];
-                            } ?>
-                        </p>
-                    </div>
-                    </div>
-                </div> 
-                <div class="swiper-slide">
-                <div class="box">
-                <div class="icon">
-                <i class="fa-solid fa-trophy"></i>
-                    </div>
-                    <div class="statistics">
-                        <h4>Records</h4>
-                        <p>
-                            <?php if (empty($rowsec)) {
-                                echo "no info";
-                            } else {
-                                echo mysqli_num_rows($result);
-                            } ?>
-                        </p>
-                    </div>
-                </div>
-
-                </div>           
-                <div class="swiper-slide">
-                <div class="box">
-                <div class="icon">
-                        <i class="fa-solid fa-stopwatch-20"></i>
-                    </div>
-                    <div class="statistics">
-                        <h4>Timer</h4>
-                        <p>
-                            <?php if (empty($rowsec)) {
-                                echo "no info";
-                            } else {
-                                if ($rowsec['HideTimerHud'] === "1") {
-                                    echo "On";
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Favourite map</h4>
+                            <p>
+                                <?php if (empty($rowfav)) {
+                                    echo "no info";
                                 } else {
-                                    echo "Off";
-                                }
-                            } ?>
-                        </p>
+                                    echo "<i>" . $rowfav['MapName'] . "</i> - " . $rowfav['TimesFinished'];
+                                } ?>
+                            </p>
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div class="swiper-slide">
-                <div class="box">
-                <div class="icon">
-                        <i class="fa-regular fa-keyboard"></i>
-                    </div>
-                    <div class="statistics">
-                        <h4>Hidden keys</h4>
-                        <p>
-                            <?php if (empty($rowsec)) {
-                                echo "no info";
-                            } else {
-                                if ($rowsec['HideKeys'] === "1") {
-                                    echo "On";
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Records</h4>
+                            <p>
+                                <?php if (empty($rowsec)) {
+                                    echo "no info";
                                 } else {
-                                    echo "Off";
-                                }
-                            } ?>
-                        </p>
+                                    echo mysqli_num_rows($result);
+                                } ?>
+                            </p>
+                        </div>
                     </div>
-                </div>
 
                 </div>
                 <div class="swiper-slide">
-                <div class="box">
-                <div class="icon">
-                        <i class="fa-solid fa-volume-off"></i>
-                    </div>
-                    <div class="statistics">
-                        <h4>Sounds</h4>
-                        <p>
-                            <?php if (empty($rowsec)) {
-                                echo "no info";
-                            } else {
-                                if ($rowsec['SoundsEnabled'] === "1") {
-                                    echo "On";
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-stopwatch-20"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Timer</h4>
+                            <p>
+                                <?php if (empty($rowsec)) {
+                                    echo "no info";
                                 } else {
-                                    echo "Off";
-                                }
-                            } ?>
-                        </p>
+                                    if ($rowsec['HideTimerHud'] === "1") {
+                                        echo "On";
+                                    } else {
+                                        echo "Off";
+                                    }
+                                } ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-regular fa-keyboard"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Hidden keys</h4>
+                            <p>
+                                <?php if (empty($rowsec)) {
+                                    echo "no info";
+                                } else {
+                                    if ($rowsec['HideKeys'] === "1") {
+                                        echo "On";
+                                    } else {
+                                        echo "Off";
+                                    }
+                                } ?>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-slide">
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa-solid fa-volume-off"></i>
+                        </div>
+                        <div class="statistics">
+                            <h4>Sounds</h4>
+                            <p>
+                                <?php if (empty($rowsec)) {
+                                    echo "no info";
+                                } else {
+                                    if ($rowsec['SoundsEnabled'] === "1") {
+                                        echo "On";
+                                    } else {
+                                        echo "Off";
+                                    }
+                                } ?>
+                            </p>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -312,7 +312,10 @@
             </div>
             <div class="players">
                 <?php
-                $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished` FROM PlayerRecords WHERE SteamID = '{$sidexplode[0]}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
+                //$sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished` FROM PlayerRecords WHERE SteamID = '{$sidexplode[0]}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
+                $sql = "SELECT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, RANK() OVER(ORDER BY `TimerTicks` ASC) AS 'Ranking' FROM PlayerRecords ORDER BY `TimerTicks` ASC";
+                ShowRowsProfile($sql, $sidexplode[0])
+                /*
                 $i = 0;
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
@@ -335,6 +338,7 @@
                 } else {
                     echo "<div id='strangerdanger' class='row'>Player not found.</div>";
                 }
+                */
                 ?>
             </div>
         </div>
@@ -383,6 +387,20 @@
         scrollbar: {
             el: '.swiper-scrollbar',
         },
+        breakpoints: {
+            320: {
+                slidesPerView: 2,
+
+            },
+            480: {
+                slidesPerView: 3,
+
+            },
+            640: {
+                slidesPerView: 4,
+
+            }
+        }
     });
 
 

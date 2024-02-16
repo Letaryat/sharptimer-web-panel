@@ -7,14 +7,13 @@
     width: 80%;
     text-align: justify;
     background: var(--secondary);
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
     min-height: 130px;
 }
 .adminpanel:hover{
-
     background:var(--secondary);
 }
 .adminpanel ul{
@@ -26,6 +25,9 @@
 .adminpanel ul li{
     display: inline-block;
     font-weight: 500;
+    margin-bottom: 0;
+    margin-right:0;
+    margin-left:10px;
 }
 .admin-functions li{
     background: var(--secondary);
@@ -124,8 +126,12 @@ main{
     margin-top:10px;
     margin-bottom: 10px;
 }
+.adminpanel p{
+    margin-top:2px;
+}
 .adminpanel p:nth-child(1){
-    font-size: 25px;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .row img{

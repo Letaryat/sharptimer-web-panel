@@ -9,8 +9,9 @@
   margin-top: 15px;
   ">
 <div class="adminpanel">
-            <p>Welcome back to the Poor-Panel</p>
-            <p>What are we going to do today?</p>
+            <p>Welcome back to the Poor Admin Panel!</p>
+            <p>We're thrilled to have you here ❤️</p>
+            <p>Let's make magic happen! </p>
             <ul class="admin-functions">
             <li class="vip"><a  href="vippanel">Manage VIP</a></li>
             <li class="delete"><a >DELETE</a></li>

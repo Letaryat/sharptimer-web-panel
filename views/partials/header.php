@@ -26,6 +26,8 @@
     if($uri === $z."adminpanel" || $uri === $z."vippanel" ||  $uri === $z."vipsettings"){
         echo '<link rel="stylesheet" href="views/assets/css/adminpanel.css?version=0">';
     }
+    CustomStyles();
+    CustomMainStyles()
     ?>
     <link href="views/assets/css/hamburgers.min.css" rel="stylesheet">
     <script type="text/javascript" src="views/assets/js/jquery-3.7.1.min.js"></script>
@@ -46,6 +48,7 @@
     </title>
 </head>
 <body>
+
     <div id="top"></div>
     <div class="mobiletoggler" onclick="toggleMobile()">
         <button class="hamburger hamburger--spin" type="button" aria-label="Menu">
@@ -90,8 +93,7 @@
                 echo "<div onclick='DropDownClick(event)' class='dropdown'>
                 <img  class='dropbtn' style='border-radius:100%;' src='".$steamprofile['avatar']."'>
                     <ul class='dropdown-content'>
-                        <li><a href='profile?sid=".$steamprofile['steamid']."/'>".$steamprofile['personaname']."</a></li>
-                        <li><a href=''>link</a></li>";
+                        <li><a href='profile?sid=".$steamprofile['steamid']."/'>".$steamprofile['personaname']."</a></li>";
                         $queryplayervip = "SELECT * FROM `PlayerStats` WHERE SteamID = '{$steamprofile['steamid']}' AND `IsVip` = '1'";
                         $resultplayervip = mysqli_query($conn, $queryplayervip) or die("bad query");
                         $rowplayervip = mysqli_fetch_array($resultplayervip);
