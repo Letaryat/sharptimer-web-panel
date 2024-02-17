@@ -3,6 +3,8 @@ require('../../../config.php');
 $gif = $conn->real_escape_string($_POST['gifurl']);
 $steam = $conn->real_escape_string($_POST['steam_id']);
 $nick = $conn->real_escape_string($_POST['nick']);
+$gifexp = explode('/', $gif);
+$gifexp2 = explode('.gif', $gifexp[3]);
 $sql = "SELECT * FROM PlayerStats WHERE SteamID = '{$steam}'";
 $result = $conn->query($sql);
 //$gifvalidate = preg_match('/^(http|https):\/\/(.*?)\.(imgur)\.(com)\/(.*?)\.(png|jpg|gif|PNG|JPG|GIF)$/i',$gif);
@@ -17,7 +19,7 @@ else{
   if($gifsize !== false){
     if($gifsize[0] <= 275 && $gifsize[1] <= 55 ){
       if ($result->num_rows > 0) {
-        $sqlupdate = "UPDATE PlayerStats SET BigGifID = '$gif' WHERE SteamID = '$steam'";
+        $sqlupdate = "UPDATE PlayerStats SET BigGifID = '$gifexp2[0]' WHERE SteamID = '$steam'";
         echo '<div style="display: flex;
         justify-content: space-between;
         align-items: center;" id="success" class="toast-element slideup"><p>Gif changed!</p></div>';

@@ -4,9 +4,11 @@ require('../../../config.php');
     $gif = $conn->real_escape_string($_POST['gif']);
     $steam = $conn->real_escape_string($_POST['steam_id']);
     $sql = "SELECT * FROM PlayerStats WHERE SteamID = '{$steam}'";
+    $gifexp = explode('/', $gif);
+    $gifexp2 = explode('.gif', $gifexp[3]);
     $result = $conn->query($sql);
     if($result->num_rows > 0){
-      $sqlupdate = "UPDATE PlayerStats SET PlayerName = '$nick', BigGifID = '$gif', IsVip = '1' WHERE SteamID = '$steam'";
+      $sqlupdate = "UPDATE PlayerStats SET PlayerName = '$nick', BigGifID = '$gifexp2[0]', IsVip = '1' WHERE SteamID = '$steam'";
       if ($conn->query($sqlupdate) === TRUE) {
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
