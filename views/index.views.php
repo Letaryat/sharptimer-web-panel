@@ -186,11 +186,7 @@ foreach ($filename as $page) {
 </main>
 
 <script>
-
-    var limit = 5
-    var offset = 0;
-    var selectored;
-    var lastid; 
+    var lastID;
     $(document).ready(function () {
         console.log('ladowanko');
         $.ajax({
@@ -214,32 +210,42 @@ foreach ($filename as $page) {
 
     })
 
-    $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() > $(".players").height()) {
-            fetchData();
-            //console.log(selectored);
-          }
-        });
+
+var limit = 0;
+var offset = 5;
+var last; 
+function displayRecords(lim, off) {
+  jQuery.ajax({
+      type: "GET",
+      url: 'scripts/ajax/infinitescroll.php', 
+      data: {limit: limit, offset:offset, last: last},
+      cache: false,
+      beforeSend: function() {
+      },
+      success: function(data) {
+        $(".players").append(data); 
+        window.busy = false;
+        //console.log(data);
+      }
+    });
+}
+
+$(window).scroll(function(){
+    if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
+         limit == offset
+         offset += 5;
+         last = $('.asd').data('last');
+         displayRecords(limit, offset);
+
+     }
+});
 
 
-    function fetchData() {
-        lastid = $('.asd').data('last');
-        $.ajax({
-            url: "scripts/ajax/infinitescroll.php",
-            type: 'POST',
-            data: {last: lastid, id: selectored},
-            beforeSend: function () {
-                //console.log("jeblo");
-            },
-            success: function (data) {
 
-                $('.players').append(data);
-            }
-        })
 
-    }
 
     $('.selector').on('click', function () {
+
         selectored = $(this).data('id');
         var data_id = $(this).data('id');
         $.ajax({
@@ -256,6 +262,7 @@ foreach ($filename as $page) {
                 $('.players').css('display', '');
                 $('.players').css('justify-content', '');
                 $('.players').html(data);
+                lastID = $('.asd').data('last');
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 $('.players').html('');

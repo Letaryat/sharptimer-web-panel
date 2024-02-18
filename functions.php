@@ -128,7 +128,7 @@ function ShowRows($sql)
                 <span>' . $row['TimesFinished'] . '</span>
                 </div></a>';
         }
-        echo '<div class="asd" data-last="'.$i.'"></div>';
+        //echo '<div class="asd" data-last="'.$i.'"></div>';
     } 
 
     else {

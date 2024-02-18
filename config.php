@@ -30,7 +30,7 @@ $mapdivision = true;
 $tabopened = "surf";
 
 // How many records should be displayed in leaderboard:
-$limit = 100;
+//$limit = 100;
 
 #Footer description:
 $footerdesc = '
