@@ -212,23 +212,24 @@ foreach ($filename as $page) {
 
     })
 
-
-
+    var data_id;
+    var end = 0;
+    var limit = 0;
 $(document).ready(function(){
     var busy = true;
-    var limit = 0;
     var offset = 15;
     var last = 0; 
     var clicked = 0;
+
     function displayRecords(lim, off) {
     $.ajax({
       type: "GET",
       async: false,
       url: 'scripts/ajax/infinitescroll.php', 
-      data: {limit: limit, offset:offset, last: last, clicked: clicked},
+      data: {limit: limit, offset:offset, last: last, clicked: clicked, dataid: data_id},
       cache: false,
       beforeSend: function() {
-        console.log('test');
+        //console.log('test');
       },
       success: function(data) {
         $(".players").append(data); 
@@ -252,11 +253,16 @@ $(document).ready(function(){
 
     var targetPosition = 100;
 
+    /*
     var onScroll = function () {
+        if (!(window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+        alert("koniec strony");
+        }else{
         lbheight = $('.leaderboard').height();
-        console.log(lbheight);
+        //console.log(lbheight);
         scrollPosition = $(this).scrollTop();
         //console.log(scrollPosition);
+        console.log(data_id);
         //if (scrollPosition >= targetPosition)
         if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
             //console.log("function hit");
@@ -265,9 +271,36 @@ $(document).ready(function(){
             displayRecords(limit, offset);
             targetPosition += 100;
         }
+        }
+    }
+    $(window).on('scroll', onScroll);
+
+    */
+
+    var onScroll = function () {
+        if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+        //alert("koniec strony");
+        end = 1;
+        }
+        if(end === 0){
+        lbheight = $('.leaderboard').height();
+        //console.log(lbheight);
+        scrollPosition = $(this).scrollTop();
+        //console.log(scrollPosition);
+        console.log(data_id);
+        //if (scrollPosition >= targetPosition)
+        if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
+            //console.log("function hit");
+            limit += 15;
+            last = $('.asd').data('last');
+            displayRecords(limit, offset);
+            targetPosition += 100;
+        }
+        }
     }
 
     $(window).on('scroll', onScroll);
+
 
     /*
     $(window).scroll(function(){
@@ -288,9 +321,12 @@ $(document).ready(function(){
 
 
     $('.selector').on('click', function () {
-
+        limit = 0;
+        end = 0;
+        console.log(limit);
         selectored = $(this).data('id');
-        var data_id = $(this).data('id');
+        data_id = $(this).data('id');
+        //console.log(data_id);
         $.ajax({
             url: 'scripts/ajax/selection.php',
             type: 'POST',

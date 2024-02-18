@@ -4,6 +4,8 @@ require_once("../../config.php");
 $i = 0;
 //$last = $_GET['last'];
 $clicked = $_GET['clicked'];
+$dataid = $_GET['dataid'];
+$checkdata;
 $limit = (intval($_GET['limit']) != 0 ) ? $_GET['limit'] : 5;
 $offset = (intval($_GET['offset']) != 0 ) ? $_GET['offset'] : 0;
 //$sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished` FROM PlayerRecords WHERE MapName LIKE 'surf_ace' ORDER BY `TimerTicks` ASC LIMIT $limit, $offset";
@@ -19,9 +21,11 @@ $resultAll = $conn->query($sqlAll);
 //echo "OSTATEK: " . $resultAll->num_rows;
 $result = $conn->query($sql);
 if($limit > $resultAll->num_rows){
-    return 1;
+    echo "przed: " . $limit;
+    $limit = 5;
+    echo " po : " . $limit;
 }
-elseif ($result->num_rows > 0) {
+if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $i++;
         echo '<a test='.$i.' href="profile?sid=' . $row['SteamID'] . '/"><div';
@@ -38,8 +42,7 @@ elseif ($result->num_rows > 0) {
             <span>' . $row['TimesFinished'] . '</span>
             </div></a>';
     }
-
-
 } 
+
 
 ?>

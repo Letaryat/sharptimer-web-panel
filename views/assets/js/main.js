@@ -63,6 +63,8 @@ var mappeno = document.querySelector(".mappeno");
         }
 
         function selectorActive(e){
+            //window.scrollTo(0, 0);
+            document.getElementById("top").scrollIntoView();
             var selector = document.getElementsByClassName('selector');
             for(i = 0; i < selector.length; i++){
                 selector[i].className = selector[i].className.replace(" active", "");
