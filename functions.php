@@ -120,7 +120,7 @@ function ShowRows($sql)
             } else {
                 echo "";
             }
-            echo ' class="row">
+            echo ' class="row" data_number="'.$i.'">
                 <span>' . $i . '</span>
                 <span>' . $row['PlayerName'] . '</span>
                 <span>' . $row['FormattedTime'] . '</span>
@@ -128,7 +128,10 @@ function ShowRows($sql)
                 <span>' . $row['TimesFinished'] . '</span>
                 </div></a>';
         }
-    } else {
+        echo '<div class="asd" data-last="'.$i.'"></div>';
+    } 
+
+    else {
         echo "<div id='strangerdanger' class='row'>Player not found.</div>";
     }
 }

@@ -10,8 +10,7 @@
   ">
 <div class="adminpanel">
             <p>Welcome to the Poor Vip management!</p>
-            <p>Who's gonna be lucky to gain a VIP access? ❤️</p>
-            <p>Or unlucky to get VIP access removed 💔</p>
+            <p>Here you can manage vip's on your server! </p>
             <ul class="admin-functions">
                 <li class="add"><a >ADD</a></li>
                 <li class="delete"><a>DELETE</a></li>
@@ -29,10 +28,10 @@
                             while($row = mysqli_fetch_assoc($result)){
                                 echo '<div style="grid-template-columns: 2fr 3fr 1fr 1fr; min-height:55px;" class="row">
                                 <span><a href="profile?sid=' . $row['SteamID'] . '/">' . $row['PlayerName'] . '</a></span>';
-                                if(filter_var($row['BigGifID'], FILTER_VALIDATE_URL) === FALSE){
+                                if($row['BigGifID'] === 'x'){
                                     echo "<span>Not a valid URL</span>";
                                 }else{
-                                    echo '<img src="'.$row['BigGifID'].'">';
+                                    echo '<img src="https://i.imgur.com/'.$row['BigGifID'].'.gif">';
                                 }
                                 echo '
                                 <span  href="javascript:void(0)" data-steamid="' . $row['SteamID'] . '"  class="admin-button edit"><i class="fa-solid fa-pen"></i></span>

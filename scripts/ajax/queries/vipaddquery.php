@@ -15,7 +15,7 @@ require('../../../config.php');
       }
     }
     else{
-      $sqladd = "INSERT INTO PlayerStats (SteamID, PlayerName, TimesConnected, LastConnected, GlobalPoints, HideTimerHud, HideKeys, SoundsEnabled, IsVip, BigGifID) VALUES ('{$steam}', '{$nick}', 0, 0, 0, 0, 0, 0, 1, '{$gif}')";
+      $sqladd = "INSERT INTO PlayerStats (SteamID, PlayerName, TimesConnected, LastConnected, GlobalPoints, HideTimerHud, HideKeys, SoundsEnabled, IsVip, BigGifID) VALUES ('{$steam}', '{$nick}', 0, 0, 0, 0, 0, 0, 1, '{$gifexp2[0]}')";
       if ($conn->query($sqladd) === TRUE) {
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

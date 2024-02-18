@@ -19,7 +19,7 @@
                 <img style="max-width:275px; height:55px" class="newgif-img" src="<?php if($rowplayervip['BigGifID'] === "x"){
                   echo "https://i.imgur.com/GYV48np.gif";  
                 }else{
-                 echo $rowplayervip['BigGifID'];
+                 echo 'https://i.imgur.com/'.$rowplayervip['BigGifID'].'.gif';
                 } ?>">
             </div>
         </div>

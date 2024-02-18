@@ -20,8 +20,8 @@
       <div class="swiper-bg"
         style="background:url('https://wewatch.gg/blog/wp-content/uploads/2021/07/CSGO-Surfing.jpg') no-repeat center"></div>
         <div id="important" class="swiper-tag">Important</div>
-      <h2>This is slider number 2!</h2>
-      <p>And I am just a random text!</p>
+      <h2>This is slider number 3!</h2>
+      <p>And I am just a random text helo!!</p>
     </div>
     <!-- SLIDER #? -->
   </div>

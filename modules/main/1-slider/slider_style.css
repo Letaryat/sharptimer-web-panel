@@ -18,8 +18,8 @@
   background-size: 100% !important;
   background-position: 50% 50% !important;
   backdrop-filter: brightness(50%);
-  
 }
+
 .main-page-swiper p{
   text-align: justify;
 }
@@ -35,15 +35,15 @@
   position: absolute;
   border-radius: var(--borderradius);
   background-size: 100% !important;
-  filter: brightness(50%) blur(0px);
+  filter: brightness(50%) blur(0px) grayscale(50%);
   z-index: -9;
   top: 0;
   left: 0;
   transition: 0.3s ease-in-out all;
 }
 .main-page-swiper:hover .swiper-bg{
-  transform:scale(1.5);
-  filter: brightness(50%) blur(2px);
+  transform:scale(1.1);
+  filter: brightness(80%) blur(2px) grayscale(0%);
   border-radius: var(--borderradius);
 }
 .main-page-swiper .swiper-tag{
@@ -63,10 +63,15 @@
   border-radius: var(--borderradius);
 }
 .main-page-swiper .swiper-tag#important{
-  background:rgb(255, 121, 121);
-  color:rgb(168, 63, 63);
+  background-color: #271919;
+  border: 1px solid #ff898961;
+  color: #794444 !important;
 }
-
+.main-page-swiper .swiper-tag#important:hover{
+    background-color: #553636;
+    border: 1px solid #fa6a6a91;
+    color: #fa6a6a91 !important;
+}
 
 @media (max-width:768px){
   .main-page-swiper{

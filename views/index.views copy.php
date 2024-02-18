@@ -1,19 +1,22 @@
-<?php
-$filename = glob('modules/main/*');
-foreach ($filename as $page) {
-    //echo $page;
-    $exp = explode("modules/main/", $page);
-    $exp2 = explode("-", $exp[1]);
-    //print_r($exp2);
-    if (file_exists($page . '/index.php')) {
-        if ($exp2[0] > $a = 0) {
-            $a++;
-            echo "<div class='container'><div class='wrapper'>";
-            require_once($page . '/index.php');
-            echo "</div></div>";
+
+
+
+<?php 
+    $filename = glob('modules/main/*');
+    foreach($filename as $page){
+        //echo $page;
+        $exp = explode("modules/main/",$page);
+        $exp2 = explode("-", $exp[1]);
+        //print_r($exp2);
+        if(file_exists($page.'/index.php')){
+            if($exp2[0] > $a = 0){
+                $a++;
+                echo "<div class='container'><div class='wrapper'>";
+                require_once($page.'/index.php');
+                echo "</div></div>";
+            }
         }
     }
-}
 ?>
 <?php if ($serverlist === true && !empty($serverq)) { ?>
     <div class="server-container">
@@ -177,7 +180,7 @@ foreach ($filename as $page) {
             </div>
             <div class="players">
                 <?php
-                $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `GlobalPoints`, (SELECT COUNT(*) FROM PlayerRecords WHERE PlayerStats.SteamID = PlayerRecords.SteamID) AS 'Cunt' FROM PlayerStats ORDER BY `GlobalPoints` DESC LIMIT 10";
+                $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `GlobalPoints`, (SELECT COUNT(*) FROM PlayerRecords WHERE PlayerStats.SteamID = PlayerRecords.SteamID) AS 'Cunt' FROM PlayerStats ORDER BY `GlobalPoints` DESC LIMIT $limit";
                 ShowRowsGlobal($sql);
                 ?>
             </div>
@@ -186,11 +189,6 @@ foreach ($filename as $page) {
 </main>
 
 <script>
-
-    var limit = 5
-    var offset = 0;
-    var selectored;
-    var lastid; 
     $(document).ready(function () {
         console.log('ladowanko');
         $.ajax({
@@ -211,36 +209,9 @@ foreach ($filename as $page) {
                 }, 50);
             }
         })
-
     })
 
-    $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() > $(".players").height()) {
-            fetchData();
-            //console.log(selectored);
-          }
-        });
-
-
-    function fetchData() {
-        lastid = $('.asd').data('last');
-        $.ajax({
-            url: "scripts/ajax/infinitescroll.php",
-            type: 'POST',
-            data: {last: lastid, id: selectored},
-            beforeSend: function () {
-                //console.log("jeblo");
-            },
-            success: function (data) {
-
-                $('.players').append(data);
-            }
-        })
-
-    }
-
     $('.selector').on('click', function () {
-        selectored = $(this).data('id');
         var data_id = $(this).data('id');
         $.ajax({
             url: 'scripts/ajax/selection.php',
