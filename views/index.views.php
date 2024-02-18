@@ -1,3 +1,5 @@
+<button class="infinitescroll">GUZIOR</button>
+
 <?php
 $filename = glob('modules/main/*');
 foreach ($filename as $page) {
@@ -211,34 +213,75 @@ foreach ($filename as $page) {
     })
 
 
-var limit = 0;
-var offset = 5;
-var last; 
-function displayRecords(lim, off) {
-  jQuery.ajax({
+
+$(document).ready(function(){
+    var busy = true;
+    var limit = 0;
+    var offset = 15;
+    var last = 0; 
+    var clicked = 0;
+    function displayRecords(lim, off) {
+    $.ajax({
       type: "GET",
+      async: false,
       url: 'scripts/ajax/infinitescroll.php', 
-      data: {limit: limit, offset:offset, last: last},
+      data: {limit: limit, offset:offset, last: last, clicked: clicked},
       cache: false,
       beforeSend: function() {
+        console.log('test');
       },
       success: function(data) {
         $(".players").append(data); 
         window.busy = false;
         //console.log(data);
+
       }
     });
 }
 
-$(window).scroll(function(){
+    /*
+    //beka kurwa w chuj to dziala na kliku
+    $('.infinitescroll').on('click', function(){
+        clicked++;
+        console.log(limit);
+        limit += 5;
+        last = $('.asd').data('last');
+        displayRecords(limit, offset);
+    })
+    */
+
+    var targetPosition = 100;
+
+    var onScroll = function () {
+        lbheight = $('.leaderboard').height();
+        console.log(lbheight);
+        scrollPosition = $(this).scrollTop();
+        //console.log(scrollPosition);
+        //if (scrollPosition >= targetPosition)
+        if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
+            //console.log("function hit");
+            limit += 15;
+            last = $('.asd').data('last');
+            displayRecords(limit, offset);
+            targetPosition += 100;
+        }
+    }
+
+    $(window).on('scroll', onScroll);
+
+    /*
+    $(window).scroll(function(){
     if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
-         limit == offset
-         offset += 5;
-         last = $('.asd').data('last');
-         displayRecords(limit, offset);
+         //offset = limit + offset;
+
+
 
      }
-});
+}); */
+
+})
+
+
 
 
 
