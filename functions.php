@@ -106,6 +106,7 @@ function CustomMainJS(){
     }
 }
 
+/*
 function ShowRows($sql)
 {
     $i = 0;
@@ -128,12 +129,18 @@ function ShowRows($sql)
                 <span>' . $row['TimesFinished'] . '</span>
                 </div></a>';
         }
-        //echo '<div class="asd" data-last="'.$i.'"></div>';
+        echo '<div class="last-row-number" data-last="'.$i.'"></div>';
     } 
 
     else {
         echo "<div id='strangerdanger' class='row'>Player not found.</div>";
     }
+}
+*/
+
+function ShowRows($sql, $last){
+
+
 }
 
 function ShowRowsGlobal($sql)
@@ -157,6 +164,7 @@ function ShowRowsGlobal($sql)
                 <span>' . $row['Cunt'] . '</span>
                 </div></a>';
         }
+        echo '<div class="last-row-number" data-last="'.$i.'"></div>';
     } else {
         echo "<div id='strangerdanger' class='row'>Player not found.</div>";
     }

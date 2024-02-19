@@ -108,7 +108,7 @@ foreach ($filename as $page) {
                             } else {
                                 echo '">';
                             }
-                            echo '<li class="selector" data-id="surf_%" onclick="selectorActive(event)">All times SURF</li>';
+                            echo '<li href="#top" class="selector" data-id="surf_%" onclick="selectorActive(event)">All times SURF</li>';
                             while ($row = $resultsurf->fetch_assoc()) {
                                 echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                             } ?>
@@ -188,7 +188,13 @@ foreach ($filename as $page) {
 </main>
 
 <script>
+    //Variables:
     var lastID;
+    var data_id;
+    var end = 0;
+    var limit = 0;
+    var last;
+    //Server list:
     $(document).ready(function () {
         console.log('ladowanko');
         $.ajax({
@@ -212,125 +218,80 @@ foreach ($filename as $page) {
 
     })
 
-    var data_id;
-    var end = 0;
-    var limit = 0;
-$(document).ready(function(){
-    var busy = true;
-    var offset = 15;
-    var last = 0; 
-    var clicked = 0;
+//Infinite scrolling:
+    $(document).ready(function () {
+        var busy = true;
+        var offset = 15;
+        var clicked = 0;
+        function displayRecords(lim, off) {
+            $.ajax({
+                type: "GET",
+                async: false,
+                url: 'scripts/ajax/infinitescroll.php',
+                data: { limit: limit, offset: offset, last: last, clicked: clicked, dataid: data_id },
+                cache: false,
+                beforeSend: function () {
+                    $('.players').append('<span style="text-align:center" class="loader"></span>');
+                    $('.players').css('display', 'flex');
+                    $('.players').css('justify-content', 'center');
+                },
+                success: function (data) {
+                    $('.loader').remove();
+                    $('.players').css('display', '');
+                    $('.players').css('justify-content', '');
+                    $(".players").append(data);
+                    //lastID = $('.asd').data('last');
+                    window.busy = false;
 
-    function displayRecords(lim, off) {
-    $.ajax({
-      type: "GET",
-      async: false,
-      url: 'scripts/ajax/infinitescroll.php', 
-      data: {limit: limit, offset:offset, last: last, clicked: clicked, dataid: data_id},
-      cache: false,
-      beforeSend: function() {
-        //console.log('test');
-      },
-      success: function(data) {
-        $(".players").append(data); 
-        window.busy = false;
-        //console.log(data);
+                }
+            });
+        }
+        /*
+        //beka kurwa w chuj to dziala na kliku
+        $('.infinitescroll').on('click', function(){
+            clicked++;
+            console.log(limit);
+            limit += 5;
+            last = $('.asd').data('last');
+            displayRecords(limit, offset);
+        })
+        */
+        var targetPosition = 100;
+        var onScroll = function () {
+            if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
+                end = 1;
+            }
+            if (end === 0) {
+                lbheight = $('.leaderboard').height();
+                scrollPosition = $(this).scrollTop();
+                console.log(data_id);
+                if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
+                    limit += 15;
+                    displayRecords(limit, offset);
+                    last = $('.last-row-number').last().data('last');
+                    targetPosition += 100;
+                }
+            }
+            console.log(last);
+        }
+        $(window).on('scroll', onScroll);
 
-      }
-    });
-}
-
-    /*
-    //beka kurwa w chuj to dziala na kliku
-    $('.infinitescroll').on('click', function(){
-        clicked++;
-        console.log(limit);
-        limit += 5;
-        last = $('.asd').data('last');
-        displayRecords(limit, offset);
     })
-    */
-
-    var targetPosition = 100;
-
-    /*
-    var onScroll = function () {
-        if (!(window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
-        alert("koniec strony");
-        }else{
-        lbheight = $('.leaderboard').height();
-        //console.log(lbheight);
-        scrollPosition = $(this).scrollTop();
-        //console.log(scrollPosition);
-        console.log(data_id);
-        //if (scrollPosition >= targetPosition)
-        if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
-            //console.log("function hit");
-            limit += 15;
-            last = $('.asd').data('last');
-            displayRecords(limit, offset);
-            targetPosition += 100;
-        }
-        }
-    }
-    $(window).on('scroll', onScroll);
-
-    */
-
-    var onScroll = function () {
-        if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
-        //alert("koniec strony");
-        end = 1;
-        }
-        if(end === 0){
-        lbheight = $('.leaderboard').height();
-        //console.log(lbheight);
-        scrollPosition = $(this).scrollTop();
-        //console.log(scrollPosition);
-        console.log(data_id);
-        //if (scrollPosition >= targetPosition)
-        if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
-            //console.log("function hit");
-            limit += 15;
-            last = $('.asd').data('last');
-            displayRecords(limit, offset);
-            targetPosition += 100;
-        }
-        }
-    }
-
-    $(window).on('scroll', onScroll);
 
 
-    /*
-    $(window).scroll(function(){
-    if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
-         //offset = limit + offset;
-
-
-
-     }
-}); */
-
-})
-
-
-
-
-
-
-
+//Map Selector:
     $('.selector').on('click', function () {
-        limit = 0;
-        end = 0;
-        console.log(limit);
+        last = 0;
+        //limit = 0;
+        //end = 0;
+        //console.log(limit);
         selectored = $(this).data('id');
         data_id = $(this).data('id');
         //console.log(data_id);
         $.ajax({
             url: 'scripts/ajax/selection.php',
             type: 'POST',
-            data: { id: data_id },
+            data: { id: data_id, limit: limit },
             dataType: 'text',
             beforeSend: function () {
                 $('.players').html('<span style="text-align:center" class="loader"></span>');
@@ -341,17 +302,18 @@ $(document).ready(function(){
                 $('.players').css('display', '');
                 $('.players').css('justify-content', '');
                 $('.players').html(data);
-                lastID = $('.asd').data('last');
+                setTimeout(() => {
+                    $(window).scrollTop(0);
+                    limit = 0;
+                    end = 0;
+                    last = $('.last-row-number').data('last');
+                }, 50);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 $('.players').html('');
                 alert('Error Loading');
             }
         });
-    });
-
-    $('.selector').on('click', function () {
-        var data_id = $(this).data('id');
         $.ajax({
             url: 'scripts/ajax/rowinfo.php',
             type: 'POST',
@@ -365,9 +327,10 @@ $(document).ready(function(){
                 alert('Error Loading');
             }
         });
+
     });
 
-
+    //Search input
     $(document).ready(function () {
         $("#search").keyup(function () {
             var input = $(this).val();
