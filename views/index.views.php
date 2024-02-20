@@ -1,4 +1,4 @@
-<button class="infinitescroll">GUZIOR</button>
+<!-- <button class="infinitescroll">GUZIOR</button> -->
 
 <?php
 $filename = glob('modules/main/*');
@@ -29,10 +29,9 @@ foreach ($filename as $page) {
 
         <div class="map-list2">
             <div id="sticky">
+
                 <div class="togglemaps" onclick="toggleMaps()"></div>
-
                 <ul class="modes">
-
                     <?php
                     //SURF SQL:
                     $sqlsurf = "SELECT DISTINCT MapName FROM `PlayerRecords` WHERE MapName LIKE 'SURF%' ORDER BY MapName ASC ";
@@ -97,8 +96,7 @@ foreach ($filename as $page) {
                 }
 
                 ?>>
-
-                    <li class="selector active" data-id="global" onclick="selectorActive(event)">Global Points</li>
+            <li class="selector active" data-id="global" onclick="selectorActive(event)">Global Points</li>
                     <?php
                     if ($mapdivision === true) {
                         if ($resultsurf->num_rows > 0) {
@@ -190,10 +188,10 @@ foreach ($filename as $page) {
 <script>
     //Variables:
     var lastID;
-    var data_id;
+    var data_id = "global";
     var end = 0;
     var limit = 0;
-    var last;
+    var last = 10;
     //Server list:
     $(document).ready(function () {
         console.log('ladowanko');
@@ -220,6 +218,7 @@ foreach ($filename as $page) {
 
 //Infinite scrolling:
     $(document).ready(function () {
+        $(this).scrollTop(0);
         var busy = true;
         var offset = 15;
         var clicked = 0;
@@ -260,11 +259,12 @@ foreach ($filename as $page) {
         var onScroll = function () {
             if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {
                 end = 1;
+                return;
             }
             if (end === 0) {
                 lbheight = $('.leaderboard').height();
                 scrollPosition = $(this).scrollTop();
-                console.log(data_id);
+                //console.log(data_id);
                 if ($(window).scrollTop() + $(window).height() > $(".leaderboard").height()) {
                     limit += 15;
                     displayRecords(limit, offset);
@@ -272,7 +272,7 @@ foreach ($filename as $page) {
                     targetPosition += 100;
                 }
             }
-            console.log(last);
+            //console.log(last);
         }
         $(window).on('scroll', onScroll);
 

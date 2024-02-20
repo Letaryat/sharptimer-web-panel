@@ -201,6 +201,28 @@ a:hover{
     color: var(--hover);
 }
 
+.selector[data-id="global"]{
+    margin-right: 0;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary);
+    border-radius: var(--borderradius);
+    box-sizing: border-box;
+    padding: 15px;
+    font-weight: 800;
+    max-height: 49px;
+    text-align: center;
+}
+.selector[data-id="global"]:hover{
+    padding-left:15px;
+}
+.selector[data-id="global"].active{
+    background: var(--stripe-hover);
+    border-left: 1px solid var(--hover);
+    color:var(--fontcolor);
+}
 /* LEADERBOARD AND MAIN */
 
 main{

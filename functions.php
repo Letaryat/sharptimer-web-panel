@@ -106,7 +106,7 @@ function CustomMainJS(){
     }
 }
 
-/*
+
 function ShowRows($sql)
 {
     $i = 0;
@@ -136,12 +136,7 @@ function ShowRows($sql)
         echo "<div id='strangerdanger' class='row'>Player not found.</div>";
     }
 }
-*/
 
-function ShowRows($sql, $last){
-
-
-}
 
 function ShowRowsGlobal($sql)
 {
