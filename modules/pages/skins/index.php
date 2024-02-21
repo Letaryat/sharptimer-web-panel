@@ -1,5 +1,8 @@
 <?php
-
-echo "tu som skiny uwu";
+echo "<pre>";
+print_r($ranksarray);
+echo "</pre>";
+#echo "<br/>" . $ranksarray[0]. "<br/>";
+echo GetRankGlobal();
 
 ?>

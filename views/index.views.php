@@ -245,16 +245,6 @@ foreach ($filename as $page) {
                 }
             });
         }
-        /*
-        //beka kurwa w chuj to dziala na kliku
-        $('.infinitescroll').on('click', function(){
-            clicked++;
-            console.log(limit);
-            limit += 5;
-            last = $('.asd').data('last');
-            displayRecords(limit, offset);
-        })
-        */
         var targetPosition = 100;
         var onScroll = function () {
             if ((window.innerHeight + Math.round(window.scrollY)) >= document.body.offsetHeight) {

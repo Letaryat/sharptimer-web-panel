@@ -19,7 +19,13 @@
                     } ?>
                 </h3>
                 <span>
-                    <img id="rank" src="./assets/images/ranks/sharptimer/s<?php echo $rand ?>.svg" alt="rank">
+                    <?php if($rowsec['GlobalPoints'] === "0"){
+                        echo "Unranked";
+                    }
+                    else{
+                        echo '' ?>
+                    <img id="rank" src="<?php echo BasicURL()?>views/assets/images/ranks/<?php echo GetRankGlobal($sidexplode[0]) ?>" alt="<?php echo GetRankGlobal($sidexplode[0]) ?>" title="<?php echo GetRankGlobal($sidexplode[0]) ?>">
+                    <?php } ?>
                     <p>
                         <?php if (empty($rowsec)) {
                             echo "no info";
@@ -233,7 +239,7 @@
                 }
 
                 ?>>
-                    <li class="selector active" data-id="%" onclick="selectorActive(event)">All Personal Best</li>
+                 <li class="selector active" data-id="%" onclick="selectorActive(event)">Times from all modes</li>
                     <?php
                     if ($mapdivision === true) {
                         if ($resultsurf->num_rows > 0) {
@@ -243,6 +249,7 @@
                             } else {
                                 echo '">';
                             }
+                            echo '<li class="selector" data-id="surf_%" onclick="selectorActive(event)">All Personal Surf Best</li>';
                             while ($row = $resultsurf->fetch_assoc()) {
                                 echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                             } ?>
@@ -257,6 +264,7 @@
                             } else {
                                 echo '">';
                             }
+                            echo '<li class="selector" data-id="bh_%" onclick="selectorActive(event)">All Personal BH Best</li>';
                             while ($row = $resultbh->fetch_assoc()) {
                                 echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                             }
@@ -269,6 +277,7 @@
                             } else {
                                 echo '">';
                             }
+                            echo '<li class="selector" data-id="kz_%" onclick="selectorActive(event)">All Personal KZ Best</li>';
                             while ($row = $resultkz->fetch_assoc()) {
                                 echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                             }
@@ -290,6 +299,7 @@
                         $sql = "SELECT DISTINCT MapName FROM `PlayerRecords` ORDER BY MapName ASC";
                         $result = $conn->query($sql);
                         if ($result->num_rows > 0) {
+                            echo '<li class="selector" data-id="%" onclick="selectorActive(event)">All Personal Best</li>';
                             while ($row = $result->fetch_assoc()) {
                                 echo '<li class="selector" data-id="' . $row['MapName'] . '" onclick="selectorActive(event)">' . $row['MapName'] . '</li>';
                             }
@@ -313,7 +323,7 @@
             <div class="players">
                 <?php
                 //$sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished` FROM PlayerRecords WHERE SteamID = '{$sidexplode[0]}'  ORDER BY `TimerTicks` ASC LIMIT $limit";
-                $sql = "SELECT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, RANK() OVER(ORDER BY `TimerTicks` ASC) AS 'Ranking' FROM PlayerRecords ORDER BY `TimerTicks` ASC";
+                $sql = "SELECT DISTINCT `SteamID`, `PlayerName`, `FormattedTime`, `MapName`, `TimesFinished`, RANK() OVER(ORDER BY `TimerTicks` ASC) AS 'Ranking' FROM PlayerRecords ORDER BY `TimerTicks` ASC";
                 ShowRowsProfile($sql, $sidexplode[0])
                 /*
                 $i = 0;

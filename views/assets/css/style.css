@@ -215,6 +215,17 @@ a:hover{
     max-height: 49px;
     text-align: center;
 }
+.selector[data-id="global"]:before{
+    position: relative;
+    margin-left:-5px;
+    margin-right: 5px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\e473";
+}
+.selector[data-id="global"].active:before{
+    color:var(--hover);
+}
 .selector[data-id="global"]:hover{
     padding-left:15px;
 }
@@ -399,6 +410,7 @@ main{
     justify-content: space-around;
     height: 100%;
     z-index: 3;
+    top: 0;
 }
 
 .server-name{

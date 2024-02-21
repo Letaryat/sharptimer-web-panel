@@ -288,7 +288,176 @@ function ShowRowsAdminPanel($sql)
         echo "<div id='strangerdanger' class='row'>Player not found.</div>";
     }
 }
+/*
+$ranksarray = array(
+    "god3",
+    "god2",
+    "god1",
+    "r3",
+    "r2",
+    "r1",
+    "leg3",
+    "leg2",
+    "leg1",
+    "mas3",
+    "mas2",
+    "mas1",
+    "d3",
+    "d2",
+    "d1",
+    "plat3",
+    "plat2",
+    "plat1",
+    "gold3",
+    "gold2",
+    "gold1",
+    "s3",
+    "s2",
+    "s1",
+);
+*/
+function calculateranks($result, $row){
+    $ranksarray = array(
+        "god.gif",
+        "god.gif",
+        "god.gif",
+        "roayl3.png",
+        "roayl2.png",
+        "roayl1.png",
+        "legend3.png",
+        "legend2.png",
+        "legend1.png",
+        "master3.png",
+        "master2.png",
+        "master1.png",
+        "dia3.png",
+        "dia2.png",
+        "dia1.png",
+        "plat3.png",
+        "plat2.png",
+        "plat1.png",
+        "gold3.png",
+        "gold2.png",
+        "gold1.png",
+        "silver3.png",
+        "silver2.png",
+        "silver1.png",
+    );
+    $position = $row['Pos'];
+    $percentage = $position / $result->num_rows * 100;
+    if($result->num_rows < 100){
+    if ($position <= 1)
+    echo $ranksarray[0]; // God 3
+    else if ($position <= 2)
+    echo $ranksarray[1]; // God 2
+    else if ($position <= 3)
+    echo $ranksarray[2]; // God 1
+    else if ($position <= 10)
+    echo $ranksarray[3]; // Royal 3
+    else if ($position <= 15)
+    echo $ranksarray[4]; // Royal 2
+    else if ($position <= 20)
+    echo $ranksarray[5]; // Royal 1
+    else if ($position <= 25)
+    echo $ranksarray[6]; // Legend 3
+    else if ($position <= 30)
+    echo $ranksarray[7]; // Legend 2
+    else if ($position <= 35)
+    echo $ranksarray[8]; // Legend 1
+    else if ($position <= 40)
+    echo $ranksarray[9]; // Master 3
+    else if ($position <= 45)
+    echo $ranksarray[10]; // Master 2
+    else if ($position <= 50)
+    echo $ranksarray[11]; // Master 1
+    else if ($position <= 55)
+    echo $ranksarray[12]; // Diamond 3
+    else if ($position <= 60)
+    echo $ranksarray[13]; // Diamond 2
+    else if ($position <= 65)
+    echo $ranksarray[14]; // Diamond 1
+    else if ($position <= 70)
+    echo $ranksarray[15]; // Platinum 3
+    else if ($position <= 75)
+    echo $ranksarray[16]; // Platinum 2
+    else if ($position <= 80)
+    echo $ranksarray[17]; // Platinum 1
+    else if ($position <= 85)
+    echo $ranksarray[18]; // Gold 3
+    else if ($position <= 90)
+    echo $ranksarray[19]; // Gold 2
+    else if ($position <= 95)
+    echo $ranksarray[20]; // Gold 1
+    else
+    echo $ranksarray[23]; // Silver 1
+    }
+    else{
+    if ($position <= 1)
+    echo $ranksarray[0]; // God 3
+    else if ($position <= 2)
+    echo $ranksarray[1]; // God 2
+    else if ($position <= 3)
+    echo $ranksarray[2]; // God 1
+    else if ($percentage <= 1)
+    echo $ranksarray[3]; // Royal 3
+    else if ($percentage <= 5.0)
+    echo $ranksarray[4]; // Royalty 2
+    else if ($percentage <= 10.0)
+    echo $ranksarray[5]; // Royalty 1
+    else if ($percentage <= 15.0)
+    echo $ranksarray[6]; // Legend 3
+    else if ($percentage <= 20.0)
+    echo $ranksarray[7]; // Legend 2
+    else if ($percentage <= 25.0)
+    echo $ranksarray[8]; // Legend 1
+    else if ($percentage <= 30.0)
+    echo $ranksarray[9]; // Master 3
+    else if ($percentage <= 35.0)
+    echo $ranksarray[10]; // Master 2
+    else if ($percentage <= 40.0)
+    echo $ranksarray[11]; // Master 1
+    else if ($percentage <= 45.0)
+    echo $ranksarray[12]; // Diamond 3
+    else if ($percentage <= 50.0)
+    echo $ranksarray[13]; // Diamond 2
+    else if ($percentage <= 55.0)
+    echo $ranksarray[14]; // Diamond 1
+    else if ($percentage <= 60.0)
+    echo $ranksarray[15]; // Platinum 3
+    else if ($percentage <= 65.0)
+    echo $ranksarray[16]; // Platinum 2
+    else if ($percentage <= 70.0)
+    echo $ranksarray[17]; // Platinum 1
+    else if ($percentage <= 75.0)
+    echo $ranksarray[18]; // Gold 3
+    else if ($percentage <= 80.0)
+    echo $ranksarray[19]; // Gold 2
+    else if ($percentage <= 85.0)
+    echo $ranksarray[20]; // Gold 1
+    else if ($percentage <= 90.0)
+    echo $ranksarray[21]; // Silver 3
+    else if ($percentage <= 95.0)
+    echo $ranksarray[22]; // Silver 2
+    else
+    echo $ranksarray[23]; // Silver 1
+}
+}
 
+function GetRankGlobal($steamid){
+    require('config.php');
+    $sql= "SELECT *, RANK() OVER(ORDER BY `GlobalPoints` DESC) AS 'Pos' FROM `PlayerStats`";
+    $result = $conn->query($sql);
+    #echo "chuj";
+    if($result -> num_rows > 0){
+    #echo $result ->num_rows;
+        while($row = $result -> fetch_assoc()){
+        #echo "<br/>" . "Player: " . $row['PlayerName'] . "Pos: " . $row['Pos'] . "Rank: " . calculateranks($result, $row);
+         if($row['SteamID'] === "{$steamid}"){
+            return calculateranks($result, $row);
+        }
+        }
+    }
 
+}
 
 ?>
