@@ -1218,7 +1218,7 @@ input:focus{
         font-size: 12px;
     }
     .row{
-        grid-template-columns: 1fr 2fr 1fr 1fr;
+        grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
     }
     .players .row{
         font-size: 22px !important;
