@@ -8,6 +8,3 @@ if (!isset($_SESSION['steamid'])) {
 } else {
     require 'views/adminpanel.views.php';
 }
-
-
-#<span href="javascript:void(0)" data-steamid="' . $row['SteamID'] . '" data-mapname="' . $row['MapName'] . '" class="admin-button delete"><i class="fa-solid fa-trash"></i> Delete Record</span>

@@ -4,6 +4,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 $z = UriExplode($uri);
 #$filename = "modules/" . UriExplodeControllers($uri) . ".php";
 $filename = "modules/pages/" . UriExplodeControllers($uri);
+//echo "GSD: " . UriExplode($uri);
 $routes = [
     $z => 'controllers/index.php',
     $z.'profile' => 'controllers/profile.php',

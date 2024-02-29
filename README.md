@@ -7,8 +7,6 @@ Web panel for SharpTimer - CounterStrikeSharp plugin. [LIVE DEMO](https://moveme
 - PHP 7.4+,
 - [SharpTimer by deafps](https://github.com/DEAFPS/SharpTimer) with mysql enabled,
 
-
-
 ## Instalation
 - Throw files into your hosting,
 - Configure config.php file with database credentials,
@@ -19,6 +17,8 @@ $pass = "";
 $db = "";
 ```
 - Configure config.php to your liking,
+- Configure admins.php by adding your steamID64,
+- Remove (they are pointless for now, only for testing) all unnecessary modules,
 
 ## Additional informations:
 - You can change color palette in views/assets/css/colors.css file,
@@ -39,21 +39,33 @@ $db = "";
 ```
 $serverq = array(
     0 => array(
-        'type' => 'csgo',
-        'host' => '51.83.172.143:23580',
+        'host' => '51.83.172.143',
+        'port' => '23580',
         'fakename' => '',
         'fakeip' => ''
     ),
     1 => array(
-        'type' => 'csgo',
-        'host' => '51.83.172.143:23520',
+        'host' => '51.83.172.143',
+        'port' => '23520',
         'fakename' => '',
         'fakeip' => ''
     ),
     2 => array(
-        'type' => 'csgo',
-        'host' => '127.0.0.1:27015',
+        'host' => '127.0.0.1',
+        'port' => '27015',
         'fakename' => 'Dead example',
+        'fakeip' => ''
+    ),
+    3 => array(
+        'host' => '169.150.246.129',
+        'port' => '26440',
+        'fakename' => '',
+        'fakeip' => ''
+    ),
+    4 => array(
+        'host' => '135.148.164.30',
+        'port' => '27015',
+        'fakename' => '',
         'fakeip' => ''
     )
 );

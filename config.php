@@ -50,7 +50,7 @@ Iść za wrócone życie podziękować Bogu),
 
 // GameQ integration - Creates poorish serverlist at index page.
 #GameQ (serverlist) true (on) or false (off)
-$serverlist = false;
+$serverlist = true;
 
 #Server list:
 #Fakename can be omitted or empty if you don't want it.
@@ -72,6 +72,18 @@ $serverq = array(
         'host' => '127.0.0.1',
         'port' => '27015',
         'fakename' => 'Dead example',
+        'fakeip' => ''
+    ),
+    3 => array(
+        'host' => '169.150.246.129',
+        'port' => '26440',
+        'fakename' => '',
+        'fakeip' => ''
+    ),
+    4 => array(
+        'host' => '135.148.164.30',
+        'port' => '27015',
+        'fakename' => '',
         'fakeip' => ''
     )
 );

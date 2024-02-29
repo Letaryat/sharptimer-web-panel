@@ -1047,6 +1047,35 @@ input:focus{
     transition: 0.2s;
 }
 
+
+/* TOOLTIPS */
+[data-tooltip]:after{
+    position: absolute;
+    background:var(--stripe-hover);
+    border-radius: var(--borderradius);
+    box-sizing: border-box;
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    margin-top:-40px;
+    margin-left:-60px;
+    transform: translate(-50%);
+    z-index: 9;
+    transition: 0.2s ease-in-out;
+}
+[data-tooltip]:after{
+    content:attr(data-tooltip);
+
+}
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.4s ease-in-out 0.3s;
+}
+
+
+
 /* RWD: */
 
 

@@ -31,7 +31,7 @@
                                 if($row['BigGifID'] === 'x'){
                                     echo "<span>Not a valid URL</span>";
                                 }else{
-                                    echo '<img src="https://i.imgur.com/'.$row['BigGifID'].'.gif">';
+                                    echo '<img src="https://files.catbox.moe/'.$row['BigGifID'].'.gif">';
                                 }
                                 echo '
                                 <span  href="javascript:void(0)" data-steamid="' . $row['SteamID'] . '"  class="admin-button edit"><i class="fa-solid fa-pen"></i></span>

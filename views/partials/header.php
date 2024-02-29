@@ -48,7 +48,6 @@
     </title>
 </head>
 <body>
-
     <div id="top"></div>
     <div class="mobiletoggler" onclick="toggleMobile()">
         <button class="hamburger hamburger--spin" type="button" aria-label="Menu">

@@ -9,7 +9,7 @@
                     <?php echo $footerdesc ?>
                 </p>
             </div>
-            <div class="authors">SharpTimer: <a href="https://github.com/DEAFPS/SharpTimer">deafps</a> <br /> Web panel 1.1:
+            <div class="authors">SharpTimer: <a href="https://github.com/DEAFPS/SharpTimer">deafps</a> <br /> Web panel 1.3:
                 <a href="https://github.com/Letaryat">Letaryat</a>
             </div>
         </div>

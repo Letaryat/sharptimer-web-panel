@@ -1,4 +1,5 @@
 <?php
+ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 7.0b; Windows NT 6.0)');
 require('../../../config.php');
 $gif = $conn->real_escape_string($_POST['gifurl']);
 $steam = $conn->real_escape_string($_POST['steam_id']);
@@ -8,7 +9,8 @@ $gifexp2 = explode('.gif', $gifexp[3]);
 $sql = "SELECT * FROM PlayerStats WHERE SteamID = '{$steam}'";
 $result = $conn->query($sql);
 //$gifvalidate = preg_match('/^(http|https):\/\/(.*?)\.(imgur)\.(com)\/(.*?)\.(png|jpg|gif|PNG|JPG|GIF)$/i',$gif);
-$gifvalidate = preg_match('/^(http|https):\/\/(.*?)\.(imgur)\.(com)\/(.*?)\.(gif|GIF)$/i',$gif);
+//$gifvalidate = preg_match('/^(http|https):\/\/(.*?)\.(imgur)\.(com)\/(.*?)\.(gif|GIF)$/i',$gif);
+$gifvalidate = preg_match('/^https?:\/\/(\w+\.)?files\.catbox\.moe\/(\w*\d\w*)+(\.[a-zA-Z]{3})?$/', $gif);
 if(filter_var($gif, FILTER_VALIDATE_URL) === FALSE || $gifvalidate === 0){
   echo '<div style="display: flex;
   justify-content: space-between;
