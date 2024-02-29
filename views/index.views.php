@@ -251,6 +251,10 @@ foreach ($filename as $page) {
                 end = 1;
                 return;
             }
+            if(document.getElementById("strangerdanger")){
+                end = 1;
+                return;
+            }
             if (end === 0) {
                 lbheight = $('.leaderboard').height();
                 scrollPosition = $(this).scrollTop();
