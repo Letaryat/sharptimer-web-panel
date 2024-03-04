@@ -6,7 +6,7 @@ $wid = $_POST['weapon_id'];
 $sname = $_POST['weapon_name'];
 
 $skins = UtilsClass::skinsFromJson();
-echo $sid;
+//echo $sid;
 //$sname = $_POST['skin_name'];
 //echo $sid . " " . $wid . " " . $sname . "<br/>";
 ?>

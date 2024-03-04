@@ -3,8 +3,8 @@
 #getAvatar function is made by: https://github.com/bman46/Steam-Avatar
 function getAvatar($steamIDCode)
 {
-    require 'gunwo/config.php';
-    //require 'config.php';
+    //require 'gunwo/config.php';
+    require 'config.php';
     if (empty($steamapikey)) {
         return "https://steamuserimages-a.akamaihd.net/ugc/885384897182110030/F095539864AC9E94AE5236E04C8CA7C2725BCEFF/";
     } else {

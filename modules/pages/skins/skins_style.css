@@ -219,8 +219,25 @@
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.5);
 } 
+.card-footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:20px;
+}
+.card-footer span{
+  color:var(--fontcolor) !important;
 
+}
+.card-footer span:hover{
+  color:var(--hover) !important;
+  cursor:pointer;
+  transform:scale(1.1) translateY(-2px);
+  filter:contrast(2)
+}
 
+/*
 .skin-edit{
   position: absolute;
   top: 5px;
@@ -231,6 +248,7 @@
   cursor: pointer;
   filter:brightness(1.5);
 }
+*/
 
 #scale{
   appearance: none;
@@ -299,4 +317,14 @@
 }
 .skin-box:hover img{
   transform:scale(1.2) translateY(-10px)
+}
+.skin-info{
+  position: absolute;
+  color: var(--fontcolor) !important;
+  left: 0;
+  bottom: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 0px 5px 5px 0px;
 }

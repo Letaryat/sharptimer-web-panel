@@ -3,7 +3,7 @@
     $sid = $_POST['steam_id'];
     $wid = $_POST['weapon_id'];
     $sname = $_POST['skin_name'];
-    echo $sid;
+    //echo $sid;
     //echo $sid . " " . $wid . " " . $sname . "<br/>";
 ?>
 <div class="modal-content">
@@ -16,7 +16,7 @@
         getskinname($wid, $sname);
     ?>
 </div>
-<form id="#form" method="POST">
+<form id="#form" >
     <label for="seed">Seed:</label>
     <input type="number" id="seed" name="seed" min="0" max="999" value="1" required>
     <label for="time">Wear:</label>
@@ -32,6 +32,7 @@
     var wear = document.querySelector("#wear-value");
     document.getElementById("scale").oninput = function(){
         wear.innerHTML = this.value;
+        console.log("test");
     }
 
     $("form").submit(function (event) {
