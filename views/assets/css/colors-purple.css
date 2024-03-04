@@ -1,0 +1,10 @@
+:root{
+    --background: #060417;
+    --secondary: #09061e;
+    --striperow:#09061e;
+    --stripe-hover:#1a1035;
+    --hover: #8c64fd;
+    --border-col:#3D2480;
+    --fontcolor: #e3e3e3;
+    --borderradius: 10px;
+}

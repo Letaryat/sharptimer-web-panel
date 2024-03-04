@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "db_test";
+$db = "db_test3";
 $conn = new mysqli($host, $user, $pass, $db);
 if(!$conn){
     die("connection failed" . mysqli_connect_error());
@@ -69,9 +69,9 @@ $serverq = array(
         'fakeip' => ''
     ),
     2 => array(
-        'host' => '127.0.0.1',
-        'port' => '27015',
-        'fakename' => 'Dead example',
+        'host' => '185.113.141.61',
+        'port' => '22104',
+        'fakename' => '',
         'fakeip' => ''
     ),
     3 => array(

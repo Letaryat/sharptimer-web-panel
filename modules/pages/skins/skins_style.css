@@ -1,3 +1,302 @@
-*{
-    color:red !important;
+@import '/views/assets/css/colors.css';
+.wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.skin-image{
+    max-width: 40%;
+    transition:0.3s ease-in-out all;
+}
+
+.card{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  min-height: 275px;
+  background:var(--secondary);
+  border-radius: var(--borderradius);
+  justify-content: space-around;
+  position: relative;
+  animation: fadeEffect 0.5s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.card:hover .skin-image{
+  transform:scale(1.2) translateY(-5px);
+}
+.card:hover{
+  color:var(--hover);
+}
+
+/* weapon rarities */
+
+#rarity_common_weapon{
+
+}
+#rarity_common_weapon:before{
+  content:"";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 10px;
+  background: linear-gradient(-125deg, #b0c3d9 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#rarity_uncommon_weapon{
+
+}
+#rarity_uncommon_weapon:before{
+  content:"";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 10px;
+  background: linear-gradient(-125deg, #5e98d9 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
+#rarity_rare_weapon{
+
+  color:#4b69ff;
+}
+
+#rarity_rare_weapon:before{
+  content:"";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 10px;
+  background: linear-gradient(-125deg, #4b69ff 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#rarity_mythical_weapon{
+  color:#8847ff;
+}
+#rarity_mythical_weapon:before{
+  content:"";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 10px;
+  background: linear-gradient(-125deg, #8847ff 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#rarity_legendary_weapon{
+
+  color: #d32ce6;
+}
+#rarity_legendary_weapon:before{
+  content:"";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 10px;
+  background: linear-gradient(-125deg, #d32ce6 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#rarity_ancient_weapon{
+  /* border-radius: 0px 10px 10px 0px; */ 
+
+  color: #eb4b4b;
+}
+#rarity_ancient_weapon:before{
+  content:"";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 10px;
+  background: linear-gradient(-125deg, rgba(235, 75, 75, 0.44) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#rarity_contraband_weapon{
+
+  color: #e4ae39;
+}
+#rarity_contraband_weapon:after{
+  content:"";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  border-radius: 10px;
+  background: linear-gradient(-125deg, #e4ae39 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 100%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
+ /* The container must be positioned relative: */
+ .custom-select {
+  position: relative;
+  font-family: Arial;
+  
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: var(--background);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  height: 450px;
+  overflow: auto;
+}
+.select-items div{
+  margin-top:5px;
+
+}
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.5);
+} 
+
+
+.skin-edit{
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  color: var(--hover);
+}
+.skin-edit:hover{
+  cursor: pointer;
+  filter:brightness(1.5);
+}
+
+#scale{
+  appearance: none;
+  background: linear-gradient(to right, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 0.3%, rgb(23, 131, 145) 0.3%, rgb(23, 131, 145) 7%, rgb(118, 180, 0) 7%, rgb(118, 180, 0) 15%, rgb(229, 191, 38) 15%, rgb(229, 191, 38) 37%, rgb(255, 128, 41) 37%, rgb(255, 128, 41) 45%, rgb(255, 62, 47) 45%, rgb(255, 62, 47) 99.7%, rgb(0, 0, 0) 99.7%, rgb(0, 0, 0) 100%);
+  height: 6px;
+  border:none;
+  padding:0;
+  
+}
+
+.selectors{
+  display: flex;
+  position: relative;
+  width: 80%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap:10px;
+}
+.weapon-selector{
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  width: 50%;
+  background: var(--secondary);
+  border-radius: 5px;
+  font-weight: 600;
+}
+.weapon-selector:hover{
+  cursor:pointer;
+  background:var(--stripe-hover);
+  color:var(--hover);
+}
+.weapon-selector.active{
+  background:var(--stripe-hover);
+  color:var(--hover);
+}
+.weapon-selector img{
+  filter:invert(1);
+  max-width: 25%;
+  margin-right: 10px;
+}
+.skinchange-container{
+  width: 100%;
+  height: 500px;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap:5px;
+}
+.skin-box{
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column-reverse;
+  display: flex;
+  background: var(--background);
+  box-sizing: border-box;
+  border-radius:var(--borderradius);
+  position: relative;
+}
+.skin-box:hover{
+  background:var(--stripe-hover);
+  color:var(--hover);
+  cursor:pointer;
+}
+.skin-box:hover img{
+  transform:scale(1.2) translateY(-10px)
 }
