@@ -16,7 +16,7 @@ if(array_key_exists($uri, $routes)){
     require $routes[$uri];
 }
 elseif(file_exists($filename)){
-    require $filename . "/index.php";;
+    require $filename . "/index.php";
 }
 else{
     http_response_code(404);

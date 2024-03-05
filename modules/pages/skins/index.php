@@ -38,7 +38,12 @@ if (isset($_SESSION['steamid'])) {
 ?>
 <main style="flex-flow:column;">
 	<div class="selectors">
-		<div class="weapon-selector active" onclick="showgroup(event, 'pistols')">
+	<div class="weapon-selector" onclick="showgroup(event, 'knifes')">
+			<img clas="weapon-icon"
+				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
+			Knifes
+		</div>
+		<div class="weapon-selector" onclick="showgroup(event, 'pistols')">
 			<img clas="weapon-icon"
 				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_usp_silencer.svg">
 			Pistols
@@ -58,11 +63,6 @@ if (isset($_SESSION['steamid'])) {
 		<div class="weapon-selector" onclick="showgroup(event, 'snipers')">
 			<img clas="weapon-icon" src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_ssg08.svg">
 			Sniper rifles
-		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'knifes')">
-			<img clas="weapon-icon"
-				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
-			Knifes
 		</div>
 	</div>
 	<div class="wrapper">
@@ -209,7 +209,7 @@ if (isset($_SESSION['steamid'])) {
 	});
 
 	window.onload = function () {
-		showgroup(event, 'pistols');
+		showgroup(event, 'knifes');
 
 	}
 
