@@ -6,7 +6,7 @@
     $knifes = array("500","503","505","506","507","508","509","512","514","515","516","517","518","519","520","521","522","523","525");
     //$sname = $conn -> real_escape_string($_POST['sname']);
     echo $sid;
-    $wear = 0.1;
+    $wear = 0.01;
     $seed = 1;
     $sql = "SELECT * FROM wp_player_skins WHERE steamid = '{$sid}' AND weapon_defindex = '{$wid}'";
     $result = $conn->query($sql);

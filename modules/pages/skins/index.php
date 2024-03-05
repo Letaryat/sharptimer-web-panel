@@ -191,9 +191,15 @@ if (isset($_SESSION['steamid'])) {
 			type: 'POST',
 			data: { weapon_id: weapon_id, steam_id: steam_id, weapon_name: weapon_name },
 			dataType: 'text',
+			beforeSend: function () {
+				$('.modal-container').append('<span style="text-align:center" class="loader"></span>');
+				$('.modal-container').css('justify-content', "center");
+            },
 			success: function (data) {
+				$('.loader').remove();
+                $('.modal-container').css('justify-content', '');
 				$('.modal-container').html(data);
-				console.log(data);
+				//console.log(data);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				$('.modal-container').html('');

@@ -309,6 +309,7 @@
   box-sizing: border-box;
   border-radius:var(--borderradius);
   position: relative;
+  text-align: center;
 }
 .skin-box:hover{
   background:var(--stripe-hover);
@@ -327,4 +328,8 @@
   box-sizing: border-box;
   padding: 10px;
   border-radius: 0px 5px 5px 0px;
+}
+.weapon-list-img{
+  opacity:0;
+  max-width:40%
 }

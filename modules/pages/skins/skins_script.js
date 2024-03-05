@@ -90,17 +90,19 @@ document.addEventListener("click", closeAllSelect);
 
 
 /* tabs */
+
+const pistols = [ "1","2","3","4","30","32","36","61","63","64"]
+const rifles = ["7","8","10","13","16","60","39"]
+const smg = [ "26","17","33","34","19","23","24"]
+const shotguns = ["27","35","29","25", "14", "28"]
+const snipers = ["9","11","38","40"]
+const knifes = ["500","503","505","506","507","508","509","512","514","515","516","517","518","519","520","521","522","523","525","526"]
+
+
 var weapongroup = document.querySelectorAll(".weapon-selector");
 var skins = document.querySelectorAll(".card");
 function showgroup(evt, weapons){
   var selected, x;
-  const pistols = [ "1","2","3","4","30","32","36","61","63","64"]
-  const rifles = ["7","8","10","13","16","60","39"]
-  const smg = [ "26","17","33","34","19","23","24"]
-
-  const shotguns = ["27","35","29","25", "14", "28"]
-  const snipers = ["9","11","38","40"]
-  const knifes = ["500","503","505","506","507","508","509","512","514","515","516","517","518","519","520","521","522","523","525"]
   if(weapons === "pistols"){
     selected = pistols;
   }
@@ -131,6 +133,11 @@ function showgroup(evt, weapons){
       skins[x].style.display = "flex";
     }else{
       skins[x].style.display = "none";
+    }
+    if(selected === knifes){
+      if(selected.includes(skins[x].getAttribute('data-weaponid'))){
+        skins[x].setAttribute("id", 'rarity_ancient_weapon');
+      }
     }
 }
 

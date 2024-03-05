@@ -1,10 +1,13 @@
 <?php
 function getrarity($name){
-
+	$count = 0;
 	$json = json_decode(file_get_contents(__DIR__ . "/../data/rarity.json"), true);
 	foreach ($json as $skin) {
 		if($skin['name'] === $name){
-			echo $skin['rarity']['id'] ;
+			if($count === 0){
+				echo $skin['rarity']['id'] ;
+				$count++;
+			}
 		} if($skin === "undefined"){
             echo "";
         }
