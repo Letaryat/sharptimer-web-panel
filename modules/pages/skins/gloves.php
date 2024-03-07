@@ -97,7 +97,7 @@ foreach ($glovesarray as $defindex => $key) {
                 <span href="javascript:void(0)" data-target="<?php echo $defindex ?>"
                     data-name="<?php echo $glovesarray[$defindex] ?>" class="skin-change"><i
                         class="fa-solid fa-paintbrush"></i></span>
-                <span href="javascript:void(0)" data-target="<?php echo $defindex ?>" data-skinname="<?php echo $defindex ?>"
+                <span href="javascript:void(0)" data-target="<?php echo $defindex ?>" data-skinname="<?php echo $selectedSkins[$defindex]['weapon_paint_id'] ?>"
                     class="skin-edit"><i class="fa-solid fa-pen"></i></span>
             </div>
             <div class="skin-info">
@@ -156,6 +156,30 @@ $('.skin-change').on('click', function () {
 			success: function (data) {
 				$('.loader').remove();
 				$('.modal-container').css('justify-content', '');
+				$('.modal-container').html(data);
+				//console.log(data);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				$('.modal-container').html('');
+				alert('Error Loading');
+			}
+		});
+	});
+
+	$('.skin-edit').on('click', function () {
+		var weapon_id = $(this).data('target');
+		var skin_name = $(this).data('skinname');
+		var steam_id = '<?php echo $steamid ?>';
+		var modal = $('.modal');
+		modal.addClass("active fadein");
+		$(document.body).addClass('modalactive');
+		$('.modal-container').addClass("slideup");
+		$.ajax({
+			url: 'modules/pages/skins/modal-settings.php',
+			type: 'POST',
+			data: { weapon_id: weapon_id, steam_id: steam_id, skin_name: skin_name },
+			dataType: 'text',
+			success: function (data) {
 				$('.modal-container').html(data);
 				//console.log(data);
 			},

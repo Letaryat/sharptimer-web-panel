@@ -15,11 +15,11 @@ $selectedSkins = UtilsClass::getSelectedSkins($querySelected);
 ?>
 
 <div class="selectors">
-		<div class="weapon-selector knifes" onclick="showgroup(event, 'knifes')">
+		<div class="weapon-selector weapon-groups knifes" onclick="showgroup(event, 'knifes')">
 			<img clas="weapon-icon">
 			Knifes
 		</div>
-		<div class="weapon-selector pistols" onclick="showgroup(event, 'pistols')">
+		<div class="weapon-selector weapon-groups pistols" onclick="showgroup(event, 'pistols')">
 			<img clas="weapon-icon">
 			Pistols
 		</div>
@@ -84,13 +84,13 @@ foreach ($weapons as $defindex => $default) {
 
 <script>
 
-var weapongroup = document.querySelectorAll(".weapon-selector");
+var weapongroup = document.querySelectorAll(".weapon-groups");
 var skins = document.querySelectorAll(".card");
 var skinsrarity = [];
 
 function showgroup(evt, weapons){
 
-  console.log('chujek');
+
   skinsrarity = [];
   var selected = "knifes";
   if(weapons === "pistols"){
@@ -118,7 +118,7 @@ function showgroup(evt, weapons){
   }
 
   if(evt === undefined){
-    console.log('test');
+    //console.log('test');
   }else{
     evt.currentTarget.className += " active";
   }
@@ -189,6 +189,28 @@ $('.skin-change').on('click', function () {
 		});
 	});
 
-
+	$('.skin-edit').on('click', function () {
+		var weapon_id = $(this).data('target');
+		var skin_name = $(this).data('skinname');
+		var steam_id = '<?php echo $steamid ?>';
+		var modal = $('.modal');
+		modal.addClass("active fadein");
+		$(document.body).addClass('modalactive');
+		$('.modal-container').addClass("slideup");
+		$.ajax({
+			url: 'modules/pages/skins/modal-settings.php',
+			type: 'POST',
+			data: { weapon_id: weapon_id, steam_id: steam_id, skin_name: skin_name },
+			dataType: 'text',
+			success: function (data) {
+				$('.modal-container').html(data);
+				//console.log(data);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				$('.modal-container').html('');
+				alert('Error Loading');
+			}
+		});
+	});
 
 </script>

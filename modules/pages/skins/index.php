@@ -39,17 +39,17 @@ if (isset($_SESSION['steamid'])) {
 ?>
 <main style="flex-flow:column;">
 	<div class="selectors">
-		<div class="weapon-selector weapons" onclick="showgroup(event, 'knifes')">
+		<div class="weapon-selector weapon-test weapons active" onclick="showgroup(event, 'knifes')">
 			<img clas="weapon-icon "
 				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
 			Weapons
 		</div>
-		<div class="weapon-selector gloves" onclick="showgroup(event, 'knifes')">
+		<div class="weapon-selector weapon-test gloves" onclick="showgroup(event, 'knifes')">
 			<img clas="weapon-icon"
 				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
 			Gloves
 		</div>
-		<div class="weapon-selector agents" onclick="showgroup(event, 'knifes')">
+		<div class="weapon-selector weapon-test agents" onclick="showgroup(event, 'knifes')">
 			<img clas="weapon-icon"
 				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
 			Agents
@@ -261,10 +261,9 @@ if (isset($_SESSION['steamid'])) {
 	})
 
 
-	window.onload = function () {
-		//showgroup(event, 'knifes');
-		showgroup(event, sessionStorage.getItem('selectedgroup') || 'knifes');
-
-	}
+	$('.weapon-test').on('click',function(){
+		$('.weapon-test.active').removeClass('active');
+		$(this).addClass('active');
+	})
 
 </script>

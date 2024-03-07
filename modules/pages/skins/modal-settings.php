@@ -50,8 +50,9 @@
                 encode: true,
                 success: function (data) {
                     setTimeout(() => {
+                        console.log(data);
                         location.reload()
-                    }, 500);
+                    }, 200);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(errorThrown);
