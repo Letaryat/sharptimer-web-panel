@@ -91,18 +91,40 @@ document.addEventListener("click", closeAllSelect);
 
 /* tabs */
 
+
+async function applyCustomOrder(arr, desiredOrder){
+  const orderForIndexVals = desiredOrder.slice(0).reverse();
+  arr.sort((a, b) => {
+    const aIndex = -orderForIndexVals.indexOf(a.getAttribute('id'));
+    const bIndex = -orderForIndexVals.indexOf(b.getAttribute('id'));
+    return aIndex - bIndex;
+  });
+}
+
+
 const pistols = [ "1","2","3","4","30","32","36","61","63","64"]
 const rifles = ["7","8","10","13","16","60","39"]
 const smg = [ "26","17","33","34","19","23","24"]
 const shotguns = ["27","35","29","25", "14", "28"]
 const snipers = ["9","11","38","40"]
 const knifes = ["500","503","505","506","507","508","509","512","514","515","516","517","518","519","520","521","522","523","525","526"]
-
-
+const rarityarray = [
+  "default",
+  "rarity_common_weapon",
+  "rarity_uncommon_weapon",
+  "rarity_rare_weapon",
+  "rarity_mythical_weapon", 
+  "rarity_legendary_weapon", 
+  "rarity_ancient_weapon",
+  "rarity_contraband_weapon",
+];
 var weapongroup = document.querySelectorAll(".weapon-selector");
 var skins = document.querySelectorAll(".card");
+var skinsrarity = [];
+
 function showgroup(evt, weapons){
-  var selected, x;
+  skinsrarity = [];
+  var selected;
   if(weapons === "pistols"){
     selected = pistols;
   }
@@ -122,14 +144,22 @@ function showgroup(evt, weapons){
     selected = knifes;
   }
 
-  for(x = 0; x < weapongroup.length; x++){
+
+  for(var x = 0; x < weapongroup.length; x++){
     weapongroup[x].className = weapongroup[x].className.replace(" active", "");
   }
+
+
   evt.currentTarget.className += " active";
   //console.log(skins.length);
   //console.log(skins[2].getAttribute('data-weaponid'));
-  for(x = 0; x <= skins.length; x++){
+  
+  for(var x = 0; x < skins.length; x++){
     if(selected.includes(skins[x].getAttribute('data-weaponid'))){
+      skinsrarity.push(skins[x]);
+      //applyCustomOrder(skinsrarity, rarityarray);
+      //document.querySelector(".card").remove();
+      console.log(skins[x]);
       skins[x].style.display = "flex";
     }else{
       skins[x].style.display = "none";
@@ -141,8 +171,16 @@ function showgroup(evt, weapons){
     }
 }
 
+sessionStorage.setItem('selectedgroup', weapons);
+setTimeout(() => {
+  for(var x = 0; x < weapongroup.length; x++){
+    if(weapongroup[x].classList.contains(weapons)){
+      weapongroup[x].classList.add('active');
+    }
+  }
+}, 200);
 
-localStorage.setItem('grupa', selected);
+
 
 }
 

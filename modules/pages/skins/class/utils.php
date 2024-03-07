@@ -17,6 +17,21 @@ class UtilsClass
         return $skins;
     }
 
+    public static function glovesFromJson(): array
+    {
+        $skins = [];
+        $json = json_decode(file_get_contents(__DIR__ . "/../data/gloves.json"), true);
+
+        foreach ($json as $skin) {
+            $skins[(int) $skin['weapon_defindex']][(int) $skin['paint']] = [
+                'paint_name' => $skin['paint_name'],
+                'image_url' => $skin['image'],
+            ];
+        }
+
+        return $skins;
+    }
+
     public static function getWeaponsFromArray()
     {
         $weapons = [];
@@ -35,6 +50,17 @@ class UtilsClass
 
         return $weapons;
     }
+
+    public static function testowafunkcja()
+    {
+        $bronie = [];
+        $json = json_decode(file_get_contents(__DIR__ . "/../data/gloves.json"), true);
+        foreach ($json as $skin) {
+            $bronie[$skin];
+        }
+    
+    }
+
 
     public static function getKnifeTypes()
     {
@@ -98,4 +124,16 @@ class UtilsClass
 
         return $selected;
     }
+
+    public static function getSelectedGloves(array $temp)
+    {
+        $selected = [];
+
+        foreach ($temp as $weapon) {
+            $selected[$weapon['weapon_defindex']];
+        }
+
+        return $selected;
+    }
+
 }

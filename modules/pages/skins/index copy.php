@@ -1,4 +1,5 @@
 <?php
+
 require_once 'class/config.php';
 require_once 'class/database.php';
 require_once 'class/utils.php';
@@ -21,7 +22,7 @@ if (isset($_SESSION['steamid'])) {
 		if ($ex[0] == "knife") {
 			$db->query("INSERT INTO `wp_player_knife` (`steamid`, `knife`) VALUES(:steamid, :knife) ON DUPLICATE KEY UPDATE `knife` = :knife", ["steamid" => $steamid, "knife" => $knifes[$ex[1]]['weapon_name']]);
 		} else {
-			if (array_key_exists($ex[1], $skins[$ex[0]]) ) {
+			if (array_key_exists($ex[1], $skins[$ex[0]])) {
 
 				if (array_key_exists($ex[0], $selectedSkins)) {
 					$db->query("UPDATE wp_player_skins SET weapon_paint_id = :weapon_paint_id, weapon_wear = :weapon_wear, weapon_seed = :weapon_seed WHERE steamid = :steamid AND weapon_defindex = :weapon_defindex", ["steamid" => $steamid, "weapon_defindex" => $ex[0], "weapon_paint_id" => $ex[1], "weapon_wear" => 0.1, "weapon_seed" => 1]);
@@ -38,34 +39,36 @@ if (isset($_SESSION['steamid'])) {
 ?>
 <main style="flex-flow:column;">
 	<div class="selectors">
-		<div class="weapon-selector active" onclick="showgroup(event, 'pistols')">
+		<div class="weapon-selector weapons" onclick="showgroup(event, 'knifes')">
+			<img clas="weapon-icon "
+				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
+			Weapons
+		</div>
+		<div class="weapon-selector gloves" onclick="showgroup(event, 'knifes')">
 			<img clas="weapon-icon"
-				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_usp_silencer.svg">
-			Pistols
+				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
+			Gloves
 		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'rifles')">
-			<img clas="weapon-icon" src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_ak47.svg">
-			Rifles
+		<div class="weapon-selector agents" onclick="showgroup(event, 'knifes')">
+			<img clas="weapon-icon"
+				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
+			Agents
 		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'smg')">
-			<img clas="weapon-icon" src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_mac10.svg">
-			Smgs
-		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'shotguns')">
-			<img clas="weapon-icon" src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_nova.svg">
-			Shotguns
-		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'snipers')">
-			<img clas="weapon-icon" src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_ssg08.svg">
-			Sniper rifles
-		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'knifes')">
+	</div>
+	<div class="selectors">
+		<div class="weapon-selector knifes" onclick="showgroup(event, 'knifes')">
 			<img clas="weapon-icon"
 				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
 			Knifes
 		</div>
+		<div class="weapon-selector pistols" onclick="showgroup(event, 'pistols')">
+			<img clas="weapon-icon"
+				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_usp_silencer.svg">
+			Pistols
+		</div>
 	</div>
-	<div class="wrapper">
+	<div class="wrapper skins-container">
+
 		<div class="card">
 			<?php
 			$actualKnife = $knifes[0];
@@ -106,13 +109,14 @@ if (isset($_SESSION['steamid'])) {
 		<?php
 
 		foreach ($weapons as $defindex => $default) {
+
 			?>
 			<div class="card" id="<?php
 			if (array_key_exists($defindex, $selectedSkins)) {
 				getrarity($skins[$defindex][$selectedSkins[$defindex]['weapon_paint_id']]["paint_name"]);
 			} ?>" data-weaponid="<?php echo $defindex ?>">
 				<?php
-				echo $defindex;
+
 				//print_r($skins[1][0]['weapon_name']);
 				if (array_key_exists($defindex, $selectedSkins)) {
 					echo "<div class='card-header'>";
@@ -127,41 +131,30 @@ if (isset($_SESSION['steamid'])) {
 				}
 				?>
 				<div class="card-footer">
-				<span href="javascript:void(0)" data-target="<?php echo $defindex ?>" data-name="
+					<span href="javascript:void(0)" data-target="<?php echo $defindex ?>" data-name="
 				<?php
-					echo $default["paint_name"];
-				?>" class="skin-change">CHANGE MEEEEEE</span>
-					<form class="skin-update" action="" method="POST"
-						id="<?php print_r($skins[$defindex][0]['weapon_name']) ?>">
-						<div id="<?php print_r($skins[$defindex][0]['weapon_name']) ?>" class="custom-select"
-							style="width:200px;">
-							<select name="forma" class="form-control select" class="SelectWeapon">
-								<option disabled>Select skin</option>
-								<?php
-								foreach ($skins[$defindex] as $paintKey => $paint) {
-									if (array_key_exists($defindex, $selectedSkins) && $selectedSkins[$defindex]['weapon_paint_id'] == $paintKey)
-										echo "<option selected value=\"{$defindex}-{$paintKey}\">{$paint['paint_name']}</option>";
-									else
-										echo "<option value=\"{$defindex}-{$paintKey}\">{$paint['paint_name']}</option>";
-								}
-								?>
-							</select>
-						</div>
-						<?php
-						$selectedSkinInfo = isset($selectedSkins[$defindex]) ? $selectedSkins[$defindex] : null;
-						$steamid = $_SESSION['steamid'];
-						if ($selectedSkinInfo):
-							?>
-							<span href="javascript:void(0)" data-target="<?php echo $defindex ?>"
-								data-skinname="<?php echo $selectedSkinInfo['weapon_paint_id'] ?>" class="skin-edit"><i
-									class="fa-solid fa-pen"></i></span>
-						<?php else: ?>
-						<?php endif; ?>
-					</form>
-		</div>
+				echo $default["paint_name"];
+				?>" class="skin-change"><i class="fa-solid fa-paintbrush"></i></span>
+					<span href="javascript:void(0)" data-target="<?php echo $defindex ?>"
+						data-skinname="<?php echo $selectedSkins[$defindex]['weapon_paint_id'] ?>" class="skin-edit"><i
+							class="fa-solid fa-pen"></i></span>
+					<?php ?>
+				</div>
+				<div class="skin-info">
+					<p>Wear:
+						<?php if (isset($selectedSkins[$defindex]['weapon_wear'])) {
+							echo $selectedSkins[$defindex]['weapon_wear'];
+						} ?>
+					</p>
+					<p>Seed:
+						<?php if (isset($selectedSkins[$defindex]['weapon_wear'])) {
+							echo $selectedSkins[$defindex]['weapon_seed'];
+						} ?>
+					</p>
+				</div>
 
-		</div>
-	<?php } ?>
+			</div>
+		<?php } ?>
 	</div>
 </main>
 
@@ -170,6 +163,12 @@ if (isset($_SESSION['steamid'])) {
 	<div class="modal-container" style="width:700px;"></div>
 </div>
 <script>
+	var clonediv;
+	$(document).ready(function(){
+		clonediv = $('.skins-container').clone();
+
+	})
+
 
 	$('.skin-edit').on('click', function () {
 		var weapon_id = $(this).data('target');
@@ -208,9 +207,15 @@ if (isset($_SESSION['steamid'])) {
 			type: 'POST',
 			data: { weapon_id: weapon_id, steam_id: steam_id, weapon_name: weapon_name },
 			dataType: 'text',
+			beforeSend: function () {
+				$('.modal-container').append('<span style="text-align:center" class="loader"></span>');
+				$('.modal-container').css('justify-content', "center");
+			},
 			success: function (data) {
+				$('.loader').remove();
+				$('.modal-container').css('justify-content', '');
 				$('.modal-container').html(data);
-				console.log(data);
+				//console.log(data);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				$('.modal-container').html('');
@@ -219,33 +224,59 @@ if (isset($_SESSION['steamid'])) {
 		});
 	});
 
-	window.onload = function(){
-		showgroup(event, 'pistols');
+
+
+	$('.gloves').on('click', function () {
+		var steam_id = '<?php echo $_SESSION['steamid'] ?>';
+		$.ajax({
+			url: 'modules/pages/skins/gloves.php',
+			type: 'POST',
+			data: { steam_id: steam_id },
+			dataType: 'text',
+			beforeSend: function () {
+				//$('.modal-container').append('<span style="text-align:center" class="loader"></span>');
+				//$('.modal-container').css('justify-content', "center");
+			},
+			success: function (data) {
+				//$('.loader').remove();
+				// $('.modal-container').css('justify-content', '');
+				$('.skins-container').html(data);
+				//console.log(data);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				$('.modal-container').html('');
+				alert('Error Loading');
+			}
+		})
+	})
+
+	$('.agents').on('click', function () {
+		$.ajax({
+			url: 'modules/pages/skins/data/queries/agents.php',
+			type: 'POST',
+			dataType: 'text',
+			beforeSend: function () {
+				//$('.modal-container').append('<span style="text-align:center" class="loader"></span>');
+				//$('.modal-container').css('justify-content', "center");
+			},
+			success: function (data) {
+				//$('.loader').remove();
+				// $('.modal-container').css('justify-content', '');
+				$('.wrapper').html(data);
+				//console.log(data);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				$('.modal-container').html('');
+				alert('Error Loading');
+			}
+		})
+	})
+
+
+	window.onload = function () {
+		//showgroup(event, 'knifes');
+		showgroup(event, sessionStorage.getItem('selectedgroup') || 'knifes');
 
 	}
 
-	
-	//  wear
-	function updateWearValue<?php echo $defindex ?>(selectedValue) {
-		var wearInputElement = document.getElementById("wear<?php echo $defindex ?>");
-		wearInputElement.value = selectedValue;
-	}
-
-	function validateWear(inputElement) {
-		inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
-	}
-	// seed
-	function validateSeed(input) {
-		// Check entered value
-		var inputValue = input.value.replace(/[^0-9]/g, ''); // Just get the numbers
-
-		if (inputValue === "") {
-			input.value = 0; // Set to 0 if empty or no numbers
-		} else {
-			var numericValue = parseInt(inputValue);
-			numericValue = Math.min(1000, Math.max(1, numericValue)); // Interval control
-
-			input.value = numericValue;
-		}
-	}
 </script>

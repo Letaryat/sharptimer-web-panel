@@ -367,7 +367,7 @@ main{
     width: 80%;
     overflow: auto;
     min-height: 80px;
-    max-height: 180px;
+    /* max-height: 180px; */
 }
 .server{
     display: flex;

@@ -297,6 +297,7 @@
   overflow: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   gap:5px;
 }
 .skin-box{
@@ -332,4 +333,11 @@
 .weapon-list-img{
   opacity:0;
   max-width:40%
+}
+.not-selected-skin{
+  filter: grayscale(1);
+}
+.skins-weapons{
+  display: flex !important;
+  flex-flow: column;
 }

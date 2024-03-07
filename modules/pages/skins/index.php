@@ -1,4 +1,5 @@
 <?php
+
 require_once 'class/config.php';
 require_once 'class/database.php';
 require_once 'class/utils.php';
@@ -38,34 +39,24 @@ if (isset($_SESSION['steamid'])) {
 ?>
 <main style="flex-flow:column;">
 	<div class="selectors">
-	<div class="weapon-selector" onclick="showgroup(event, 'knifes')">
+		<div class="weapon-selector weapons" onclick="showgroup(event, 'knifes')">
+			<img clas="weapon-icon "
+				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
+			Weapons
+		</div>
+		<div class="weapon-selector gloves" onclick="showgroup(event, 'knifes')">
 			<img clas="weapon-icon"
 				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
-			Knifes
+			Gloves
 		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'pistols')">
+		<div class="weapon-selector agents" onclick="showgroup(event, 'knifes')">
 			<img clas="weapon-icon"
-				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_usp_silencer.svg">
-			Pistols
-		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'rifles')">
-			<img clas="weapon-icon" src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_ak47.svg">
-			Rifles
-		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'smg')">
-			<img clas="weapon-icon" src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_mac10.svg">
-			Smgs
-		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'shotguns')">
-			<img clas="weapon-icon" src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_nova.svg">
-			Shotguns
-		</div>
-		<div class="weapon-selector" onclick="showgroup(event, 'snipers')">
-			<img clas="weapon-icon" src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_ssg08.svg">
-			Sniper rifles
+				src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/weapon_knife_butterfly.svg">
+			Agents
 		</div>
 	</div>
-	<div class="wrapper">
+
+	<div class="wrapper skins-container">
 		<div class="card">
 			<?php
 			$actualKnife = $knifes[0];
@@ -103,48 +94,7 @@ if (isset($_SESSION['steamid'])) {
 			</div>
 		</div>
 
-		<?php
 
-		foreach ($weapons as $defindex => $default) {
-
-
-			?>
-			<div class="card" id="<?php
-			if (array_key_exists($defindex, $selectedSkins)) {
-				getrarity($skins[$defindex][$selectedSkins[$defindex]['weapon_paint_id']]["paint_name"]);
-			} ?>" data-weaponid="<?php echo $defindex ?>">
-				<?php
-
-				//print_r($skins[1][0]['weapon_name']);
-				if (array_key_exists($defindex, $selectedSkins)) {
-					echo "<div class='card-header'>";
-					echo "<h4 class='card-title item-name'>{$skins[$defindex][$selectedSkins[$defindex]['weapon_paint_id']]["paint_name"]}</h4>";
-					echo "</div>";
-					echo "<img src='{$skins[$defindex][$selectedSkins[$defindex]['weapon_paint_id']]['image_url']}' class='skin-image'>";
-				} else {
-					echo "<div class='card-header'>";
-					echo "<h4 class='card-title item-name'>{$default["paint_name"]}</h4>";
-					echo "</div>";
-					echo "<img src='{$default["image_url"]}' class='skin-image'>";
-				}
-				?>
-				<div class="card-footer">
-					<span href="javascript:void(0)" data-target="<?php echo $defindex ?>" data-name="
-				<?php
-				echo $default["paint_name"];
-				?>" class="skin-change"><i class="fa-solid fa-paintbrush"></i></span>
-					<span href="javascript:void(0)" data-target="<?php echo $defindex ?>"
-						data-skinname="<?php echo $selectedSkins[$defindex]['weapon_paint_id'] ?>" class="skin-edit"><i
-							class="fa-solid fa-pen"></i></span>
-					<?php  ?>
-				</div>
-				<div class="skin-info">
-					<p>Wear: <?php if(isset($selectedSkins[$defindex]['weapon_wear'])){echo $selectedSkins[$defindex]['weapon_wear'];} ?></p>
-					<p>Seed: <?php if(isset($selectedSkins[$defindex]['weapon_wear'])){echo $selectedSkins[$defindex]['weapon_seed'];} ?></p>
-				</div>
-
-			</div>
-		<?php } ?>
 	</div>
 </main>
 
@@ -153,6 +103,32 @@ if (isset($_SESSION['steamid'])) {
 	<div class="modal-container" style="width:700px;"></div>
 </div>
 <script>
+	$(document).ready(function(){
+		var steam_id = '<?php echo $_SESSION['steamid'] ?>';
+		$.ajax({
+			url: 'modules/pages/skins/weapons.php',
+			type: 'POST',
+			data: { steam_id: steam_id },
+			dataType: 'text',
+			beforeSend: function () {
+				$('.skins-container').html('<span style="text-align:center" class="loader"></span>');
+				$('.skins-container').css('display', 'flex');
+				$('.skins-container').css('justify-content', 'center');
+			},
+			success: function (data) {
+				$('.skins-container').css('display', '');
+				$('.skins-container').css('justify-content', '');
+				$('.loader').remove();
+				$('.skins-container').addClass('skins-weapons');
+				$('.skins-container').html(data);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				$('.modal-container').html('');
+				alert('Error Loading');
+			}
+		})
+	})
+
 
 	$('.skin-edit').on('click', function () {
 		var weapon_id = $(this).data('target');
@@ -194,10 +170,10 @@ if (isset($_SESSION['steamid'])) {
 			beforeSend: function () {
 				$('.modal-container').append('<span style="text-align:center" class="loader"></span>');
 				$('.modal-container').css('justify-content', "center");
-            },
+			},
 			success: function (data) {
 				$('.loader').remove();
-                $('.modal-container').css('justify-content', '');
+				$('.modal-container').css('justify-content', '');
 				$('.modal-container').html(data);
 				//console.log(data);
 			},
@@ -208,33 +184,87 @@ if (isset($_SESSION['steamid'])) {
 		});
 	});
 
+
+	$('.weapons').on('click', function () {
+		var steam_id = '<?php echo $_SESSION['steamid'] ?>';
+		$.ajax({
+			url: 'modules/pages/skins/weapons.php',
+			type: 'POST',
+			data: { steam_id: steam_id },
+			dataType: 'text',
+			beforeSend: function () {
+				$('.skins-container').html('<span style="text-align:center" class="loader"></span>');
+				$('.skins-container').css('display', 'flex');
+				$('.skins-container').css('justify-content', 'center');
+			},
+			success: function (data) {
+				$('.skins-container').css('display', '');
+				$('.skins-container').css('justify-content', '');
+				$('.loader').remove();
+				$('.skins-container').addClass('skins-weapons');
+				$('.skins-container').html(data);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				$('.modal-container').html('');
+				alert('Error Loading');
+			}
+		})
+	})
+
+	$('.gloves').on('click', function () {
+		$('.skins-container').removeClass('skins-weapons');
+		var steam_id = '<?php echo $_SESSION['steamid'] ?>';
+		$.ajax({
+			url: 'modules/pages/skins/gloves.php',
+			type: 'POST',
+			data: { steam_id: steam_id },
+			dataType: 'text',
+			beforeSend: function () {
+				$('.skins-container').html('<span style="text-align:center" class="loader"></span>');
+				$('.skins-container').css('display', 'flex');
+				$('.skins-container').css('justify-content', 'center');
+			},
+			success: function (data) {
+				$('.skins-container').css('display', '');
+				$('.skins-container').css('justify-content', '');
+				$('.loader').remove();
+				$('.skins-container').html(data);
+				//console.log(data);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				$('.modal-container').html('');
+				alert('Error Loading');
+			}
+		})
+	})
+
+	$('.agents').on('click', function () {
+		$.ajax({
+			url: 'modules/pages/skins/data/queries/agents.php',
+			type: 'POST',
+			dataType: 'text',
+			beforeSend: function () {
+				//$('.modal-container').append('<span style="text-align:center" class="loader"></span>');
+				//$('.modal-container').css('justify-content', "center");
+			},
+			success: function (data) {
+				//$('.loader').remove();
+				// $('.modal-container').css('justify-content', '');
+				$('.wrapper').html(data);
+				//console.log(data);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				$('.modal-container').html('');
+				alert('Error Loading');
+			}
+		})
+	})
+
+
 	window.onload = function () {
-		showgroup(event, 'knifes');
+		//showgroup(event, 'knifes');
+		showgroup(event, sessionStorage.getItem('selectedgroup') || 'knifes');
 
 	}
 
-
-	//  wear
-	function updateWearValue<?php echo $defindex ?>(selectedValue) {
-		var wearInputElement = document.getElementById("wear<?php echo $defindex ?>");
-		wearInputElement.value = selectedValue;
-	}
-
-	function validateWear(inputElement) {
-		inputElement.value = inputElement.value.replace(/[^0-9]/g, '');
-	}
-	// seed
-	function validateSeed(input) {
-		// Check entered value
-		var inputValue = input.value.replace(/[^0-9]/g, ''); // Just get the numbers
-
-		if (inputValue === "") {
-			input.value = 0; // Set to 0 if empty or no numbers
-		} else {
-			var numericValue = parseInt(inputValue);
-			numericValue = Math.min(1000, Math.max(1, numericValue)); // Interval control
-
-			input.value = numericValue;
-		}
-	}
 </script>

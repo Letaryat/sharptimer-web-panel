@@ -4,11 +4,7 @@ require_once 'class/utils.php';
 $sid = $_POST['steam_id'];
 $wid = $_POST['weapon_id'];
 $sname = $_POST['weapon_name'];
-
 $skins = UtilsClass::skinsFromJson();
-//echo $sid;
-//$sname = $_POST['skin_name'];
-//echo $sid . " " . $wid . " " . $sname . "<br/>";
 ?>
 
 <div class="modal-content">
@@ -28,7 +24,7 @@ $skins = UtilsClass::skinsFromJson();
             <?php
             foreach ($skins[$wid] as $paintKey => $paint) {
                 echo "<div id='";
-                getrarity($paint['paint_name']);
+                if($paintKey === 0){echo "default";} else{getrarity($paint['paint_name']);}
                 echo "' class='skin-box' data-paintid='{$paintKey}'>
                 {$paint['paint_name']}
                 <span style='text-align:center; position:absolute;' class='loader'></span>
@@ -73,7 +69,6 @@ $skins = UtilsClass::skinsFromJson();
         }, 800);
     })
     $('.weapon-list-img').on('error', function(){
-        //console.log($(this));
        $(this).attr('src', "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/items/2022180/12c61de3e5a1edfb535a5e8c05c4e338091a1e07.png");
 
     })
@@ -83,6 +78,20 @@ if(knifes.includes("<?php echo $wid?>")){
     document.querySelectorAll('.skin-box').forEach((e) =>{
     e.setAttribute("id", "rarity_ancient_weapon");
   })
+}
+
+var weaponskins = document.querySelectorAll('.skin-box');
+var arrayforskins = [];
+
+
+for(var x = 0; x < weaponskins.length; x++){
+    arrayforskins.push(weaponskins[x]);
+    applyCustomOrder(arrayforskins, rarityarray);
+}
+
+
+for(var i = 0; i < arrayforskins.length; i++){
+    document.querySelector('.skinchange-container').appendChild(arrayforskins[i]);
 }
 
 </script>

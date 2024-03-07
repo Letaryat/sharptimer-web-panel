@@ -32,3 +32,67 @@ function getskinimg($wid, $pid){
 	}
 }
 
+function skinPaintFromJson($index, $arg)
+{
+	/*
+	weapon_defindex
+	paint
+	image
+	paint_name
+	*/
+	$count = 0;
+	$skins = [];
+	$json = json_decode(file_get_contents(__DIR__ . "/../data/gloves.json"), true);
+	foreach ($json as $skin) {
+		if($skin['weapon_defindex'] === $index && $count === 0){
+			echo $skin[$arg];
+			$count++;
+		}
+
+	}
+}
+
+function skinImage($index, $paint)
+{
+	/*
+	weapon_defindex
+	paint
+	image
+	paint_name
+	*/
+	$count = 0;
+	$skins = [];
+	$json = json_decode(file_get_contents(__DIR__ . "/../data/gloves.json"), true);
+	foreach ($json as $skin) {
+		if($skin['weapon_defindex'] == $index && $skin['paint'] == $paint){
+			echo $skin['image'];
+		}
+			/*
+		echo "<pre>";
+			print_r($skin);
+		echo "</pre>";
+		}
+	*/
+}
+}
+
+function getglovespaint($index)
+{
+	/*
+	weapon_defindex
+	paint
+	image
+	paint_name
+	*/
+
+	$json = json_decode(file_get_contents(__DIR__ . "/../data/gloves.json"), true);
+	foreach ($json as $skin) {
+		if($skin['weapon_defindex'] == $index){
+			echo "<div id='rarity_ancient_weapon' class='skin-box' data-paintid='{$skin['paint']}'>{$skin['paint_name']}
+			<span style='text-align:center; position:absolute;' class='loader'></span>
+			<img class='weapon-list-img' src='{$skin['image']}'>
+			</div>";
+		}
+
+	}
+}
