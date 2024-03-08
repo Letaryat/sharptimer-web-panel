@@ -69,7 +69,29 @@ if ($result->num_rows > 0) {
 	}
 
 
-}
+}else{
+	foreach($glovesarray as $defindex => $key){
+	?>
+
+	<div class="card" id="mythical" data-weaponid="<?php echo $defindex ?>" style="display: flex;">
+			<div class="card-header">
+				<h4 class="card-title item-name">
+					<?php echo $glovesarray[$defindex]?>
+					
+				</h4>
+			</div><img src="<?php echo BasicURL() ?>modules/pages/skins/data/weapons/agents/<?php echo $glovesarray[$defindex]?>.png" class="skin-image not-selected-skin">
+			<div class="card-footer">
+				<span href="javascript:void(0)" data-target="<?php echo $defindex ?>"
+					data-name="<?php echo $glovesarray[$defindex] ?>" class="skin-change"><i
+						class="fa-solid fa-paintbrush"></i></span>
+
+			</div>
+			<div style="display:none" class="skin-info">
+
+			</div>
+
+		</div>
+<?php }}
 /*
 foreach ($glovesarray as $defindex => $key) {
 	
