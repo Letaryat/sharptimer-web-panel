@@ -125,6 +125,22 @@ class UtilsClass
         return $selected;
     }
 
+    public static function getSelectedAgents(array $temp)
+    {
+        $selected = [];
+
+        foreach ($temp as $weapon) {
+            $selected[$weapon['weapon_defindex']] =  [
+                'weapon_paint_id' => $weapon['weapon_paint_id'],
+                'weapon_seed' => $weapon['weapon_seed'],
+                'weapon_wear' => $weapon['weapon_wear'],
+            ];
+        }
+
+        return $selected;
+    }
+
+
     public static function getSelectedGloves(array $temp)
     {
         $selected = [];

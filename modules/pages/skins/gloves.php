@@ -26,68 +26,11 @@ $selectedSkins = UtilsClass::getSelectedSkins($querySelected);
 ?>
 
 <?php
-/*
-print_r($gloves);
-echo "-==-=--=";
-foreach ($gloves as $defindex) {
-    echo "<pre>";
-    print_r($gloves[]);
-
-    echo "</pre>";
-}
-
-
-foreach($glovesarray as $defindex){
-    echo "<pre>";
-    echo $defindex;
-    print_r($skins[$defindex]);
-    echo "</pre>";
-}
-
-?>
-
-<?php
-
-foreach($glovesarray as $defindex){
-    echo "<pre>";
-    echo $defindex;
-    print_r($skins[$defindex]);
-    echo "</pre>";
-}
-
-
-
-        for($x = 0; $x < count($glovesarray); $x++){
-            echo $glovesarray[$x].' ';
-            echo count($skins[$glovesarray[$x]]['paint']);
-            echo "<pre>";
-            print_r( glovesFromJson());
-            //print_r($skins[$glovesarray[$x]]);
-            echo "</pre>";
-        }
-        foreach($defindex as $index){
- 
-        }
-
-    foreach($glovesarray as $defindex => $key){
-        echo "<pre>";
-        //nazwa:
-        echo $glovesarray[$defindex] . "<br/>";
-        echo $defindex . "<br/>";;
-        print_r(skinPaintFromJson($defindex, 'paint_name'));
-        echo " </pre>";
-
-    }
-*/
-
-    //print_r(skinImage('4725', '10087'));
-
 foreach ($glovesarray as $defindex => $key) {
     if (array_key_exists($defindex, $selectedSkins)) { 
-        //print_r($selectedSkins[$defindex]['weapon_paint_id']);
         ?>
     
-        <div class="card" id="rarity_ancient_weapon" data-weaponid="500" style="display: flex;">
+        <div class="card" id="ancient" data-weaponid="500" style="display: flex;">
             <div class="card-header">
                 <h4 class="card-title item-name">
                     <?php echo $glovesarray[$defindex] ?>
@@ -109,7 +52,7 @@ foreach ($glovesarray as $defindex => $key) {
 
         </div>
     <?php } else { ?>
-        <div class="card" id="rarity_ancient_weapon" data-weaponid="<?php echo $defindex ?>" style="display: flex;">
+        <div class="card" id="ancient" data-weaponid="<?php echo $defindex ?>" style="display: flex;">
             <div class="card-header">
                 <h4 class="card-title item-name">
                     <?php echo $glovesarray[$defindex] ?>

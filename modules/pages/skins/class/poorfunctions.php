@@ -5,7 +5,9 @@ function getrarity($name){
 	foreach ($json as $skin) {
 		if($skin['name'] === $name){
 			if($count === 0){
-				echo $skin['rarity']['id'] ;
+				$exp = explode("_", $skin['rarity']['id']);
+				echo $exp[1];
+				//echo $skin['rarity']['id'] ;
 				$count++;
 			}
 		} if($skin === "undefined"){
@@ -32,6 +34,7 @@ function getskinimg($wid, $pid){
 	}
 }
 
+/* GLOVES */
 function skinPaintFromJson($index, $arg)
 {
 	/*
@@ -88,11 +91,85 @@ function getglovespaint($index)
 	$json = json_decode(file_get_contents(__DIR__ . "/../data/gloves.json"), true);
 	foreach ($json as $skin) {
 		if($skin['weapon_defindex'] == $index){
-			echo "<div id='rarity_ancient_weapon' class='skin-box' data-paintid='{$skin['paint']}'>{$skin['paint_name']}
+			echo "<div id='ancient' class='skin-box' data-paintid='{$skin['paint']}'>{$skin['paint_name']}
 			<span style='text-align:center; position:absolute;' class='loader'></span>
 			<img class='weapon-list-img' src='{$skin['image']}'>
 			</div>";
 		}
 
+	}
+}
+
+/* AGENTS */
+
+function getrarityagents($name){
+	$count = 0;
+	$json = json_decode(file_get_contents(__DIR__ . "/../data/agentsrarity.json"), true);
+	foreach ($json as $skin) {
+		if($skin['name'] == $name){
+			$exp = explode("_", $skin['rarity']['id']);
+			echo $exp[1];
+			//print_r($skin['rarity']['id']);
+		}
+
+	}
+}
+
+function agentsPaintFromJson($index, $arg)
+{
+	/*
+	team
+	image
+	model
+	agent_name
+	*/
+	$count = 0;
+	$skins = [];
+	$json = json_decode(file_get_contents(__DIR__ . "/../data/agents.json"), true);
+	foreach ($json as $skin) {
+		if($skin['team'] === $index && $count === 0){
+			echo $skin[$arg];
+			$count++;
+		}
+
+	}
+}
+
+function getagentspaint($index)
+{
+	/*
+	team === $index
+	image
+	model
+	agent_name
+	*/
+
+	$json = json_decode(file_get_contents(__DIR__ . "/../data/agents.json"), true);
+	foreach ($json as $skin) {
+		if($skin['team'] == $index){
+			echo "<div id='";
+			getrarityagents($skin['agent_name']);
+			echo "' class='skin-box' data-paintid='{$skin['model']}'>{$skin['agent_name']}
+			<span style='text-align:center; position:absolute;' class='loader'></span>
+			<img class='weapon-list-img' src='{$skin['image']}'>
+			</div>";
+		}
+
+	}
+}
+
+function AgentInfoFromModel($index, $arg)
+{
+	/*
+	team === $index
+	image
+	model
+	agent_name
+	*/
+	$json = json_decode(file_get_contents(__DIR__ . "/../data/agents.json"), true);
+	foreach ($json as $skin) {
+		if($skin['model'] == $index){
+			return $skin[$arg];
+		}
 	}
 }

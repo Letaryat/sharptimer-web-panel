@@ -76,7 +76,7 @@ $skins = UtilsClass::skinsFromJson();
     
 if(knifes.includes("<?php echo $wid?>")){
     document.querySelectorAll('.skin-box').forEach((e) =>{
-    e.setAttribute("id", "rarity_ancient_weapon");
+    e.setAttribute("id", "ancient");
   })
 }
 

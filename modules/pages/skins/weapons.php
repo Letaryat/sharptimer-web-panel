@@ -138,7 +138,7 @@ function showgroup(evt, weapons){
     }
     if(selected === knifes){
       if(selected.includes(skins[x].getAttribute('data-weaponid'))){
-        skins[x].setAttribute("id", 'rarity_ancient_weapon');
+        skins[x].setAttribute("id", 'ancient');
       }
     }
 }

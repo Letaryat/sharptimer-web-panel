@@ -108,6 +108,7 @@ const smg = [ "26","17","33","34","19","23","24"]
 const shotguns = ["27","35","29","25", "14", "28"]
 const snipers = ["9","11","38","40"]
 const knifes = ["500","503","505","506","507","508","509","512","514","515","516","517","518","519","520","521","522","523","525","526"]
+/*
 const rarityarray = [
   "default",
   "rarity_common_weapon",
@@ -118,6 +119,28 @@ const rarityarray = [
   "rarity_ancient_weapon",
   "rarity_contraband_weapon",
 ];
+*/
+
+const rarityarray = [
+  "",
+  "default",
+  "common",
+  "uncommon",
+  "rare",
+  "mythical",
+  "legendary",
+  "ancient",
+  "contraband",
+];
+
+const rarityagents = [
+  "default",
+  "rarity_rare_character",
+  "rarity_mythical_character",
+  "rarity_legendary_character",
+  "rarity_ancient_character",
+];
+
 var weapongroup = document.querySelectorAll(".weapon-selector");
 var skins = document.querySelectorAll(".card");
 var skinsrarity = [];

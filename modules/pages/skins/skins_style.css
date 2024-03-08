@@ -42,7 +42,7 @@
 #rarity_common_weapon{
 
 }
-#rarity_common_weapon:before{
+#common:before{
   content:"";
   position: absolute;
   width: 100%;
@@ -57,7 +57,7 @@
 #rarity_uncommon_weapon{
 
 }
-#rarity_uncommon_weapon:before{
+#uncommon:before{
   content:"";
   position: absolute;
   width: 100%;
@@ -70,12 +70,12 @@
 }
 
 
-#rarity_rare_weapon{
+#rare{
 
   color:#4b69ff;
 }
 
-#rarity_rare_weapon:before{
+#rare:before{
   content:"";
   position: absolute;
   width: 100%;
@@ -87,10 +87,10 @@
   pointer-events: none;
 }
 
-#rarity_mythical_weapon{
+#mythical{
   color:#8847ff;
 }
-#rarity_mythical_weapon:before{
+#mythical:before{
   content:"";
   position: absolute;
   width: 100%;
@@ -102,11 +102,11 @@
   pointer-events: none;
 }
 
-#rarity_legendary_weapon{
+#legendary{
 
   color: #d32ce6;
 }
-#rarity_legendary_weapon:before{
+#legendary:before{
   content:"";
   position: absolute;
   width: 100%;
@@ -118,12 +118,12 @@
   pointer-events: none;
 }
 
-#rarity_ancient_weapon{
+#ancient{
   /* border-radius: 0px 10px 10px 0px; */ 
 
   color: #eb4b4b;
 }
-#rarity_ancient_weapon:before{
+#ancient:before{
   content:"";
   position: absolute;
   width: 100%;
@@ -135,11 +135,11 @@
   pointer-events: none;
 }
 
-#rarity_contraband_weapon{
+#contraband{
 
   color: #e4ae39;
 }
-#rarity_contraband_weapon:after{
+#contraband:after{
   content:"";
   position: absolute;
   width: 100%;

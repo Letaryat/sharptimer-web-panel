@@ -6,17 +6,6 @@ $wid = $_POST['weapon_id'];
 $sname = $_POST['weapon_name'];
 $skins = UtilsClass::skinsFromJson();
 
-$glovesarray = [
-    4725 => "Broken Fang Gloves",
-    5027 => "Bloodhound Gloves",
-    5030 => "Sport Gloves",
-    5031 => "Driver Gloves",
-    5032 => "Hand Wraps",
-    5033 => "Moto Gloves",
-    5034 => "Specialist Gloves",
-    5035 => "Hydra Gloves",
-];
-
 ?>
 
 <div class="modal-content">
@@ -24,18 +13,11 @@ $glovesarray = [
   justify-content: center;
   align-items: center;
   font-weight: 600;">
-        <?php
-        getskinimg($wid, $sname);
-        $name = explode("|", $sname);
-        echo "<span data-weaponname='".print_r($name[0])."' class='weapon-name'>";
-
-        echo "</span>";
-        ?>
     </div>
+    <?php echo $sname ?>
         <div class="skinchange-container">
             <?php
-            //echo $wid;
-             getglovespaint($wid);
+            getagentspaint($wid);
             ?>
         </div>
 </div>
@@ -50,13 +32,13 @@ $glovesarray = [
             };
             $.ajax({
                 type: "POST",
-                url: "modules/pages/skins/data/queries/weaponquery.php",
+                url: "modules/pages/skins/data/queries/agentquery.php",
                 data: formDatadwa,
                 encode: true,
                 success: function (data) {
                     console.log(data);
                     setTimeout(() => {
-                        location.reload()
+                       location.reload()
                     }, 500);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -77,6 +59,13 @@ $glovesarray = [
 
     })
 
+    
+if(knifes.includes("<?php echo $wid?>")){
+    document.querySelectorAll('.skin-box').forEach((e) =>{
+    e.setAttribute("id", "rarity_ancient_weapon");
+  })
+}
+
 var weaponskins = document.querySelectorAll('.skin-box');
 var arrayforskins = [];
 
@@ -88,6 +77,7 @@ for(var x = 0; x < weaponskins.length; x++){
 
 
 for(var i = 0; i < arrayforskins.length; i++){
+    console.log(arrayforskins);
     document.querySelector('.skinchange-container').appendChild(arrayforskins[i]);
 }
 

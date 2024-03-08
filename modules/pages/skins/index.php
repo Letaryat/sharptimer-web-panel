@@ -103,8 +103,9 @@ if (isset($_SESSION['steamid'])) {
 	<div class="modal-container" style="width:700px;"></div>
 </div>
 <script>
+	var steam_id = '<?php echo $_SESSION['steamid'] ?>';
 	$(document).ready(function(){
-		var steam_id = '<?php echo $_SESSION['steamid'] ?>';
+
 		$.ajax({
 			url: 'modules/pages/skins/weapons.php',
 			type: 'POST',
@@ -133,7 +134,7 @@ if (isset($_SESSION['steamid'])) {
 	$('.skin-edit').on('click', function () {
 		var weapon_id = $(this).data('target');
 		var skin_name = $(this).data('skinname');
-		var steam_id = '<?php echo $steamid ?>';
+
 		var modal = $('.modal');
 		modal.addClass("active fadein");
 		$(document.body).addClass('modalactive');
@@ -157,7 +158,7 @@ if (isset($_SESSION['steamid'])) {
 	$('.skin-change').on('click', function () {
 		var weapon_id = $(this).data('target');
 		var weapon_name = $(this).data('name');
-		var steam_id = '<?php echo $_SESSION['steamid'] ?>';
+
 		var modal = $('.modal');
 		modal.addClass("active fadein");
 		$(document.body).addClass('modalactive');
@@ -186,7 +187,7 @@ if (isset($_SESSION['steamid'])) {
 
 
 	$('.weapons').on('click', function () {
-		var steam_id = '<?php echo $_SESSION['steamid'] ?>';
+
 		$.ajax({
 			url: 'modules/pages/skins/weapons.php',
 			type: 'POST',
@@ -212,8 +213,7 @@ if (isset($_SESSION['steamid'])) {
 	})
 
 	$('.gloves').on('click', function () {
-		$('.skins-container').removeClass('skins-weapons');
-		var steam_id = '<?php echo $_SESSION['steamid'] ?>';
+	$('.skins-container').removeClass('skins-weapons');
 		$.ajax({
 			url: 'modules/pages/skins/gloves.php',
 			type: 'POST',
@@ -239,18 +239,22 @@ if (isset($_SESSION['steamid'])) {
 	})
 
 	$('.agents').on('click', function () {
+		$('.skins-container').removeClass('skins-weapons');
 		$.ajax({
-			url: 'modules/pages/skins/data/queries/agents.php',
+			url: 'modules/pages/skins/agents.php',
 			type: 'POST',
+			data: { steam_id: steam_id },
 			dataType: 'text',
 			beforeSend: function () {
-				//$('.modal-container').append('<span style="text-align:center" class="loader"></span>');
-				//$('.modal-container').css('justify-content', "center");
+				$('.skins-container').html('<span style="text-align:center" class="loader"></span>');
+				$('.skins-container').css('display', 'flex');
+				$('.skins-container').css('justify-content', 'center');
 			},
 			success: function (data) {
-				//$('.loader').remove();
-				// $('.modal-container').css('justify-content', '');
-				$('.wrapper').html(data);
+				$('.skins-container').css('display', '');
+				$('.skins-container').css('justify-content', '');
+				$('.loader').remove();
+				$('.skins-container').html(data);
 				//console.log(data);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
